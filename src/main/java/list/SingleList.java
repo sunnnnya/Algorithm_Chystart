@@ -10,7 +10,7 @@ package list;
 public class SingleList {
 
     /**
-     * 节点
+     * 单链表中的节点信息
      */
     public static class ListNode {
         public int val;

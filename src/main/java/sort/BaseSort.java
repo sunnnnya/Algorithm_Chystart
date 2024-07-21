@@ -34,7 +34,7 @@ public class BaseSort {
             return ;
         }
         for (int minIndex, i = 0; i < arr.length - 1; i++) {
-            // 锁定第一个数，
+            // 以此锁定指定i
             minIndex = i;
             // 从当前数后面找到最小的数，minIndex极记作索引
             for (int j = i + 1; j < arr.length; j++) {

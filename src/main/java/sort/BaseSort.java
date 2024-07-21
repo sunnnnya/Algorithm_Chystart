@@ -27,7 +27,7 @@ public class BaseSort {
     /**
      * 选择排序
      *
-     * @param arr
+     * @param arr 待排序的数组
      */
     public static void selectSortMethod(int[] arr) {
         if (arr == null || arr.length == 1) {
@@ -50,7 +50,7 @@ public class BaseSort {
     /**
      * 冒泡排序
      *
-     * @param arr
+     * @param arr 待排序的数组
      */
     public static void bubbleSortMethod(int[] arr) {
         if (arr == null || arr.length == 1) {
@@ -70,7 +70,7 @@ public class BaseSort {
     /**
      * 插入排序
      *
-     * @param arr
+     * @param arr 待排序的数组
      */
     public static void insertSortMethod(int[] arr) {
         if (arr == null || arr.length == 1) {

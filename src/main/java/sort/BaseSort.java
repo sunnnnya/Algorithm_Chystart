@@ -14,9 +14,9 @@ public class BaseSort {
     /**
      * 交换数组中对应两个索引的数
      *
-     * @param arr
-     * @param i
-     * @param j
+     * @param arr 数组
+     * @param i 交换的索引下标
+     * @param j 交换的索引下标
      */
     private static void swap(int[] arr, int i, int j) {
         int temp = arr[i];

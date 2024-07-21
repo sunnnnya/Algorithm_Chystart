@@ -76,11 +76,10 @@ public class BaseSort {
         if (arr == null || arr.length == 1) {
             return;
         }
-        // 从第二张牌开始
+        // 从第二张牌开始，到最后一张牌
         for (int i = 1; i < arr.length; i++) {
-            // 以此往前插入值
+            // 往前进行交换插入， 从大到小进行排序
             for (int j = i; j >= 1 && arr[j - 1] < arr[j]; j--) {
-                // 从大到小进行排序
                 swap(arr, j - 1, j);
             }
         }

@@ -68,10 +68,12 @@ public class SingleList {
         ListNode listNodeTwo= new ListNode(3, listNodeThree);
         ListNode head = new ListNode(2, listNodeTwo);
         printSingleListNode(head);
+        // 2 -> 3 -> 6 -> 8 -> 10
 
         ListNode afterReverseListNewHead = reverseSingleList(head);
         System.out.println();
 
         printSingleListNode(afterReverseListNewHead);
+        // 10 -> 8 -> 6 -> 3 -> 2
     }
 }

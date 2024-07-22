@@ -31,6 +31,7 @@ public class SingleList {
      * @return
      */
     public static ListNode reverseSingleList(ListNode head) {
+        // 本质其实就是使用变量 进行状态移动
         ListNode pre = null;
         ListNode next = null;
         while (head != null) {

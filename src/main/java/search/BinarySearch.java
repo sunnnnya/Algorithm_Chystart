@@ -6,11 +6,12 @@ package search;
  * @Author: 丛虹羽
  * @Date: 2024/7/22 上午1:15
  * @Description: 二分搜索 + 拓展
+ * 知识点：本质就是通过条件判断直接舍弃一半数据的算法
  */
 public class BinarySearch {
 
     /**
-     * 二分搜索：找到数组中是否存在数字
+     * 基础版本二分搜索：找到数组中是否存在数字
      *
      * @param arr 数组
      * @param num 要找的值
@@ -33,7 +34,7 @@ public class BinarySearch {
                 r = mid - 1;
             }
         }
-        // 循环判断结束
+        // 循环判断结束，否没有找到值，返回false
         return false;
     }
 

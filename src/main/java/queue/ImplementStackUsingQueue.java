@@ -9,6 +9,7 @@ import java.util.Queue;
  * @Author: 丛虹羽
  * @Date: 2024/7/22 下午12:39
  * @Description: 使用 队列 模拟 实现 栈
+ * 思想：对插入队列中元素之前存储的元素进行重新入队，模拟倒叙的情况
  * leetcode: https://leetcode.cn/problems/implement-stack-using-queues/
  */
 public class ImplementStackUsingQueue {
@@ -32,8 +33,8 @@ public class ImplementStackUsingQueue {
                 queue.add(t);
             } else {
                 // 先插入，然后再翻转
-                queue.add(t);
                 int size = queue.size();
+                queue.add(t);
                 while(size-- != 0) {
                     queue.add(queue.poll());
                 }
@@ -73,10 +74,10 @@ public class ImplementStackUsingQueue {
         myStack.add(12);
         myStack.add(21);
         System.out.println(myStack.empty()); // false
-        System.out.println(myStack.top()); // 12
-        System.out.println(myStack.top()); // 12
-        System.out.println(myStack.pop()); // 12
+        System.out.println(myStack.top()); // 21
+        System.out.println(myStack.top()); // 21
         System.out.println(myStack.pop()); // 21
+        System.out.println(myStack.pop()); // 12
         System.out.println(myStack.top()); // null
         System.out.println(myStack.empty()); // true
     }

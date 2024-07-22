@@ -7,6 +7,7 @@ package search;
  * @Date: 2024/7/22 上午2:25
  * @Description: 获取山峰的峰值点
  * 知识点：无序数组使用二分
+ * 分析得出是下坡还是上坡，来进行判断之间一定存在峰值点，然后进行二分
  * leetcode：https://leetcode.cn/problems/find-peak-element/
  */
 public class FindPeakElement {

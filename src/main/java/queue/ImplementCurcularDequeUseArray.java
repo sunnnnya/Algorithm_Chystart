@@ -1,15 +1,15 @@
-package list;
+package queue;
 
 /**
  * @BelongsPackage: list
  * @ClassName: ImplementDequeUseArray
  * @Author: 丛虹羽
  * @Date: 2024/7/22 下午9:10
- * @Description: 使用数组实现双端队列 -> JDK中自带LinkedList<T>
+ * @Description: 使用数组实现循环双端队列 -> JDK中自带LinkedList<T>
  *
  * leetcode: https://leetcode.cn/problems/design-circular-deque/
  */
-public class ImplementDequeUseArray {
+public class ImplementCurcularDequeUseArray {
 
     public static class MyCircleDeque {
         public int[] deque;

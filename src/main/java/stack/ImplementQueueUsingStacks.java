@@ -51,6 +51,7 @@ public class ImplementQueueUsingStacks {
          * @return
          */
         private T pop() {
+            // 只有outstack删除干净之后，才会从insatck把值倒出来，否则就是用outstack中的值
             fromInStackToOutStack();
             return outStack.pop();
         }

@@ -32,6 +32,7 @@ public class PrefixesAndArrays {
 
     /**
      * 获取从 l 到 r位数的和
+     *
      * @param arr  前缀数组
      * @param l    数组中第l个元素 1 ~ N
      * @param r    数组中第r个元素 1 ~ N

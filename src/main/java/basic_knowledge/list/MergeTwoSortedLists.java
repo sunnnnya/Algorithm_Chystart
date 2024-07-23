@@ -1,7 +1,7 @@
-package list;
+package basic_knowledge.list;
 
 /**
- * @BelongsPackage: list
+ * @BelongsPackage: basic_knowledge.list
  * @ClassName: MergeTwoLists
  * @Author: 丛虹羽
  * @Date: 2024/7/22 下午3:40

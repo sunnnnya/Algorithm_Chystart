@@ -1,9 +1,9 @@
-package array.easy;
+package basic_knowledge.array.easy;
 
 import java.util.Arrays;
 
 /**
- * @BelongsPackage: array
+ * @BelongsPackage: basic_knowledge.array
  * @ClassName: PrefixArray
  * @Author: 丛虹羽
  * @Date: 2024/7/23 下午10:56

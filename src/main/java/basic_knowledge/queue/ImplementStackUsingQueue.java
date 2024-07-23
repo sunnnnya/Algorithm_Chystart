@@ -1,10 +1,10 @@
-package queue;
+package basic_knowledge.queue;
 
 import java.util.LinkedList;
 import java.util.Queue;
 
 /**
- * @BelongsPackage: queue
+ * @BelongsPackage: basic_knowledge.queue
  * @ClassName: ImplementStackUsingQueue
  * @Author: 丛虹羽
  * @Date: 2024/7/22 下午12:39

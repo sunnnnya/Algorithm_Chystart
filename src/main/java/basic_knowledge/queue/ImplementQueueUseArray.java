@@ -1,7 +1,7 @@
-package queue;
+package basic_knowledge.queue;
 
 /**
- * @BelongsPackage: queue
+ * @BelongsPackage: basic_knowledge.queue
  * @ClassName: ImplementQueuUseArray
  * @Author: 丛虹羽
  * @Date: 2024/7/22 下午11:44

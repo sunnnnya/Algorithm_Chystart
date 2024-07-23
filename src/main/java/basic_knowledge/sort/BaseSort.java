@@ -1,9 +1,9 @@
-package sort;
+package basic_knowledge.sort;
 
 import java.util.Arrays;
 
 /**
- * @BelongsPackage: sort
+ * @BelongsPackage: basic_knowledge.sort
  * @ClassName: SelectSort
  * @Author: 丛虹羽
  * @Date: 2024/7/21 下午10:58

@@ -1,7 +1,7 @@
-package stack;
+package basic_knowledge.stack;
 
 /**
- * @BelongsPackage: stack
+ * @BelongsPackage: basic_knowledge.stack
  * @ClassName: ImplementStackUseArray
  * @Author: 丛虹羽
  * @Date: 2024/7/22 下午11:59

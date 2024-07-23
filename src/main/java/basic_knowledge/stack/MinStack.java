@@ -1,9 +1,9 @@
-package stack;
+package basic_knowledge.stack;
 
 import java.util.Stack;
 
 /**
- * @BelongsPackage: stack
+ * @BelongsPackage: basic_knowledge.stack
  * @ClassName: MinStack
  * @Author: 丛虹羽
  * @Date: 2024/7/22 下午5:44

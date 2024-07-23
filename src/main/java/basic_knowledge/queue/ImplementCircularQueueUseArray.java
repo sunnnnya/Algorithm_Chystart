@@ -1,7 +1,7 @@
-package queue;
+package basic_knowledge.queue;
 
 /**
- * @BelongsPackage: queue
+ * @BelongsPackage: basic_knowledge.queue
  * @ClassName: ImplementLoopQueueUseArray
  * @Author: 丛虹羽
  * @Date: 2024/7/23 上午12:33
@@ -30,7 +30,7 @@ public class ImplementCircularQueueUseArray {
             } else {
                 // 相当于入队列
                 queue[r] = value;
-                // 如果当前的有边界已经在数组索引的 queue.length - 1 位置，需要重新置换成0， 否则正常 + 1
+                // 如果当前的有边界已经在数组索引的 basic_knowledge.queue.length - 1 位置，需要重新置换成0， 否则正常 + 1
                 r = r == limit - 1 ? 0 : r + 1;
                 size++;
                 return true;

@@ -5,8 +5,8 @@ package list;
  * @ClassName: MergeTwoLists
  * @Author: 丛虹羽
  * @Date: 2024/7/22 下午3:40
- * @Description: 两个有序链表的合并
- * leetcode: https://leetcode.cn/problems/merge-two-sorted-lists/
+ * @Description:    两个有序链表的合并
+ *      leetcode: https://leetcode.cn/problems/merge-two-sorted-lists/
  */
 public class MergeTwoSortedLists {
     /**

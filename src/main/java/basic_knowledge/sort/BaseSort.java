@@ -25,29 +25,6 @@ public class BaseSort {
     }
 
     /**
-     * 选择排序
-     *
-     * @param arr 待排序的数组
-     */
-    public static void selectSortMethod(int[] arr) {
-        if (arr == null || arr.length == 1) {
-            return ;
-        }
-        for (int minIndex, i = 0; i < arr.length - 1; i++) {
-            // 以此锁定指定i
-            minIndex = i;
-            // 从当前数后面找到最小的数，minIndex极记作索引
-            for (int j = i + 1; j < arr.length; j++) {
-                if (arr[j] < arr[minIndex]) {
-                    minIndex = j;
-                }
-            }
-            // 初始值和后面的值进行交换
-            swap(arr, i, minIndex);
-        }
-    }
-
-    /**
      * 冒泡排序
      *
      * @param arr 待排序的数组
@@ -86,12 +63,6 @@ public class BaseSort {
     }
 
     public static void main(String[] args) {
-        int[] arr = new int[]{10, 2, 1, 2, 3, 16, 2, -1};
-        // test_select_sort
-        BaseSort.selectSortMethod(arr);
-        System.out.println(Arrays.toString(arr));
-        // [-1, 1, 2, 2, 2, 3, 10, 16]
-
         int[] arr1 = new int[]{9, 5, 2, 1, -1, 8, 9};
         // test_bubble_sort
         BaseSort.bubbleSortMethod(arr1);

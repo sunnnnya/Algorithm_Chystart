@@ -1,4 +1,4 @@
-package basic_knowledge.sort;
+package basic_knowledge.sort.base_sort;
 
 import java.util.Arrays;
 
@@ -9,7 +9,7 @@ import java.util.Arrays;
  * @Date: 2024/7/21 下午10:58
  * @Description: 选择排序
  */
-public class BaseSort {
+public class InsertSort {
 
     /**
      * 交换数组中对应两个索引的数
@@ -25,31 +25,11 @@ public class BaseSort {
     }
 
     /**
-     * 冒泡排序
-     *
-     * @param arr 待排序的数组
-     */
-    public static void bubbleSortMethod(int[] arr) {
-        if (arr == null || arr.length == 1) {
-            return ;
-        }
-        // 每次移动的次数都会减少
-        for (int i = arr.length - 1; i > 0; i--) {
-            // 丛初始位置进行交换
-            for (int j = 0; j < i; j++) {
-                if (arr[j] < arr[j + 1]) {
-                    swap(arr, j, j + 1);
-                }
-            }
-        }
-    }
-
-    /**
      * 插入排序
      *
      * @param arr 待排序的数组
      */
-    public static void insertSortMethod(int[] arr) {
+    public static void insertSort(int[] arr) {
         if (arr == null || arr.length == 1) {
             return;
         }
@@ -63,15 +43,10 @@ public class BaseSort {
     }
 
     public static void main(String[] args) {
-        int[] arr1 = new int[]{9, 5, 2, 1, -1, 8, 9};
-        // test_bubble_sort
-        BaseSort.bubbleSortMethod(arr1);
-        System.out.println(Arrays.toString(arr1));
-        // [9, 9, 8, 5, 2, 1, -1]
 
         int[] arr2 = new int[]{-1, 8, 6, 7, 5, 10, 2, 1, -1};
         // test_insert_sort
-        BaseSort.insertSortMethod(arr2);
+        InsertSort.insertSort(arr2);
         System.out.println(Arrays.toString(arr2));
         // [-1, -1, 1, 2, 5, 6, 7, 8, 10]
     }

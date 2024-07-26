@@ -7,7 +7,7 @@ package basic_knowledge.list.easy;
  * @Date: 2024/7/22 上午12:34
  * @Description: 单链表
  */
-public class SingleList {
+public class ReverseSingleList {
 
     /**
      * 单链表中的节点信息
@@ -15,9 +15,6 @@ public class SingleList {
     public static class ListNode {
         public int val;
         public ListNode next;
-        public ListNode(int val) {
-            this.val = val;
-        }
         public ListNode(int val, ListNode next) {
             this.val = val;
             this.next = next;
@@ -50,7 +47,7 @@ public class SingleList {
      */
     public static void printSingleListNode(ListNode head) {
         if (head == null) {
-            return ;
+            return;
         }
         while (head != null) {
             if(head.next == null) {

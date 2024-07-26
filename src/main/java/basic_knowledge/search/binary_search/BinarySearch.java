@@ -15,7 +15,7 @@ public class BinarySearch {
      *
      * @param arr 数组
      * @param num 要找的值
-     * @return 返回索引位置
+     * @return 返回是否包含元素
      */
     public static boolean baseBinaruSearch(int[] arr,  int num) {
         if (arr == null || arr.length == 0) {
@@ -37,7 +37,6 @@ public class BinarySearch {
         // 循环判断结束，否没有找到值，返回false
         return false;
     }
-
 
     /**
      * 找到数组中 >=num 的最左位置下标

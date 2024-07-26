@@ -67,12 +67,20 @@ public class ImplementCircularQueueUseArray {
             }
         }
 
-        // 判断队列是否空了
+        /**
+         * 判断队列是否空了
+         *
+         * @return
+         */
         public boolean isEmpty() {
             return size == 0;
         }
 
-        // 判断队列是否满了
+        /**
+         * 判断队列是否满了
+         *
+         * @return
+         */
         public boolean isFull() {
             return size == limit;
         }

@@ -1,4 +1,4 @@
-package basic_knowledge.list;
+package basic_knowledge.list.easy;
 
 /**
  * @BelongsPackage: basic_knowledge.list

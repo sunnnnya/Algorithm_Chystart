@@ -63,4 +63,17 @@ public class BitMapStruct {
             return (bitMap[number >> 6] & (1L << (number & 63))) != 0;
         }
     }
+
+    /**
+     * 测试
+     *
+     * @param args
+     */
+    public static void main(String[] args) {
+        BitMap bitMap = new BitMap(100);
+        bitMap.add(12);
+        System.out.println(bitMap.exists(12)); // true
+        bitMap.delete(12);
+        System.out.println(bitMap.exists(12)); // false
+    }
 }

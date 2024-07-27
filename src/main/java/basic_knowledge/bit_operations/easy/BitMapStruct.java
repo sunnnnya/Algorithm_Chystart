@@ -1,12 +1,13 @@
-package basic_knowledge.bitmap.easy;
+package basic_knowledge.bit_operations.easy;
 
 /**
- * @BelongsPackage: basic_knowledge.bitmap.easy
+ * @BelongsPackage: basic_knowledge.bit_operations.easy
  * @ClassName: BitMap
  * @Author: 丛虹羽
  * @Date: 2024/7/27 下午3:40
  * @Description: 位图的实现
  * 位运算的速度大于算数运算的速度
+ * &、|、~、^的使用
  */
 public class BitMapStruct {
     /**
@@ -35,6 +36,9 @@ public class BitMapStruct {
         public void add(int number) {
             // number >> 6 <=> number / 64 表示哪个整数
             // number & 63 <=> number % 64 表示余数
+            // 100 & 63 = 1100100 & 111111 = 100100 = 36
+            // 100 % 64 = 36
+            // 一个数 % 64 之后的结果： 0 ~ 63，只是由后6位数二进制位决定的
             bitMap[(number >> 6)] |= 1L << (number & 63);
         }
 

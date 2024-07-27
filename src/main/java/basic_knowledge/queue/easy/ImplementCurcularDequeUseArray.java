@@ -1,4 +1,4 @@
-package basic_knowledge.queue;
+package basic_knowledge.queue.easy;
 
 /**
  * @BelongsPackage: basic_knowledge.list

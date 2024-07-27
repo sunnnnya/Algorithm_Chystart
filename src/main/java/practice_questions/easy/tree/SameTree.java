@@ -1,5 +1,6 @@
 package practice_questions.easy.tree;
 
+import practice_questions.easy.tree.base.TreeNode;
 import sun.reflect.generics.tree.Tree;
 
 /**
@@ -14,17 +15,6 @@ import sun.reflect.generics.tree.Tree;
  */
 public class SameTree {
 
-    /**
-     * 树的节点信息
-     */
-    public static class TreeNode {
-        int value;
-        TreeNode left;
-        TreeNode right;
-        public TreeNode(int value) {
-            this.value = value;
-        }
-    }
 
     public static boolean sameTree(TreeNode head1, TreeNode head2) {
         // 1 0、0 1 -> 1

@@ -1,5 +1,7 @@
 package practice_questions.easy.tree;
 
+import practice_questions.easy.tree.base.TreeNode;
+
 /**
  * @BelongsPackage: practice_questions.easy.tree
  * @ClassName: IsMirrotTree
@@ -10,18 +12,6 @@ package practice_questions.easy.tree;
  * leetcode：https://leetcode.cn/problems/symmetric-tree/description/
  */
 public class IsMirrorTree {
-
-    /**
-     * 树的节点信息
-     */
-    public static class TreeNode {
-        int value;
-        TreeNode left;
-        TreeNode right;
-        public TreeNode(int value) {
-            this.value = value;
-        }
-    }
 
     /**
      * 判断一个树是否是镜面树

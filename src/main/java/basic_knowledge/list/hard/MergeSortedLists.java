@@ -53,6 +53,7 @@ public class MergeSortedLists {
             ListNode top = priorityQueue.poll();
             // 链表的拼接
             pre.next = top;
+            // 链表的移动
             pre = top;
             // 长短链表不同，不加入null
             if (top.next != null ) {

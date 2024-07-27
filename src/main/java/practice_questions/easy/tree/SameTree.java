@@ -14,6 +14,9 @@ import sun.reflect.generics.tree.Tree;
  */
 public class SameTree {
 
+    /**
+     * 树的节点信息
+     */
     public static class TreeNode {
         int value;
         TreeNode left;

@@ -45,8 +45,8 @@ public class LinkedListAddition {
         // 暂存起来
         ListNode curL = lHead;
         ListNode curS = sHead;
-        int carry = 0;
-        int curSum = 0;
+        int carry = 0; // 进位信息
+        int curSum = 0; // 两位数 + 进位信息
         ListNode last = curL;
         // 长短链表同时遍历
         while(curL != null && curS != null) {

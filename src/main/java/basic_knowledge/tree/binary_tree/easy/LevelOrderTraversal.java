@@ -13,6 +13,8 @@ import java.util.List;
  * @Description: 层序遍历
  * 1：拿出此时队列的size，size有多少个，就执行操作2多少回，
  * 2：弹出节点，以此添加左，右
+ *
+ * 推荐使用数组替换Stack
  */
 public class LevelOrderTraversal {
 

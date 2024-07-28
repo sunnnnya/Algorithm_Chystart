@@ -5,10 +5,13 @@ package basic_knowledge.stack;
  * @ClassName: ImplementStackUseArray
  * @Author: 丛虹羽
  * @Date: 2024/7/22 下午11:59
- * @Description: TODO
+ * @Description: 使用数组的方式实现栈
  */
 public class ImplementStackUseArray {
 
+    /**
+     * 自定义stack结构
+     */
     public static class MyStack {
 
         public int[] stack;
@@ -48,12 +51,18 @@ public class ImplementStackUseArray {
 
         /**
          * 返回元素个数
+         *
          * @return
          */
         public int size() {
             return size;
         }
 
+        /**
+         * 返回当前栈是否为空
+         *
+         * @return
+         */
         public boolean empty() {
             return size == 0;
         }

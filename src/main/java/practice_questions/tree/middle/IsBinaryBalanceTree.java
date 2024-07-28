@@ -11,7 +11,7 @@ import practice_questions.tree.base.TreeNode;
  * 平衡二叉树：左右子树的高度差绝对值  <= 1
  * leetcode：https://leetcode.cn/problems/balanced-binary-tree/
  */
-public class BalanceBinaryTree {
+public class IsBinaryBalanceTree {
 
     /**
      * 递归需要传递的信息，一定需要这个balance信息，需要传递的信息一定要存储在节点信息中

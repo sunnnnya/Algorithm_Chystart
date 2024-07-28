@@ -9,7 +9,14 @@ import practice_questions.tree.base.TreeNode;
  * @Date: 2024/7/28 下午2:55
  * @Description: 是否是搜素二叉树：任意一个节点的值，左子树均小于当前节点，右子树均大于当前节点
  *
- * 如何判断一个树是搜素二叉树：二叉树的中序遍历，是严格递增的就是搜素二叉树
+ * 给你一个二叉树的根节点 root ，判断其是否是一个有效的二叉搜索树。
+ *
+ * 有效 二叉搜索树定义如下：
+ * 节点的左子树只包含 小于 当前节点的数。
+ * 节点的右子树只包含 大于 当前节点的数。
+ * 所有左子树和右子树自身必须也是二叉搜索树。
+ *
+ * leetcode：https://leetcode.cn/problems/validate-binary-search-tree/
  */
 public class IsBinarySearchTree {
 
@@ -43,6 +50,7 @@ public class IsBinarySearchTree {
             max = Math.max(rightInfo.max, max);
             min = Math.min(rightInfo.min, min);
         }
+        // 完成上面的两个之后，max和min一定是已经确定了最大值和最小值
         boolean isBST = true;
         if (leftInfo != null && !leftInfo.isBST) {
             isBST = false;

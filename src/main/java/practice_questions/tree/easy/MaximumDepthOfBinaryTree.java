@@ -1,9 +1,9 @@
-package practice_questions.easy.tree;
+package practice_questions.tree.easy;
 
-import practice_questions.easy.tree.base.TreeNode;
+import practice_questions.tree.base.TreeNode;
 
 /**
- * @BelongsPackage: practice_questions.easy.tree
+ * @BelongsPackage: practice_questions.tree
  * @ClassName: MaximumDepthOfBinaryTree
  * @Author: 丛虹羽
  * @Date: 2024/7/28 上午1:07

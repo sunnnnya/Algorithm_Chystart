@@ -1,7 +1,7 @@
-package practice_questions.middle.make_table;
+package practice_questions.make_table;
 
 /**
- * @BelongsPackage: practice_questions.middle.make_table
+ * @BelongsPackage: practice_questions.make_table
  * @ClassName: EatGrass
  * @Author: 丛虹羽
  * @Date: 2024/7/24 上午12:46

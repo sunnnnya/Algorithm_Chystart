@@ -1,4 +1,4 @@
-package practice_questions.middle.make_table;
+package practice_questions.make_table;
 
 /**
  * @BelongsPackage: practice_questions.middle

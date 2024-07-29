@@ -6,6 +6,8 @@ package basic_knowledge.recursion;
  * @Author: 丛虹羽
  * @Date: 2024/7/29 下午11:31
  * @Description: 使用递归的方式获取数组中的最大的值
+ *
+ * 主要注意的就是递归函数抽象化
  */
 public class GetMaxNumber {
 
@@ -32,6 +34,34 @@ public class GetMaxNumber {
     }
 
     /**
+     * 获取最小值
+     *
+     * @param arr
+     * @param n
+     * @return
+     */
+    public static int getMinNumberInArray(int[] arr, int n) {
+        if (n == 1) {
+            return arr[0];
+        }
+        return Math.min(arr[n - 1], getMinNumberInArray(arr, n - 1));
+    }
+
+    /**
+     * 获取最小值
+     *
+     * @param arr
+     * @param n
+     * @return
+     */
+    public static int getMaxNumberInArray(int[] arr, int n) {
+        if (n == 1) {
+            return arr[0];
+        }
+        return Math.max(arr[n - 1], getMaxNumberInArray(arr, n - 1));
+    }
+
+    /**
      * 测试
      *
      * @param args
@@ -39,6 +69,10 @@ public class GetMaxNumber {
     public static void main(String[] args) {
         int[] arr = {1, 2, 3, 90, 100, 12, 21, 23, 99};
         System.out.println(getMaxNumber(arr));
+        // 100
+        System.out.println(getMinNumberInArray(arr, arr.length));
+        // 1
+        System.out.println(getMaxNumberInArray(arr, arr.length));
         // 100
     }
 }

@@ -10,6 +10,12 @@ package basic_knowledge.random.easy;
 public class RandomToRandom {
 
     /**
+     * Math.random()           -> 返回[0, 1)的所有小数，等概率返回一个
+     * Math.random()* N        -> 返回[0, N)的所有小数，等概率返回一个
+     * (int)(Math.random()* N) -> 返回[0, N-1]所有的整数，等概率返回一个
+     */
+
+    /**
      * 等概率随机返回 1 ~ 5，理解为系统提供的函数
      *
      * @return

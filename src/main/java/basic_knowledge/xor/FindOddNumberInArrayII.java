@@ -29,7 +29,8 @@ public class FindOddNumberInArrayII {
         // eor = a ^ b;
         // a != b
         // eor != 0 -> 某一二进制位上面必然为1
-        // eor & (~eor + 1) -> 拿到 eor 某位二进制为为 1
+        // eor & (~eor + 1) -> 提取出最右侧为1
+        // ~eor + 1 -> 表示为eor的相反数
         for (int number : arr) {
             if ((number & (eor & ~eor + 1)) == 0) {
                 xor ^= number;
@@ -46,5 +47,16 @@ public class FindOddNumberInArrayII {
     public static void main(String[] args) {
         int[] arr = {2, 2, 2, 2, 1, 4, 2, 4, 1, 1, 5, 5, 6, 6, 7, 7};
         System.out.println(Arrays.toString(findOddNumberInArrayII(arr)));
+
+        // 相反数测试
+        int number = 3;
+        int negNumber = ~number + 1;
+        System.out.println("negNumber = " + negNumber);
+        // negNumber = -3
+
+        int number1 = -2;
+        int negNumber1 = ~number1 + 1;
+        System.out.println("negNumber1 = " + negNumber1);
+        // negNumber1 = 2
     }
 }

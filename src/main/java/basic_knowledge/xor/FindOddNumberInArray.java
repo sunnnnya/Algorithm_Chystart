@@ -5,7 +5,7 @@ package basic_knowledge.xor;
  * @ClassName: FindOddNumberInArray
  * @Author: 丛虹羽
  * @Date: 2024/7/24 下午11:51
- * @Description: 数组中只有 "一个" 出现奇数次的数，其他的所有数都出现了偶数次，找到这个数！！
+ * @Description: 数组中只有 "一个" 出现奇数次的数，其他的所有数都出现了偶数次，找到这个出现奇数次的数！！
  */
 public class FindOddNumberInArray {
 

@@ -34,6 +34,13 @@ public class PathSumI {
         return isSum;
     }
 
+    /**
+     * 递归函数
+     *
+     * @param curNode 当前的节点
+     * @param preSum  当前节点之前的节点的和信息
+     * @param sum     指定路径的和
+     */
     public static void process(TreeNode curNode, int preSum, int sum) {
         // 是叶子节点
         if (curNode.left == null && curNode.right == null) {

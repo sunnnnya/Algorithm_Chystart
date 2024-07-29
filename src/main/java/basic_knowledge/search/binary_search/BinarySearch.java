@@ -56,6 +56,7 @@ public class BinarySearch {
             // 位运算，防止溢出
             int middleIndex = l + ((r - l) >> 1);
             if (arr[middleIndex] >= num) {
+                // 当前的值起码是 >= 目标值的， middleIndex逐渐靠近
                 result = middleIndex;
                 r = middleIndex - 1;
             } else if (arr[middleIndex] < num) {
@@ -100,6 +101,18 @@ public class BinarySearch {
         // false
 
         int[] arr1 = new int[]{3, 6, 6, 7, 9, 13, 13, 13, 13, 17, 24};
+        // 3, 6, 6, 7, 9, 13, 13, 13, 13, 17, 24
+        // 0  1  2  3  4  5  6  7  8  9  10
+        // l             mid              r
+        // 0  1  2  3  4  5  6  7  8  9  10
+        // l    mid    r
+        // 0  1  2  3  4  5  6  7  8  9  10
+        // l  r
+        // mid
+        // 0  1  2  3  4  5  6  7  8  9  10
+        //    l
+        //    r
+        //   mid
         System.out.println(findTheLeftIndexOfTheSpecifiedValueInTheArray(arr1, 5));
         // 1
         System.out.println(findTheLeftIndexOfTheSpecifiedValueInTheArray(arr1, 0));

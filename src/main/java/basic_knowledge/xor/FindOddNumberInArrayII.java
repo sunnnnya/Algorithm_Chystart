@@ -28,9 +28,9 @@ public class FindOddNumberInArrayII {
         int xor = 0;
         // eor = a ^ b;
         // a != b
-        // eor != 0 -> 某一二进制位上面必然为1
-        // eor & (~eor + 1) -> 提取出最右侧为1
-        // ~eor + 1 -> 表示为eor的相反数
+        // eor != 0 -> 某一个二进制位上面必然为 x x 0 0 0 1 0 0 1 0 0 x x x
+        // eor & (~eor + 1) -> 提取出最右侧为 1 -> 0 0 0 0 0 0 1 0 0
+        // (~eor + 1) -> 表示为 eor 的相反数
         for (int number : arr) {
             if ((number & (eor & ~eor + 1)) == 0) {
                 xor ^= number;

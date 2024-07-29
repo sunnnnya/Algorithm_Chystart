@@ -21,7 +21,11 @@ public class BubbleSort {
         if (arr == null || arr.length == 1) {
             return arr;
         }
+        // 指定走的趟数
         for (int i = arr.length - 1; i >= 1; i--) {
+            // 第一次从 0 ~ n - 2
+            // 第二次从 0 ~ n - 3
+            //   最后从 0 ~ 1
             for (int j = 0; j < i; j++) {
                 // 从大到小
                 if (arr[j] < arr[j + 1]) {

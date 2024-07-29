@@ -35,7 +35,7 @@ public class InsertSort {
         }
         // 从第二张牌开始，到最后一张牌
         for (int i = 1; i < arr.length; i++) {
-            // 往前进行交换插入， 从大到小进行排序
+            // 往前进行交换插入，第二牌进行比较停止， 从大到小进行排序
             for (int j = i; j >= 1 && arr[j - 1] < arr[j]; j--) {
                 swap(arr, j - 1, j);
             }

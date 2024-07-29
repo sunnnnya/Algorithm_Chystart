@@ -56,7 +56,7 @@ public class BinarySearch {
             // 位运算，防止溢出
             int middleIndex = l + ((r - l) >> 1);
             if (arr[middleIndex] >= num) {
-                // 当前的值起码是 >= 目标值的， middleIndex逐渐靠近
+                // 当前的值一定 >= num，进行记录
                 result = middleIndex;
                 r = middleIndex - 1;
             } else if (arr[middleIndex] < num) {

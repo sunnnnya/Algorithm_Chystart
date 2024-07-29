@@ -8,6 +8,7 @@ package basic_knowledge.search.binary_search;
  * @Description: 获取山峰的峰值点
  * 知识点：无序数组使用二分
  * 分析得出是下坡还是上坡，来进行判断之间一定存在峰值点，然后进行二分
+ *
  * leetcode：https://leetcode.cn/problems/find-peak-element/
  */
 public class FindPeakElement {
@@ -53,8 +54,12 @@ public class FindPeakElement {
         return result;
     }
 
+    /**
+     * 测试
+     *
+     * @param args
+     */
     public static void main(String[] args) {
-
         int[] arr = new int[]{1, 2, 1, 3, 5, 6, 4};
         System.out.println(findPeakElement(arr));
         // 5

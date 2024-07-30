@@ -66,8 +66,8 @@ public class DutchFlagII {
      */
     public static void main(String[] args) {
         int[] arr = {10, 5, 2, 8, 6, 12, 5, 3, 8, 9, 14, 6, 6};
-        dutchFlagPlus(arr, 6);
+        dutchFlagPlus(arr, 8);
         System.out.println(Arrays.toString(arr));
-        // [3, 2, 5, 5, 5, 12, 6, 7, 9, 10, 10]
+        // [6, 5, 2, 6, 6, 5, 3, 8, 8, 14, 9, 12, 10]
     }
 }

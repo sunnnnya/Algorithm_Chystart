@@ -80,7 +80,7 @@ public class TwoSum {
     }
 
     /**
-     * 官方题解：因为是有序的，所以从 l = 0, r = arr.length - 1进行遍历
+     * 优化双指针但是不快，还是很慢：因为是有序的，所以从 l = 0, r = arr.length - 1进行遍历
      * 如果 两者之和 > sum 则 r 进行变小
      * 如果 两者之和 < sum 则 l 进行变大
      * O（n）
@@ -105,7 +105,6 @@ public class TwoSum {
         }
         return new int[]{};
     }
-
 
     /**
      * 测试

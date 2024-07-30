@@ -51,7 +51,7 @@ public class GetMaxNumber {
      * 获取最小值
      *
      * @param arr
-     * @param n
+     * @param n  表示的是从 0 ~ n之间的最大值
      * @return
      */
     public static int getMaxNumberInArray(int[] arr, int n) {

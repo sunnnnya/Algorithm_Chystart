@@ -41,10 +41,10 @@ public class GetMaxNumber {
      * @return
      */
     public static int getMinNumberInArray(int[] arr, int n) {
-        if (n == 1) {
+        if (n == 0) {
             return arr[0];
         }
-        return Math.min(arr[n - 1], getMinNumberInArray(arr, n - 1));
+        return Math.min(arr[n], getMinNumberInArray(arr, n - 1));
     }
 
     /**
@@ -55,10 +55,10 @@ public class GetMaxNumber {
      * @return
      */
     public static int getMaxNumberInArray(int[] arr, int n) {
-        if (n == 1) {
+        if (n == 0) {
             return arr[0];
         }
-        return Math.max(arr[n - 1], getMaxNumberInArray(arr, n - 1));
+        return Math.max(arr[n], getMaxNumberInArray(arr, n - 1));
     }
 
     /**
@@ -70,9 +70,9 @@ public class GetMaxNumber {
         int[] arr = {1, 2, 3, 90, 100, 12, 21, 23, 99};
         System.out.println(getMaxNumber(arr));
         // 100
-        System.out.println(getMinNumberInArray(arr, arr.length));
+        System.out.println(getMinNumberInArray(arr, arr.length - 1));
         // 1
-        System.out.println(getMaxNumberInArray(arr, arr.length));
+        System.out.println(getMaxNumberInArray(arr, arr.length - 1));
         // 100
     }
 }

@@ -18,7 +18,7 @@ import java.util.Arrays;
 public class DutchFlagI {
 
     /**
-     * arr[i] < num, 把 arr[i]和 <=区域 的下一个数进行交换，然后 <= 区域 往右扩
+     * arr[i] <= num, 把 arr[i]和 <=区域 的下一个数进行交换，然后 <= 区域 往右扩
      * arr[i] > num i++，<= 区域不变
      *
      * @param arr
@@ -32,14 +32,13 @@ public class DutchFlagI {
         if (arr.length == 1) {
             return ;
         }
-        int L = 0;
-        for (int i = 0; i < arr.length; i++) {
-            if ((arr[i] <= num) && (i == L)) {
-                L++;
-            } else if ((arr[i] <= num) && (i != L)){
-                swap(arr, i, L++);
+        int L = 0; // 左边界
+        int index = 0;
+        while (index <= arr.length - 1) {
+            if (arr[index] <= num) {
+                swap(arr, L++, index++);
             } else {
-                continue;
+                index++;
             }
         }
     }
@@ -64,9 +63,9 @@ public class DutchFlagI {
      */
     public static void main(String[] args) {
         int[] arr = {10, 5, 2, 5, 6, 12, 5, 3, 7, 9, 10};
-        dutchFlag(arr, 5);
+        dutchFlag(arr, 9);
         System.out.println(Arrays.toString(arr));
-        // [5, 2, 5, 5, 3, 12, 10, 6, 7, 9, 10]
+        // [5, 2, 5, 6, 5, 3, 7, 9, 10, 12, 10]
 
         int[] arr1 = {3, 5, 5, 2};
         dutchFlag(arr1, 4);

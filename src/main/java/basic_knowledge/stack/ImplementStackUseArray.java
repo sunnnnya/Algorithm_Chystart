@@ -29,6 +29,7 @@ public class ImplementStackUseArray {
          */
         public void push(int val) {
             stack[size++] = val;
+            // size = i + 1 但 stack[i] = value
         }
 
         /**
@@ -55,6 +56,7 @@ public class ImplementStackUseArray {
          * @return
          */
         public int size() {
+            // size 表示的是元素待存储的位置
             return size;
         }
 

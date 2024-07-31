@@ -1,6 +1,5 @@
 package basic_knowledge.sort.advanced_sort;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
 /**
@@ -101,6 +100,8 @@ public class HeapSort {
 
     /**
      * 测试
+     * 使用系统提供的优先队列（堆结构），不能进行值的修改，如果堆结构要重新调整，只能重新全部扫描一下。
+     * 手写的可以对指定节点进行修改，看heapify或者heapinsert
      *
      * @param args
      */

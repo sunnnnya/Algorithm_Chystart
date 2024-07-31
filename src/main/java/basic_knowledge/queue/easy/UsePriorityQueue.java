@@ -30,6 +30,9 @@ public class UsePriorityQueue {
         System.out.println();
 
         // 大根堆 从大到小
+        /**
+         * 比较器：正数返回第二个参数，负数返回第一个参数
+         */
         PriorityQueue<Integer> integers1 = new PriorityQueue<>((o1, o2) -> o2 - o1);
         integers1.add(21);
         integers1.add(19);

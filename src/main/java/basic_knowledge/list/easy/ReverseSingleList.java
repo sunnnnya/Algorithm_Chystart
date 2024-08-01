@@ -5,7 +5,7 @@ package basic_knowledge.list.easy;
  * @ClassName: SingleList
  * @Author: 丛虹羽
  * @Date: 2024/7/22 上午12:34
- * @Description: 单链表
+ * @Description: 单链表的反转
  */
 public class ReverseSingleList {
 

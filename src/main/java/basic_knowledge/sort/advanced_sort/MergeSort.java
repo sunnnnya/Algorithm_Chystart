@@ -8,7 +8,18 @@ import java.util.Arrays;
  * @ClassName: MerageSort
  * @Author: 丛虹羽
  * @Date: 2024/7/30 下午1:47
- * @Description: TODO
+ * @Description: 归并排序
+ *
+ * master公式：分析 等规模子问题 递归函数的时间复杂度的
+ * T(N) = a * (N / b) + O(N ^ d)
+ * log(b^a) < d = O(N^d)
+ * log(b^a) > d = O(N^log(b^a))
+ * log(b^a) = d = O(N^d * log N)
+ *
+ * T(N) = 2 * (N / 2) + O(N ^ 1)
+ * a = 2、b = 2、d = 1
+ * log(2^2) = 1 == d -> O(N * logN) 下面递归的时间复杂度分析
+ *
  */
 public class MergeSort {
 
@@ -82,5 +93,6 @@ public class MergeSort {
         int[] arr = {10, 2, 4, 2, 1, 6, 10, 22, 89, 100, 121, 2, 3, 8};
         mergeSort(arr);
         System.out.println(Arrays.toString(arr));
+        // [1, 2, 2, 2, 3, 4, 6, 8, 10, 10, 22, 89, 100, 121]
     }
 }

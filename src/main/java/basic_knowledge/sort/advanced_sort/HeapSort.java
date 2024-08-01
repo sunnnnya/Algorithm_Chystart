@@ -8,9 +8,9 @@ import java.util.Arrays;
  * @Author: 丛虹羽
  * @Date: 2024/7/31 上午9:22
  * @Description: 使用数组模拟堆结构 + 堆排序
- * i -> 左孩子 = 2 * i + 1
- * i -> 右孩子 = 2 * i + 2
- * i -> 父亲 (i - 1) / 2
+ * i 父节点 -> 左孩子 = 2 * i + 1
+ * i 父节点 -> 右孩子 = 2 * i + 2
+ * i 左/右孩子 -> 父亲 (i - 1) / 2
  */
 public class HeapSort {
 

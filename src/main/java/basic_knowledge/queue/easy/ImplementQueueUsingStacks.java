@@ -8,6 +8,7 @@ import java.util.Stack;
  * @Author: 丛虹羽
  * @Date: 2024/7/22 上午11:48
  * @Description: 使用两个栈 模拟 队列
+ *
  * leetcode: https://leetcode.cn/problems/implement-queue-using-stacks/
  */
 public class ImplementQueueUsingStacks {

@@ -8,6 +8,15 @@ package basic_knowledge.recursion;
  * @Description: 使用递归的方式获取数组中的最大的值
  *
  * 主要注意的就是递归函数抽象化
+ *
+ * 需要会画递归图
+ *                           f(0, 4)
+ *                          |       \
+ *                    f(0, 2)        f(3, 4)
+ *                    |     \        |      \
+ *              f(0, 1)   f(2, 2)  f(3, 3)  f(4, 4)
+ *             |      \
+ *          f(0, 0)  f(1, 1)
  */
 public class GetMaxNumber {
 

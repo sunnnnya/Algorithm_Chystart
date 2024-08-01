@@ -9,7 +9,10 @@ import java.util.Queue;
  * @Author: 丛虹羽
  * @Date: 2024/7/22 下午12:39
  * @Description: 使用 队列 模拟 实现 栈
- * 思想：对插入队列中元素之前存储的元素进行重新入队，模拟倒叙的情况
+ * 面试题：请使用 队列 实现图的 深度优先遍历 <=> 使用队列来模拟栈
+ *
+ * 思想：对插入队列中元素之前存储的元素进行重新入队，模拟倒序的情况
+ *
  * leetcode: https://leetcode.cn/problems/implement-stack-using-queues/
  */
 public class ImplementStackUsingQueue {
@@ -69,6 +72,11 @@ public class ImplementStackUsingQueue {
         }
     }
 
+    /**
+     * 测试
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         MyStack<Integer> myStack = new MyStack<>();
         myStack.add(12);

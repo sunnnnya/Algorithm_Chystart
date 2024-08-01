@@ -11,8 +11,9 @@ import java.util.Stack;
  * 关键点：使用O(1)的时间获取栈中最小的元素的
  *      知识点：
  *          记忆化搜索的思想
- *          数组实现栈，维持size变量 stack[size++] stack[--size]
+ *          数组实现栈，维持 size 变量 stack[size++] stack[--size]
  *  leetcode：https://leetcode.cn/problems/min-stack
+ *
  *      datastack：正常记录数字的栈
  *      minstack：记录状态信息，如果插入的值，比栈顶的元素大，则插入栈顶元素，反之插入当前值
  */
@@ -34,10 +35,11 @@ public class MinStack {
          */
         public void push(Integer number) {
             this.dataStack.push(number);
+            // 当最小栈是空的时候 或者 当前元素 < 最小栈的栈顶 -> 当前数值入最小栈
             if (minStack.isEmpty() || number < minStack.peek()) {
                 minStack.push(number);
             } else {
-                // 重复压入最小的栈顶
+                // 反之压入最小栈的栈顶元素
                 minStack.push(minStack.peek());
             }
         }

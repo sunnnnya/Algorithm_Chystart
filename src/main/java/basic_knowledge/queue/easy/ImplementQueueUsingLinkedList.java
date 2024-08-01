@@ -1,4 +1,4 @@
-package basic_knowledge.list.easy;
+package basic_knowledge.queue.easy;
 
 /**
  * @BelongsPackage: basic_knowledge.list.easy
@@ -7,7 +7,7 @@ package basic_knowledge.list.easy;
  * @Date: 2024/7/26 下午9:56
  * @Description: 使用链表的方式创建队列
  */
-public class CreatingQueueUsingLinkedList {
+public class ImplementQueueUsingLinkedList {
 
     /**
      * 链表中节点的结构

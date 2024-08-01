@@ -1,4 +1,4 @@
-package basic_knowledge.queue.easy;
+package basic_knowledge.stack;
 
 import java.util.LinkedList;
 import java.util.Queue;

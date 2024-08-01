@@ -1,4 +1,4 @@
-package basic_knowledge.stack;
+package basic_knowledge.queue.easy;
 
 import java.util.Stack;
 

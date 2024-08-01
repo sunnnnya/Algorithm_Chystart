@@ -12,10 +12,17 @@ package basic_knowledge.queue.easy;
  */
 public class ImplementCircularQueueUseArray {
 
-    public class CircularQueue {
+    /**
+     * 使用循环数组实现队列
+     */
+    public static class CircularQueue {
         public int[] queue;
         public int l, r, size, limit;
 
+        /**
+         * init
+         * @param k 数组的容量大小
+         */
         public CircularQueue(int k) {
             queue = new int[k];
             l = r = size = 0;
@@ -37,7 +44,7 @@ public class ImplementCircularQueueUseArray {
             }
         }
 
-        // 弹出队列
+        // 弹出队列 左指针右移
         public boolean deQueue() {
             if (isEmpty()) {
                 return false;
@@ -86,7 +93,41 @@ public class ImplementCircularQueueUseArray {
         }
     }
 
+    /**
+     * 测试
+     *
+     * @param args
+     */
     public static void main(String[] args) {
+        CircularQueue queue = new CircularQueue(5);
 
+        // 测试入队
+        System.out.println(queue.enQueue(10)); // true
+        System.out.println(queue.enQueue(20)); // true
+        System.out.println(queue.enQueue(30)); // true
+        System.out.println(queue.enQueue(40)); // true
+        System.out.println(queue.enQueue(50)); // true
+        System.out.println(queue.enQueue(60)); // false (队列已满)
+
+        // 测试队列头部和尾部
+        System.out.println(queue.front()); // 10
+        System.out.println(queue.rear()); // 50
+
+        // 测试出队
+        System.out.println(queue.deQueue()); // true
+        System.out.println(queue.deQueue()); // true
+
+        // 测试队列头部和尾部
+        System.out.println(queue.front()); // 30
+        System.out.println(queue.rear()); // 50
+
+        // 测试再次入队
+        System.out.println(queue.enQueue(60)); // true
+        System.out.println(queue.enQueue(70)); // true
+        System.out.println(queue.enQueue(80)); // false (队列已满)
+
+        // 测试队列头部和尾部
+        System.out.println(queue.front()); // 30
+        System.out.println(queue.rear()); // 70
     }
 }

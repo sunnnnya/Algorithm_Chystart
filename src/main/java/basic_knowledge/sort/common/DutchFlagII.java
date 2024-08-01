@@ -25,25 +25,27 @@ public class DutchFlagII {
      * arr[i] > num 把 arr[i]和 >= 区域的前一个数进行交换，然后 i 不变，因为可能交换过来的数还是 < 或 > 的数
      *
      * @param arr
-     * @param num
      */
-    private static void dutchFlagPlus(int[] arr, int num) {
+    private static void dutchFlagPlus(int[] arr) {
         if (arr == null || arr.length == 1) {
-            return;
+            return ;
         }
-        int L = 0;
+        int N = arr[arr.length - 1];
+        int L = -1;
         int R = arr.length - 1;
         int index = 0;
-        // 相等的时候就已经终止了
-        while (index <= R) {
-            if (arr[index] < num) {
-                swap(arr, L++, index++);
-            } else if (arr[index] > num) {
-                swap(arr, index, R--);
+        while (index < R) {
+            if (arr[index] < N) {
+                // 小于等于的使用index右移
+                swap(arr, ++L, index++);
+            } else if (arr[index] > N) {
+                // 大于等于的时候index不移动
+                swap(arr, index, --R);
             } else {
                 index++;
             }
         }
+        swap(arr, R, arr.length - 1);
     }
 
     /**
@@ -66,7 +68,7 @@ public class DutchFlagII {
      */
     public static void main(String[] args) {
         int[] arr = {10, 5, 2, 8, 6, 12, 5, 3, 8, 9, 14, 6, 6};
-        dutchFlagPlus(arr, 8);
+        dutchFlagPlus(arr);
         System.out.println(Arrays.toString(arr));
         // [6, 5, 2, 6, 6, 5, 3, 8, 8, 14, 9, 12, 10]
     }

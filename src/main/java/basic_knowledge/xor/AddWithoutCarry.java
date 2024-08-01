@@ -26,10 +26,28 @@ public class AddWithoutCarry {
         arr[i] = arr[i] ^ arr[j];
     }
 
+    /**
+     * 不引入额外变量交换数
+     *
+     * @param a
+     * @param b
+     */
+    public static void swapTwoNumberWithOpearion(int a, int b) {
+        System.out.println("a = " + a);
+        System.out.println("b = " + b);
+        a = a - b;
+        b = a + b;
+        a = b - a;
+        System.out.println("a = " + a);
+        System.out.println("b = " + b);
+    }
+
     public static void main(String[] args) {
         int[] arr = {10, 2, 3, 5, 6};
         swap(arr, 1, 2);
         System.out.println(Arrays.toString(arr));
         // [10, 3, 2, 5, 6]
+
+        swapTwoNumberWithOpearion(12, 21);
     }
 }

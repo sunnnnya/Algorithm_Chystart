@@ -50,6 +50,11 @@ public class BubbleSort {
         arr[j] = temp;
     }
 
+    /**
+     * 测试
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         int[] arr = {19, 2, 4, 2, 1, -1, 88, 12, 29};
         bubbleSort(arr);

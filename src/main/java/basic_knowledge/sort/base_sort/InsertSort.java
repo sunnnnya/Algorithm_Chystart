@@ -42,8 +42,12 @@ public class InsertSort {
         }
     }
 
+    /**
+     * 测试
+     *
+     * @param args
+     */
     public static void main(String[] args) {
-
         int[] arr2 = new int[]{-1, 8, 6, 7, 5, 10, 2, 1, -1};
         // test_insert_sort
         InsertSort.insertSort(arr2);

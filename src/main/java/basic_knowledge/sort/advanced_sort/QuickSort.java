@@ -26,6 +26,8 @@ public class QuickSort {
         }
         swap(arr, L + (int)(Math.random( ) * (R - L + 1)), R);
         int[] p = partition(arr, L, R); // 荷兰国旗问题
+        // p[0] 等于区域的第一个数
+        // p[1] 等于区域的最后一个数
         quickSort(arr, L,p[0] - 1);  // < 区
         quickSort(arr, p[1] + 1, R); // > 区
     }

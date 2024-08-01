@@ -31,7 +31,7 @@ public class QuickSort {
     }
 
     // 这是一个处理arr[l..r]的函数
-    // 默认以arr[r]做划分，arr[r] -> p    <p    ==p    >p
+    // 默认以arr[R]做划分值，arr[R] -> p    <p    ==p    >p
     public static int[] partition(int[] arr, int L, int R) {
         int less = L - 1;                   // < 区右边界
         int more = R;                       // > 区左边界
@@ -45,6 +45,8 @@ public class QuickSort {
             }
         }
         swap(arr, more, R);
+        // 小于区域的下一个位置 <=> 等于区域的第一个位置
+        // 大于区域的位置 <=> 等于 arr[R] 的第一个位置，最后和 arr[R] 的位置交换了
         return new int[]{less + 1, more};
     }
 

@@ -48,18 +48,20 @@ public class GetKthNumber {
      */
     public static int[] partitation(int[] arr, int L, int R, int N) {
         int less = L - 1;
-        int more = R;
+        int more = R + 1;
         int index = L;
-        while (index <= more) {
+        while (index < more) {
             if (arr[index] < N) {
                 swap(arr, ++less, index++);
             } else if (arr[index] > N) {
-                swap(arr, index, more--);
+                swap(arr, index, --more);
             } else {
                 index++;
             }
         }
-        return new int[]{less + 1, more};
+        // less 定位的是 <= N 的右边界
+        // more 定位的是 >= N 的左边界
+        return new int[]{less + 1, more - 1};
     }
 
     /**
@@ -92,15 +94,15 @@ public class GetKthNumber {
 
         System.out.println("=================测试第k小的数===================");
         int[] arr = new int[]{10, 2, 3, 1, 1, 4, 1, 2, 5, 7, 2, 10, 9, 12};
-        int k = 14;
+        int k = 10;
         Arrays.sort(arr);
         System.out.println(Arrays.toString(arr));
         // [1, 1, 1, 2, 2, 2, 3, 4, 5, 7, 9, 10, 10, 12]
         System.out.println(arr[k - 1]);
-        // 2
+        // 7
 
         System.out.println("===============测试返回第Kth的数===============");
         System.out.println(process(arr, 0, arr.length - 1,  k - 1));
-        // 2
+        // 7
     }
 }

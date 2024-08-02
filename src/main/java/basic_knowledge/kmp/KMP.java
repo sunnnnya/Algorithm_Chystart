@@ -1,6 +1,5 @@
 package basic_knowledge.kmp;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
 /**

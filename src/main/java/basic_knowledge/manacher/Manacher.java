@@ -1,5 +1,7 @@
 package basic_knowledge.manacher;
 
+import java.util.Arrays;
+
 /**
  * @BelongsPackage: basic_knowledge.manacher
  * @ClassName: Manacher
@@ -27,16 +29,72 @@ package basic_knowledge.manacher;
  *      （1）如果当前 i 位置，没有被 R 罩住的话，暴力扩。
  *      （2）如果当前 i 位置，被 R 罩住了(c <= i <= r)，使用优化技巧。
  *           [1] i 点关于 c 的 对称点的回文字符串 完全包裹在 最右回文有边界 r 关于 c 的对称点 l中 -> 此时 i 的最长回文字串的长度和 i` 的最长回文长度一样
- *              [a b { c d c } k s t s k c d c b a]
- *              l        i`        c       i      r
+ *              [a b { c d c } k s t s k c d c b a] z
+ *              l        i`        c       i        r
  *           [2] i 点关于 c 的对称点的回文字符串 出现在 l 的外面去了 -> i 到 r表示的就是 i的回文半径
  *              {a b [c d e d c b a} t s t a b c d e d c] f
- *                   l    i`           c           i    r
+ *                   l    i`           c           i      r
  *           [3] i 点关于 c 的对称点的回文字符串的左边界 和 l重合 -> 只会 i 的回文半径 >= i`的回文半径
  *              x [{a b c b a} s t s a b c b a] s
- *                  l   i`       c       i
+ *                  l   i`       c       i      r
  */
 public class Manacher {
+
+    /**
+     * manacher 经典算法
+     *
+     * @param s 待查找最长回文字符串的字符串
+     * @return
+     */
+    public static int manacher(String s) {
+        if (s == null || s.length() == 0) {
+            return 0;
+        }
+        // 123321 -> [#, 1, #, 2, #, 3, #, 3, #, 2, #, 1, #]
+        char[] str = manacherString(s);
+        // 回文半径的大小，和字符串的长度对应，最后的回文半径数组中的最大值 / 2 就是最长回文字串
+        int[] pArr = new int[str.length];
+        // 中心点
+        int C = -1;
+        // 最右的扩成功的位置的，再下一个位置
+        int R = -1;
+        int max = Integer.MIN_VALUE;
+        for (int i = 0; i < str.length; i++) {
+            // R > i 表示 i 在最长回文右边界内部
+            pArr[i] = R > i ? Math.min(pArr[2 * C - i], R - i) : 1;
+            while (i + pArr[i] < str.length && i - pArr[i] > -1) {
+                if (str[i + pArr[i]] == str[i - pArr[i]]) {
+                    pArr[i]++;
+                } else {
+                    break;
+                }
+            }
+            // 更新 R 和 C
+            if (i + pArr[i] > R) {
+                R = i + pArr[i];
+                C = i;
+            }
+            // 记录最大的回文半径值
+            max = Math.max(max, pArr[i]);
+        }
+        // 返回原始串的最大回文字串的长度
+        return max - 1;
+    }
+
+    /**
+     * 对字符串进行处理，123321 -> [#, 1, #, 2, #, 3, #, 3, #, 2, #, 1, #]
+     *
+     * @param str
+     * @return
+     */
+    private static char[] manacherString(String str) {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("#");
+        for (Character c : str.toCharArray()) {
+            stringBuilder.append(c + "#");
+        }
+        return stringBuilder.toString().toCharArray();
+    }
 
     /**
      * 测试
@@ -44,6 +102,12 @@ public class Manacher {
      * @param args
      */
     public static void main(String[] args) {
+        // init manacher string
+        String str = "123321";
+        System.out.println(Arrays.toString(manacherString(str)));
+        // [#, 1, #, 2, #, 3, #, 3, #, 2, #, 1, #]
 
+        System.out.println(manacher(str));
+        // 6
     }
 }

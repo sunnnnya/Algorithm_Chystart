@@ -12,7 +12,13 @@ import java.util.Arrays;
  */
 public class QuickSort {
 
+    /**
+     * 快排
+     *
+     * @param arr
+     */
     public static void quickSort(int[] arr) {
+        // 不需要排，直接返回
         if (arr == null || arr.length < 2) {
             return;
         }

@@ -34,6 +34,7 @@ public class DutchFlagII {
         int L = -1;
         int R = arr.length - 1;
         int index = 0;
+        // 当前索引的值需要小于等于 > N 的左边界
         while (index < R) {
             if (arr[index] < N) {
                 // 小于等于的使用index右移
@@ -70,6 +71,6 @@ public class DutchFlagII {
         int[] arr = {10, 5, 2, 8, 6, 12, 5, 3, 8, 9, 14, 6, 6};
         dutchFlagPlus(arr);
         System.out.println(Arrays.toString(arr));
-        // [6, 5, 2, 6, 6, 5, 3, 8, 8, 14, 9, 12, 10]
+        // [5, 2, 3, 5, 6, 6, 6, 8, 9, 14, 8, 10, 12]
     }
 }

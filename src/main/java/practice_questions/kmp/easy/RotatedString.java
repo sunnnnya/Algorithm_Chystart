@@ -30,7 +30,7 @@ public class RotatedString {
      * @return
      */
     public static int kmp(String str1, String str2) {
-        if (str2 == null || str1 == null) {
+        if (str2 == null || str1 == null || str2.length() > str1.length() || str2.isEmpty()) {
             return -1;
         }
         String oriStr = str1 + str1;

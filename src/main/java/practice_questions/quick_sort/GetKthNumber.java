@@ -50,7 +50,7 @@ public class GetKthNumber {
         int less = L - 1;
         int more = R;
         int index = L;
-        while (index < more) {
+        while (index <= more) {
             if (arr[index] < N) {
                 swap(arr, ++less, index++);
             } else if (arr[index] > N) {
@@ -59,7 +59,7 @@ public class GetKthNumber {
                 index++;
             }
         }
-        return new int[]{less + 1, more - 1};
+        return new int[]{less + 1, more};
     }
 
     /**

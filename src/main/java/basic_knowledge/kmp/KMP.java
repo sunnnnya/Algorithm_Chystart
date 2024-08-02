@@ -27,10 +27,11 @@ public class KMP {
         }
         char[] str1 = s1.toCharArray();
         char[] str2 = s2.toCharArray();
-        // s1 index
+        // String s1 index
         int x = 0;
-        // s2 index
+        // String s2 index
         int y = 0;
+        // 获取Next数组，重点！！！！！
         int[] next = getNextArray(str2);
         while (x < str1.length && y < str1.length) {
             if (str1[x] == str2[y]) {
@@ -87,6 +88,8 @@ public class KMP {
         String str1 = "acdbstacdtxeacdbstacdbk";
         String str2 = "acdbstacdbk";
         System.out.println(Arrays.toString(getNextArray(str2.toCharArray())));
+        // [-1, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4]
         System.out.println(getIndexOf(str1, str2));
+        // 12
     }
 }

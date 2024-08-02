@@ -37,6 +37,7 @@ public class DutchFlagIII {
                 index++;
             }
         }
+        // 交换最后一个值和从左往右数第一个 >N 的值
         swap(arr, arr.length - 1, R);
         return new int[]{L + 1, R};
     }

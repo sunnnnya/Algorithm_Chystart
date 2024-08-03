@@ -60,14 +60,14 @@ public class GetMaxNumber {
      * 获取最小值
      *
      * @param arr
-     * @param n  表示的是从 0 ~ n之间的最大值
+     * @param n   数组的长度，不是index
      * @return
      */
     public static int getMaxNumberInArray(int[] arr, int n) {
         if (n == 0) {
             return arr[0];
         }
-        return Math.max(arr[n], getMaxNumberInArray(arr, n - 1));
+        return Math.max(arr[n - 1], getMaxNumberInArray(arr, n - 1));
     }
 
     /**
@@ -76,12 +76,12 @@ public class GetMaxNumber {
      * @param args
      */
     public static void main(String[] args) {
-        int[] arr = {1, 2, 3, 90, 100, 12, 21, 23, 99};
+        int[] arr = {1, 2, 3, 90, 100, 12, 21, 23, 99, -8, 9999};
         System.out.println(getMaxNumber(arr));
-        // 100
+        // 9999
         System.out.println(getMinNumberInArray(arr, arr.length - 1));
-        // 1
-        System.out.println(getMaxNumberInArray(arr, arr.length - 1));
-        // 100
+        // -8
+        System.out.println(getMaxNumberInArray(arr, arr.length));
+        // 9999
     }
 }

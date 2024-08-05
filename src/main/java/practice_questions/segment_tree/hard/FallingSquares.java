@@ -1,5 +1,7 @@
 package practice_questions.segment_tree.hard;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -27,24 +29,106 @@ import java.util.List;
  */
 public class FallingSquares {
 
-    public static class SegmentTree {
-        private int[] max;
-        private int[] change;
-        private boolean[] update;
-        public SegmentTree(int size) {
-            int N = size + 1;
-            max = new int[N << 2];
-            change = new int[N << 2];
-            update = new boolean[N << 2];
-        }
+    public static int MAXN = 2001;
 
-        public void pushUp(int rt) {
-            max[rt] = Math.max(max[rt << 1], max[rt << 1 | 1]);
-        }
+    public static int[] arr = new int[MAXN];
 
-        public void pushDown(int rt) {
+    public static int[] max = new int[MAXN << 2];
 
+    public static int[] change = new int[MAXN << 2];
+
+    public static boolean[] update = new boolean[MAXN << 2];
+
+    public static int collect(int[][] poss) {
+        int size = 1;
+        for (int[] pos : poss) {
+            arr[size++] = pos[0];
+            arr[size++] = pos[0] + pos[1] - 1;
         }
+        Arrays.sort(arr, 1, size);
+        int n = 1;
+        for (int i = 2; i < size; i++) {
+            if (arr[n] != arr[i]) {
+                arr[++n] = arr[i];
+            }
+        }
+        return n;
+    }
+
+    public static int rank(int n, int v) {
+        int ans = 0;
+        int l = 1, r = n, m;
+        while (l <= r) {
+            m = (l + r) >> 1;
+            if (arr[m] >= v) {
+                ans = m;
+                r = m - 1;
+            } else {
+                l = m + 1;
+            }
+        }
+        return ans;
+    }
+
+    public static void up(int i) {
+        max[i] = Math.max(max[i << 1], max[i << 1 | 1]);
+    }
+
+    public static void down(int i) {
+        if (update[i]) {
+            lazy(i << 1, change[i]);
+            lazy(i << 1 | 1, change[i]);
+            update[i] = false;
+        }
+    }
+
+    public static void lazy(int i, int v) {
+        update[i] = true;
+        change[i] = v;
+        max[i] = v;
+    }
+
+    public static void build(int l, int r, int i) {
+        if (l < r) {
+            int mid = (l + r) >> 1;
+            build(l, mid, i << 1);
+            build(mid + 1, r, i << 1 | 1);
+        }
+        max[i] = 0;
+        change[i] = 0;
+        update[i] = false;
+    }
+
+    public static void update(int jobl, int jobr, int jobv, int l, int r, int i) {
+        if (jobl <= l && r <= jobr) {
+            lazy(i, jobv);
+        } else {
+            int mid = (l + r) >> 1;
+            down(i);
+            if (jobl <= mid) {
+                update(jobl, jobr, jobv, l, mid, i << 1);
+            }
+            if (jobr > mid) {
+                update(jobl, jobr, jobv, mid + 1, r, i << 1 | 1);
+            }
+            up(i);
+        }
+    }
+
+    public static int query(int jobl, int jobr, int l, int r, int i) {
+        if (jobl <= l && r <= jobr) {
+            return max[i];
+        }
+        int mid = (l + r) >> 1;
+        down(i);
+        int ans = Integer.MIN_VALUE;
+        if (jobl <= mid) {
+            ans = Math.max(ans, query(jobl, jobr, l, mid, i << 1));
+        }
+        if (jobr > mid) {
+            ans = Math.max(ans, query(jobl, jobr, mid + 1, r, i << 1 | 1));
+        }
+        return ans;
     }
 
     /**
@@ -54,6 +138,18 @@ public class FallingSquares {
      * @return
      */
     public List<Integer> fallingSquares(int[][] positions) {
-        return null;
+        int n = collect(positions);
+        build(1, n, 1);
+        List<Integer> ans = new ArrayList<>();
+        int max = 0, l, r, h;
+        for (int[] square : positions) {
+            l = rank(n, square[0]);
+            r = rank(n, square[0] + square[1] - 1);
+            h = query(l, r, 1, n, 1) + square[1];
+            max = Math.max(max, h);
+            ans.add(max);
+            update(l, r, h, 1, n, 1);
+        }
+        return ans;
     }
 }

@@ -42,7 +42,9 @@ public class FallingSquares {
             max[rt] = Math.max(max[rt << 1], max[rt << 1 | 1]);
         }
 
-        public void pushDown(int rt, int )
+        public void pushDown(int rt) {
+
+        }
     }
 
     /**

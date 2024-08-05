@@ -53,8 +53,8 @@ public class SegmentTree {
     // arr[]为原序列的信息从0开始，但在arr里是从1开始的
     // sum[]模拟线段树维护区间和
     // lazy[]为累加和懒惰标记
-    // change[]为更新的值
-    // update[]为更新慵懒标记
+    // change[]更新的值
+    // update[]表示change数组index对应的值是不是更新的值，因为change数组有歧义，默认值为0，是更新为0.还有没有更新的值
     private int MAXN;
     private int[] arr;
     private int[] sum;
@@ -86,11 +86,41 @@ public class SegmentTree {
     }
 
     /**
-     * 填充整个 sum 数组
+     * 任务下发
      *
-     * @param l
-     * @param r
-     * @param rt
+     * @param rt 当前节点的数组下标
+     * @param ln 左子树结点个数
+     * @param rn 右子树结点个数
+     */
+    private void pushDown(int rt, int ln, int rn) {
+        if (update[rt]) {
+            update[rt << 1] = true;
+            update[rt << 1 | 1] = true;
+            change[rt << 1]= change[rt];
+            change[rt << 1 | 1] = change[rt];
+            lazy[rt << 1] = 0;
+            lazy[rt << 1 | 1] = 0;
+            sum[rt << 1] = change[rt] * ln;
+            sum[rt << 1 | 1] = change[rt] * rn;
+            update[rt] = false;
+        }
+        if (lazy[rt] != 0){
+            lazy[rt << 1] += lazy[rt];
+            sum[rt << 1] += lazy[rt] * ln;
+            lazy[rt <<1 | 1] += lazy[rt];
+            sum[rt << 1 | 1] += lazy[rt] * rn;
+            lazy[rt] = 0;
+        }
+    }
+
+    /**
+     * 初始化阶段，先把整个sum数组，填好
+     * 在arr[l~r]范围上，去 build，1 ~ N
+     * rt：这个范围在 sum 中的下标
+     *
+     * @param l    左边界
+     * @param r    右边界
+     * @param rt   当前数组的index索引
      */
     public void build(int l, int r, int rt) {
         // 相当于只是对叶节点的值进行了sum[]填充
@@ -105,4 +135,84 @@ public class SegmentTree {
         pushUp(rt);
     }
 
+    /**
+     * 在数组的指定范围内 数组值 + C
+     * 285 ~ 1000 8 -> 在 285 <= index <= 1000 范围内的值都 + 8
+     * 5 ~ 100 7    -> 当前节点表示 5 ~ 100 范围，索引为 7
+     *
+     * @param L 任务的左边界
+     * @param R 任务的右边界
+     * @param C 要加的值大小
+     * @param l 当前节点表示的左边界范围
+     * @param r 当前节点表示的右边界范围
+     * @param rt 当前节点在数组中的索引位置
+     */
+    public void add(int L, int R, int C, int l, int r, int rt) {
+        // 任务包含了节点信息：任务在 3 ~ 100 都加 7，但该节点表示5 ~ 96，则该索引rt位置的sum[]直接 + 和的数，同时lazy数组更新
+        if(L <= l && r <= R) {
+            // 表示当前节点表示范围中的数都加上固定的值
+            sum[rt] += C * (r - l + 1);
+            // 不再往下发了，拦住了
+            lazy[rt] += C;
+            return;
+        }
+        // 没有全部包含
+        int mid = l + ((r - l) >> 1);
+        pushDown(rt, mid - l + 1, r- mid);
+        if (L <= mid) {
+            add(L, R, C, l, mid, rt << 1);
+        }
+        if (R > mid) {
+            add(L, R, C, mid + 1, r, rt << 1 | 1);
+        }
+        pushUp(rt);
+    }
+
+    /**
+     * 指定区间范围上进行值的更新
+     *
+     * @param L 任务的左边界
+     * @param R 任务的右边界
+     * @param C 要修改的值
+     * @param l 当前节点表示的左边界范围
+     * @param r 当前节点表示的右边界范围
+     * @param rt 当前节点在数组中的索引位置
+     */
+    public void update(int L, int R, int C, int l, int r, int rt) {
+        if (L <= l && r <= R) {
+            update[rt] = true;
+            change[rt] = C;
+            sum[rt] = C * (r - l + 1);
+            // 即使前面有很多个累加操作，但是一旦更新的话，直接lazy清0
+            lazy[rt] = 0;
+            return;
+        }
+        // 当前任务躲不掉，无法懒更新，要往下发
+        int mid = (l + r) >> 1;
+        pushDown(rt, mid - l + 1, r - mid);
+        if (L <= mid) {
+            update(L, R, C, l, mid, rt << 1);
+        }
+        if (R > mid) {
+            update(L, R, C, mid + 1, r, rt << 1 | 1);
+        }
+        pushUp(rt);
+    }
+
+    // 1 ~ 6累加和是多少? 1~8 rt
+    public long query(int L, int R, int l, int r, int rt) {
+        if (L <= l && r <= R) {
+            return sum[rt];
+        }
+        int mid = (l + r) >> 1;
+        pushDown(rt, mid - l + 1,r - mid);
+        long ans = 0;
+        if (L <= mid) {
+            ans += query(L, R, l, mid, rt << 1);
+        }
+        if (R > mid) {
+            ans +=query(L, R,mid + 1, r,rt << 1 | 1);
+        }
+        return ans;
+    }
 }

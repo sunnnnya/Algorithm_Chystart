@@ -74,11 +74,46 @@ package basic_knowledge.tree.avl_tree;
 public class AVLTree {
 
     /**
-     * 测试
+     * AVL树的节点结构
      *
-     * @param args
+     * @param <K> 树平衡判断的银子
+     * @param <V> 树上节点的值
      */
-    public static void main(String[] args) {
-
+    public static class AVLNode<K extends Comparable<K>, V> {
+        public K k;
+        public V v;
+        public AVLNode<K, V> l;
+        public AVLNode<K, V> r;
+        // 平衡因子：以当前节点为头部的高度信息
+        public int h;
+        public AVLNode(K key, V value) {
+            this.k = key;
+            this.v = value;
+        }
     }
+
+    public static class AVLTreeMap<K extends Comparable<K>, V> {
+        // AVL树的根节点
+        private AVLNode<K, V> root;
+        // 一共加入了几个元素
+        private int size;
+        public AVLTreeMap() {
+            root = null;
+            size = 0;
+        }
+
+
+        private AVLNode<K, V> rightRotate(AVLNode<K, V> cur) {
+            AVLNode<K, V> left = cur.l;
+            // 当前右旋的节点的新的左孩子是左孩子的右节点
+            cur.l = left.r;
+            left.r = cur;
+            // 一定先cur后left【因为cur变成了left的子节点了，先更新子节点的高度，再更新父节点的高度，这样一定是准确的】
+            cur.h = Math.max((cur.l != null ? cur.l.h : 0), (cur.r != null ? cur.r.h : 0)) + 1;
+            left.h = Math.max((left.l != null ? left.l.h : 0), (left.r != null ? left.r.h : 0)) + 1;
+            // 返回新头节点
+            return left;
+        }
+    }
+
 }

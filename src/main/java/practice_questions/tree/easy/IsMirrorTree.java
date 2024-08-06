@@ -37,7 +37,7 @@ public class IsMirrorTree {
         if (root == null && root1 == null) {
             return true;
         }
-        return (root.value == root1.value) && isMirror(root.left, root1.right) && isMirror(root.right, root1.left);
+        return (root.val == root1.val) && isMirror(root.left, root1.right) && isMirror(root.right, root1.left);
     }
 
     /**

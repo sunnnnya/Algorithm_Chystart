@@ -44,7 +44,7 @@ public class LevelOrderTraversal {
                 if (node.right != null) {
                     queue.add(node.right);
                 }
-                list.add(node.value);
+                list.add(node.val);
             }
             // 直接使用链表的逆序添加
             ans.add(0, list);

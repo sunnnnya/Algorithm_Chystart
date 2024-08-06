@@ -29,7 +29,7 @@ public class FindTargetNode {
      */
     public static int findTargetNode(TreeNode root, int cnt) {
         if (root.left == null && root.right == null && cnt == 1) {
-            return root.value;
+            return root.val;
         }
         List<Integer> listNumbers = inOrderTraversal(root);
         return listNumbers.get(listNumbers.size() - cnt);
@@ -48,7 +48,7 @@ public class FindTargetNode {
         }
         ArrayList<Integer> integers = new ArrayList<>();
         integers.addAll(inOrderTraversal(root.left));
-        integers.add(root.value);
+        integers.add(root.val);
         integers.addAll(inOrderTraversal(root.right));
         return integers;
     }

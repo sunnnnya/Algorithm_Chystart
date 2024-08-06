@@ -24,7 +24,7 @@ public class SameTree {
             return true;
         }
         // 节点信息相等，左树相等，右树相等 成功
-        return head1.value == head2.value && sameTree(head1.left, head2.left) && sameTree(head1.right, head2.right);
+        return head1.val == head2.val && sameTree(head1.left, head2.left) && sameTree(head1.right, head2.right);
     }
 
     /**

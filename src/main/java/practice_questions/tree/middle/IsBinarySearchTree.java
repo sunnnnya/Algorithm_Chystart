@@ -40,8 +40,8 @@ public class IsBinarySearchTree {
         }
         Info leftInfo = process(root.left);
         Info rightInfo = process(root.right);
-        int max = root.value;
-        int min = root.value;
+        int max = root.val;
+        int min = root.val;
         if (leftInfo != null) {
             max = Math.max(leftInfo.max, max);
             min = Math.min(leftInfo.min, min);
@@ -59,8 +59,8 @@ public class IsBinarySearchTree {
             isBST = false;
         }
         // left Max < x    right min > x
-        boolean leftMaxLessX = leftInfo == null ? true : (leftInfo.max < root.value);
-        boolean rightMinMoreX = rightInfo == null ? true : (rightInfo.min > root.value);
+        boolean leftMaxLessX = leftInfo == null ? true : (leftInfo.max < root.val);
+        boolean rightMinMoreX = rightInfo == null ? true : (rightInfo.min > root.val);
         if(!leftMaxLessX || !rightMinMoreX) {
             isBST = false;
         }

@@ -45,13 +45,13 @@ public class PathSumI {
         // 是叶子节点
         if (curNode.left == null && curNode.right == null) {
             // 找到了路径
-            if (curNode.value + preSum == sum) {
+            if (curNode.val + preSum == sum) {
                 isSum = true;
             }
             return;
         }
         // 进行结果的相加
-        preSum += curNode.value;
+        preSum += curNode.val;
         // 左节点不空的时候斤西瓜累加， 回退的时候，preSum的值自动就是加了 curNode.value 之前的值
         if (curNode.left != null) {
             process(curNode.left, preSum, sum);

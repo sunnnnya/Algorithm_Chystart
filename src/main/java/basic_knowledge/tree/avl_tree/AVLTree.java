@@ -5,7 +5,7 @@ package basic_knowledge.tree.avl_tree;
  * @ClassName: AVL
  * @Author: 丛虹羽
  * @Date: 2024/8/5 下午9:13
- * @Description: 自平衡二叉搜索树  AVL树平衡因子：|左树高度 - 右树高度| <= 1
+ * @Description: AVL树是 自平衡二叉搜索树的一种  平衡条件：|左树高度 - 右树高度| <= 1 平衡因子：树的高度
  * 搜索二叉树中不存储重复的key
  *        原始二叉搜索树               旋转之后的平衡二叉搜索树
  *           A                                B
@@ -19,7 +19,7 @@ package basic_knowledge.tree.avl_tree;
  *        原始二叉搜索树               旋转之后的平衡二叉搜索树
  *           A                               B
  *         /  \                            /   \
- *        B    T        以A节点左旋        C     A
+ *        B    T        以A节点右旋        C     A
  *      /  \               ->           /  \   / \
  *     C    K                          S    F K   T
  *   /  \

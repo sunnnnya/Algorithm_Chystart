@@ -39,7 +39,12 @@ public class HammingWeight {
      */
     public static void main(String[] args) {
         System.out.println(hammingWeight(11));
+        // 3
+
         System.out.println(hammingWeight(128));
+        // 1
+
         System.out.println(hammingWeight(2147483645));
+        // 30
     }
 }

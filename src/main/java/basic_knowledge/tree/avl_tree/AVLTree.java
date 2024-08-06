@@ -93,6 +93,12 @@ public class AVLTree {
         }
     }
 
+    /**
+     * 有序表的结构
+     *
+     * @param <K>
+     * @param <V>
+     */
     public static class AVLTreeMap<K extends Comparable<K>, V> {
         // AVL树的根节点
         private AVLNode<K, V> root;
@@ -145,16 +151,16 @@ public class AVLTree {
          * @param value 存储的值
          * @return
          */
-        private AVLNode<K, V> addAVLNode(AVLNode<K, V> cur, K key, V value) {
+        private AVLNode<K, V> add(AVLNode<K, V> cur, K key, V value) {
             if (cur == null) {
                 return new AVLNode<K, V>(key, value);
             }
             if (key.compareTo(cur.k) < 0) {
                 // 左树可能会出现换头的情况
-                cur.l = addAVLNode(cur.l, key, value);
+                cur.l = add(cur.l, key, value);
             } else {
                 // 右树可能会出现换头的情况
-                cur.r = addAVLNode(cur.r, key, value);
+                cur.r = add(cur.r, key, value);
             }
             cur.h = Math.max((cur.l != null ? cur.l.h : 0), (cur.r != null ? cur.r.h : 0)) + 1;
             // 进行调整
@@ -180,7 +186,7 @@ public class AVLTree {
                 } else if (cur.l == null && cur.r != null) { // 左树为null，右树不为null，直接赋值右树
                     cur = cur.r;
                 } else if (cur.l != null && cur.r == null) { // 左树不为null，右树为null，直接赋值左树
-                    cur = cur .l;
+                    cur = cur.l;
                 } else {
                     AVLNode<K, V> des = cur.r;
                     while (des.l != null) {
@@ -200,12 +206,12 @@ public class AVLTree {
         }
 
         /**
-         * 平衡性判断调整
+         * 平衡性调整 + 自平衡因子
          *
          * @param cur
          * @return
          */
-        private AVLNode<K,V> maintain(AVLNode<K,V> cur) {
+        private AVLNode<K, V> maintain(AVLNode<K, V> cur) {
             if (cur == null) {
                 return null;
             }
@@ -213,7 +219,7 @@ public class AVLTree {
             int rightHeight = cur.r != null ? cur.r.h : 0;
             // 破坏平衡性
             if (Math.abs(leftHeight - rightHeight) > 1) {
-                if(leftHeight > rightHeight) {
+                if (leftHeight > rightHeight) {
                     int leftLeftHeight = cur.l != null && cur.l.l != null ? cur.l.l.h : 0;
                     int rightRightHeight = cur.r != null && cur.l.r != null ? cur.l.r.h : 0;
                     // LL >= LR 上面也当 LL 处理
@@ -235,6 +241,141 @@ public class AVLTree {
                 }
             }
             return cur;
+        }
+
+        /**
+         * 找到平衡二叉树中 <= key 最大值
+         *
+         * @param key
+         * @return
+         */
+        public AVLNode<K, V> findLastIndex(K key) {
+            AVLNode<K, V> cur = root;
+            AVLNode<K, V> pre = root;
+            while (cur != null) {
+                pre = cur;
+                if (key.compareTo(cur.k) == 0) {
+                    break;
+                } else if (key.compareTo(cur.k) > 0) {
+                    cur = cur.r;
+                } else {
+                    cur = cur.l;
+                }
+            }
+            return pre;
+        }
+
+        /**
+         * 找到平衡二叉树中 >= key 最小值
+         *
+         * @param key
+         * @return
+         */
+        public AVLNode<K, V> findLastNoSmallIndex(K key) {
+            AVLNode<K, V> ans = null;
+            AVLNode<K, V> cur = root;
+            while (cur != null) {
+                if (key.compareTo(cur.k) == 0) {
+                    ans = cur;
+                    break;
+                } else if (key.compareTo(cur.k) > 0) {
+                    cur = cur.r;
+                } else {
+                    // 先记录cur的值，否则就会出现再找到的值比当前值小了
+                    ans = cur;
+                    cur = cur.l;
+                }
+            }
+            return ans;
+        }
+
+        /**
+         * 查找包不包含key
+         *
+         * @param key
+         * @return
+         */
+        public boolean containsKey(K key) {
+            if (key == null) {
+                return false;
+            }
+            AVLNode<K, V> lastIndexNode = findLastIndex(key);
+            return lastIndexNode != null && lastIndexNode.k.equals(key);
+        }
+
+        /**
+         * 返回集合中的元素的个数
+         *
+         * @return
+         */
+        public int getSize() {
+            return size;
+        }
+
+        /**
+         * 添加元素
+         *
+         * @param key
+         * @param value
+         */
+        public void put(K key, V value) {
+            if (key == null) {
+                return;
+            }
+            AVLNode<K, V> lastIndexNode = findLastIndex(key);
+            if (lastIndexNode != null && lastIndexNode.k.equals(key)) { // 节点存在只更新value 的值
+                lastIndexNode.v = value;
+            } else { // 节点不存在直接插入
+                root = add(root, key, value); // 插入后需要更新节点的信息
+                size++;
+            }
+        }
+
+        /**
+         * 移除有序表中的节点信息
+         *
+         * @param key
+         */
+        public void remove(K key) {
+            if (key == null) {
+                return;
+            }
+            if (containsKey(key)) {
+                size--;
+                root = delete(root, key);
+            }
+        }
+
+        /**
+         * 返回最小的值
+         *
+         * @return
+         */
+        public K firstKey() {
+            if (root == null) {
+                return null;
+            }
+            AVLNode<K, V> cur = root;
+            while (cur.l != null) {
+                cur = cur.l;
+            }
+            return cur.k;
+        }
+
+        /**
+         * 返回有序表中最大的元素
+         *
+         * @return
+         */
+        public K lastKey() {
+            if (root == null) {
+                return null;
+            }
+            AVLNode<K, V>cur = root;
+            while (cur.r != null) {
+                cur = cur.r;
+            }
+            return cur.k;
         }
     }
 }

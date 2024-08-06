@@ -6,6 +6,7 @@ package basic_knowledge.tree.avl_tree;
  * @Author: 丛虹羽
  * @Date: 2024/8/5 下午9:13
  * @Description: 自平衡二叉搜索树  AVL树平衡因子：|左树高度 - 右树高度| <= 1
+ * 搜索二叉树中不存储重复的key
  *        原始二叉搜索树               旋转之后的平衡二叉搜索树
  *           A                                B
  *         /   \                            /  \
@@ -97,12 +98,18 @@ public class AVLTree {
         private AVLNode<K, V> root;
         // 一共加入了几个元素
         private int size;
+
         public AVLTreeMap() {
             root = null;
             size = 0;
         }
 
-
+        /**
+         * cur节点进行右旋
+         *
+         * @param cur
+         * @return
+         */
         private AVLNode<K, V> rightRotate(AVLNode<K, V> cur) {
             AVLNode<K, V> left = cur.l;
             // 当前右旋的节点的新的左孩子是左孩子的右节点
@@ -114,6 +121,120 @@ public class AVLTree {
             // 返回新头节点
             return left;
         }
-    }
 
+        /**
+         * cur节点进行左旋
+         *
+         * @param cur
+         * @return
+         */
+        private AVLNode<K, V> leftRotate(AVLNode<K, V> cur) {
+            AVLNode<K, V> right = cur.r;
+            cur.r = right.l;
+            right.l = cur;
+            cur.h = Math.max((cur.l != null ? cur.l.h : 0), (cur.r != null ? cur.r.h : 0));
+            right.h = Math.max((right.l != null ? right.l.h : 0), (right.r != null ? right.r.h : 0));
+            return right;
+        }
+
+        /**
+         * 平衡搜索二叉树中增加节点
+         *
+         * @param cur   当前节点的值
+         * @param key   进行有序排序的字段
+         * @param value 存储的值
+         * @return
+         */
+        private AVLNode<K, V> addAVLNode(AVLNode<K, V> cur, K key, V value) {
+            if (cur == null) {
+                return new AVLNode<K, V>(key, value);
+            }
+            if (key.compareTo(cur.k) < 0) {
+                // 左树可能会出现换头的情况
+                cur.l = addAVLNode(cur.l, key, value);
+            } else {
+                // 右树可能会出现换头的情况
+                cur.r = addAVLNode(cur.r, key, value);
+            }
+            cur.h = Math.max((cur.l != null ? cur.l.h : 0), (cur.r != null ? cur.r.h : 0)) + 1;
+            // 进行调整
+            return maintain(cur);
+        }
+
+        /**
+         * 删除平衡二叉树中的节点
+         *
+         * @param cur
+         * @param key
+         * @return
+         */
+        private AVLNode<K, V> delete(AVLNode<K, V> cur, K key) {
+            if (key.compareTo(cur.k) > 0) {
+                // 删除之后节点可能会改变
+                cur.r = delete(cur.r, key);
+            } else if (key.compareTo(cur.k) < 0) {
+                cur.l = delete(cur.l, key);
+            } else {
+                if (cur.l == null && cur.r == null) {        // 叶子节点直接删除
+                    cur = null;
+                } else if (cur.l == null && cur.r != null) { // 左树为null，右树不为null，直接赋值右树
+                    cur = cur.r;
+                } else if (cur.l != null && cur.r == null) { // 左树不为null，右树为null，直接赋值左树
+                    cur = cur .l;
+                } else {
+                    AVLNode<K, V> des = cur.r;
+                    while (des.l != null) {
+                        des = des.l;
+                    }
+                    // 需要断连删除节点,同时对子树的平衡性做调整
+                    cur.r = delete(cur.r, des.k);
+                    des.l = cur.l;
+                    des.r = cur.r;
+                    cur = des;
+                }
+            }
+            if (cur != null) {
+                cur.h = Math.max((cur.l != null ? cur.l.h : 0), (cur.r != null ? cur.r.h : 0));
+            }
+            return maintain(cur);
+        }
+
+        /**
+         * 平衡性判断调整
+         *
+         * @param cur
+         * @return
+         */
+        private AVLNode<K,V> maintain(AVLNode<K,V> cur) {
+            if (cur == null) {
+                return null;
+            }
+            int leftHeight = cur.l != null ? cur.l.h : 0;
+            int rightHeight = cur.r != null ? cur.r.h : 0;
+            // 破坏平衡性
+            if (Math.abs(leftHeight - rightHeight) > 1) {
+                if(leftHeight > rightHeight) {
+                    int leftLeftHeight = cur.l != null && cur.l.l != null ? cur.l.l.h : 0;
+                    int rightRightHeight = cur.r != null && cur.l.r != null ? cur.l.r.h : 0;
+                    // LL >= LR 上面也当 LL 处理
+                    if (leftLeftHeight >= rightRightHeight) {
+                        rightRotate(cur);
+                    } else {
+                        leftRotate(cur.l);
+                        rightRotate(cur);
+                    }
+                } else {
+                    int rightRightHeight = cur.r != null && cur.r.r != null ? cur.r.r.h : 0;
+                    int rightLeftHeight = cur.l != null && cur.r.l != null ? cur.r.l.h : 0;
+                    if (rightRightHeight >= rightLeftHeight) {
+                        leftRotate(cur);
+                    } else {
+                        rightRotate(cur.r);
+                        leftRotate(cur);
+                    }
+                }
+            }
+            return cur;
+        }
+    }
 }

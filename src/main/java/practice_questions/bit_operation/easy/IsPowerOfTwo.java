@@ -21,9 +21,9 @@ public class IsPowerOfTwo {
      * @param n
      * @return
      */
-    public static boolean isPowerOfTwo(int n) {
+    public static boolean isPowerOfTwo1(int n) {
         // 直接过滤，2 的 x次幂是不可能出现负数的
-        if(n < 0) {
+        if(n <= 0) {
             return false;
         }
         int sum = 0;
@@ -33,6 +33,19 @@ public class IsPowerOfTwo {
             }
         }
         return sum == 1;
+    }
+
+    /**
+     * 如果一个数字是 2 的幂次，这样的话 与 上 当前值 - 1 如果 == 0 的话说明只有一位不相等，说明是2的幂次
+     *
+     * @param n
+     * @return
+     */
+    public static boolean isPowerOfTwo(int n) {
+        if (n <= 0) {
+            return false;
+        }
+        return (n & (n - 1)) == 0;
     }
 
     /**

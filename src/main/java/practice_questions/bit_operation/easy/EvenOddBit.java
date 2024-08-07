@@ -26,7 +26,7 @@ public class EvenOddBit {
      * @param n
      * @return
      */
-    public static int[] evenOddBit(int n) {
+    public static int[] evenOddBit1(int n) {
         int even = n & 341;
         int sum = 0;
         while (n != 0) {
@@ -40,6 +40,22 @@ public class EvenOddBit {
         }
         return new int[]{sum1, sum - sum1};
     }
+
+    /**
+     * 使用循环直接实现, i ^= 1表示一直是0、1、0、1、0、1、0、1
+     * for (int i = 0; n > 0; i ^= 1, n >>= 1)
+     *
+     * @param n
+     * @return
+     */
+    public static int[] evenOddBit(int n) {
+        int[] ans = new int[2];
+        for (int i = 0; n > 0; i ^= 1, n >>= 1) {
+            ans[i] += (n & 1);
+        }
+        return ans;
+    }
+
 
     /**
      * 测试

@@ -19,7 +19,7 @@ public class HammingWeight {
      * @param n
      * @return
      */
-    public static int hammingWeight(int n) {
+    public static int hammingWeight1(int n) {
         if (n == 0) {
             return 0;
         }
@@ -28,6 +28,21 @@ public class HammingWeight {
             if (((n >> i) & 1) == 1) {
                 ++sum;
             }
+        }
+        return sum;
+    }
+
+    /**
+     * 使用 n & (n - 1)逐个消除位的最后一个bit位信息
+     *
+     * @param n
+     * @return
+     */
+    public static int hammingWeight(int n) {
+        int sum = 0;
+        while (n != 0) {
+            n &= n - 1;
+            ++sum;
         }
         return sum;
     }

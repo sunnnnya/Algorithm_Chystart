@@ -13,22 +13,32 @@ package practice_questions.bit_operation.easy;
  */
 public class MissingNumber {
 
+    /**
+     * 知识点：0 ^ N = N、 N ^ N = 0
+     *
+     * @param nums
+     * @return
+     */
     public static int missingNumber(int[] nums) {
-        int xor = 0;
-        for (int number : nums) {
-            xor ^= number;
+        int eor = 0;
+        for(int i = 0; i < nums.length; i++) {
+            eor ^= (i ^ nums[i]);
         }
-        for (int i = 0; i <= nums.length; i++) {
-            xor ^= i;
-        }
-        return xor;
+        return eor ^ nums.length;
     }
 
+    /**
+     * 测试
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         int[] arr = new int[]{9, 6, 4, 2, 3, 5, 7, 0, 1};
         System.out.println(missingNumber(arr));
+        // 8
 
         int[] arr1 = new int[]{3, 0, 1};
         System.out.println(missingNumber(arr1));
+        // 2
     }
 }

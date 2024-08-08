@@ -22,6 +22,11 @@ public class FindComplement {
      * @return
      */
     public static int findComplement(int num) {
+        if (num == 0) {
+            return 1;
+        } else if (num == 1) {
+            return 0;
+        }
         int res = 0;
         for (int i = 0; num != 0; num >>= 1, i++) {
             res |= (num & 1) > 0 ? 0 : 1 << i;

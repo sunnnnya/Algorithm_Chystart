@@ -14,7 +14,9 @@ package practice_questions.bit_operation.easy;
 public class Add {
 
     /**
-     * 知识点梳理，^ 无进位相加
+     * 知识点梳理：
+     *      ^ 表示无进位相加
+     *      n & (n + 1) << 1 表示进位信息
      *
      * @param a
      * @param b

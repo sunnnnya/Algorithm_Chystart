@@ -20,7 +20,7 @@ public class DuplicateNumbersXOR {
      * @param nums
      * @return
      */
-    public static int duplicateNumbersXOR(int[] nums) {
+    public static int duplicateNumbersXOR1(int[] nums) {
         int[] ans = new int[51];
         for (int i = 0; i < nums.length; i++) {
             ans[nums[i]]++;
@@ -33,6 +33,28 @@ public class DuplicateNumbersXOR {
         }
         return eor;
     }
+
+    /**
+     * 由于1 <= nums[1] <= 50 故使用一个long类型的整数就可以处理
+     *
+     * @param nums
+     * @return
+     */
+    public static int duplicateNumbersXOR(int[] nums) {
+        int ans = 0;
+        long vis = 0;
+        for (int number : nums) {
+            // 如果当前的结果出现了>0的情况，证明此值以前出现过，参加异或
+            if (((vis >> number) & 1) > 0) {
+                ans ^= number;
+            } else {
+                // number: 表示需要移动多少位
+                vis |= 1L << number;
+            }
+        }
+        return ans;
+    }
+
 
     /**
      * 测试

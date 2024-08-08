@@ -21,7 +21,7 @@ public class CountBits {
      * @param n
      * @return
      */
-    public static int[] countBits(int n) {
+    public static int[] countBits1(int n) {
         int index = 0;
         int[] ans = new int[n + 1];
         while (index <= n) {
@@ -46,6 +46,26 @@ public class CountBits {
             sum++;
         }
         return sum;
+    }
+
+    /**
+     * 性能优化，直接使用for
+     *
+     * @param n
+     * @return
+     */
+    public static int[] countBits(int n) {
+        if (n == 0) {
+            return new int[]{0};
+        }
+        int[] arr = new int[n + 1];
+        arr[0] = 0;
+        for (int i = 1; i <= n; i++) {
+            for (int j = i, sum = 0; j > 0; j = j & (j - 1)) {
+                arr[i] = ++sum;
+            }
+        }
+        return arr;
     }
 
     /**

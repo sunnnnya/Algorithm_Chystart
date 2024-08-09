@@ -7,7 +7,7 @@ package basic_knowledge.recursion;
  * @Date: 2024/7/29 下午11:31
  * @Description: 使用递归的方式获取数组中的最大的值
  *
- * 主要注意的就是递归函数抽象化
+ * 主要注意的就是递归函数抽象化(返回值、basecase、形参)，这三点一定要抽象好；
  *
  * 需要会画递归图
  *                           f(0, 4)

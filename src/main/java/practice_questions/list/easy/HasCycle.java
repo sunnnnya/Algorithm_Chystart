@@ -24,7 +24,7 @@ public class HasCycle {
      * @param head
      * @return
      */
-    public static boolean hasCycle(ListNode head) {
+    public static boolean hasCycle1(ListNode head) {
         if (head == null) {
             return false;
         }
@@ -37,6 +37,31 @@ public class HasCycle {
             head = head.next;
         }
         return false;
+    }
+
+    /**
+     * 使用快慢指针：
+     *      首先，快指针F一次走两步，慢指针S一次走一步；
+     *      当两个节点相遇之后(已经证明是有环了)，快指针从节点重新出发，一次走一步，随后再遇到的节点就是第一个入环的节点；
+     * @param head
+     * @return
+     */
+    public static boolean hasCycle(ListNode head) {
+        // 0个节点、1个节点、2个节点都不可能出现环
+        if (head == null || head.next == null || head.next.next == null) {
+            return false;
+        }
+        ListNode S = head.next;
+        ListNode F = head.next.next;
+        while(F != S) {
+            if (F.next == null || F.next.next == null) {
+                return false;
+            }
+            // 说明 F != null 且 F.next != null 且 F.next.next != null
+            F = F.next.next;
+            S = S.next;
+        }
+        return true;
     }
 
     /**

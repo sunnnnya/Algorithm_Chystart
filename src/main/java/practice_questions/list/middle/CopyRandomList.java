@@ -46,6 +46,8 @@ public class CopyRandomList {
         }
         cur = head;
         while (cur != null) {
+            // cur 老节点
+            // map.get(cur) 新节点
             map.get(cur).next = map.get(cur.next);
             map.get(cur).random = map.get(cur.random);
             cur = cur.next;

@@ -1,4 +1,4 @@
-package practice_questions.list.middle;
+package practice_questions.list.medium;
 
 import java.util.HashMap;
 

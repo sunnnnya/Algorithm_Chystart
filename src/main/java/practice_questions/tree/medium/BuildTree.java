@@ -1,7 +1,6 @@
-package practice_questions.tree.middle;
+package practice_questions.tree.medium;
 
 import practice_questions.tree.base.TreeNode;
-import sun.reflect.generics.tree.Tree;
 
 /**
  * @BelongsPackage: practice_questions.tree.middle

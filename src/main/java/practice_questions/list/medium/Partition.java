@@ -1,4 +1,4 @@
-package practice_questions.list.middle;
+package practice_questions.list.medium;
 
 import practice_questions.list.common.ListNode;
 

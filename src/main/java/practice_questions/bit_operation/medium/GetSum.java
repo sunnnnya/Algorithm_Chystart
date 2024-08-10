@@ -1,4 +1,4 @@
-package practice_questions.bit_operation.middle;
+package practice_questions.bit_operation.medium;
 
 /**
  * @BelongsPackage: practice_questions.bit_operation.middle

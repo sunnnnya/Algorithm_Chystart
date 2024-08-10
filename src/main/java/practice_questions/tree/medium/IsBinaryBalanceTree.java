@@ -1,4 +1,4 @@
-package practice_questions.tree.middle;
+package practice_questions.tree.medium;
 
 import practice_questions.tree.base.TreeNode;
 

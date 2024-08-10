@@ -41,8 +41,8 @@ public class HasCycle {
 
     /**
      * 使用快慢指针：
-     *      首先，快指针F一次走两步，慢指针S一次走一步；
-     *      当两个节点相遇之后(已经证明是有环了)，快指针从节点重新出发，一次走一步，随后再遇到的节点就是第一个入环的节点；
+     *      首先，快指针F一次走两步，慢指针S一次走一步；当两个节点相遇之后，已经证明是有环了。
+     *      ，快指针从节点重新出发，一次走一步，随后再遇到的节点就是第一个入环的节点；
      * @param head
      * @return
      */
@@ -62,6 +62,36 @@ public class HasCycle {
             S = S.next;
         }
         return true;
+    }
+
+    /**
+     * 使用快慢指针：
+     *      首先，快指针F一次走两步，慢指针S一次走一步；当两个节点相遇之后，已经证明是有环了。
+     *      随后，快指针从头节点重新出发，一次走一步，慢指针也一次走一部，随后再遇到的节点就是第一个入环的节点；
+     * 技巧：记住就可以；
+     *
+     * @param head
+     * @return
+     */
+    public static ListNode getFirstPointOfRing(ListNode head) {
+        if (head == null || head.next == null || head.next.next == null) {
+            return null;
+        }
+        ListNode S = head.next;
+        ListNode F = head.next.next;
+        while(F != S) {
+            if (F.next == null || F.next.next == null) {
+                return null;
+            }
+            F = F.next.next;
+            S = S.next;
+        }
+        F = head;
+        while (F != S) {
+            F = F.next;
+            S = S.next;
+        }
+        return S;
     }
 
     /**
@@ -89,8 +119,13 @@ public class HasCycle {
         listNode4.next = listNode5;
         listNode5.next = listNode6;
         listNode6.next = listNode3;
+        // 判断有无环
         System.out.println(hasCycle(listNode1));
         // true
+
+        // 有环的话，获取第一个入环节点；
+        System.out.println(getFirstPointOfRing(listNode1).val);
+        // 3
 
         //   7
         //    \
@@ -108,5 +143,8 @@ public class HasCycle {
         listNode9.next = listNode10;
         System.out.println(hasCycle(listNode7));
         // false
+
+        System.out.println(getFirstPointOfRing(listNode7));
+        // null
     }
 }

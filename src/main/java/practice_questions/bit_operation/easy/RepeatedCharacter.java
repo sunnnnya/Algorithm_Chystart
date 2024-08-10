@@ -14,7 +14,7 @@ package practice_questions.bit_operation.easy;
 public class RepeatedCharacter {
 
     /**
-     * 使用位运算进行标记
+     * 使用位运算进行标记，可以理解为状态压缩；
      *
      * @param s
      * @return

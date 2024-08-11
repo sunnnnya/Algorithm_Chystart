@@ -1,4 +1,4 @@
-package practice_questions.binary_search;
+package practice_questions.binary_search.easy;
 
 import java.util.Arrays;
 import java.util.LinkedList;

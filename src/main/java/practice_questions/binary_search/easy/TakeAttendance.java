@@ -1,4 +1,4 @@
-package practice_questions.binary_search;
+package practice_questions.binary_search.easy;
 
 /**
  * @BelongsPackage: practice_questions.binary_search

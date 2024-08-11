@@ -48,10 +48,14 @@ public class InsertSort {
      * @param args
      */
     public static void main(String[] args) {
-        int[] arr2 = new int[]{-1, 8, 6, 7, 5, 10, 2, 1, -1};
-        // test_insert_sort
-        InsertSort.insertSort(arr2);
+        int[] arr1 = new int[]{-1, 8, 6, 7, 5, 10, 2, 1, -1};
+        insertSort(arr1);
+        System.out.println(Arrays.toString(arr1));
+        // [10, 8, 7, 6, 5, 2, 1, -1, -1]
+
+        int[] arr2 = new int[]{5, -2, 3, 1, 0, 10, 2, 91, 11};
+        insertSort(arr2);
         System.out.println(Arrays.toString(arr2));
-        // [-1, -1, 1, 2, 5, 6, 7, 8, 10]
+        // [91, 11, 10, 5, 3, 2, 1, 0, -2]
     }
 }

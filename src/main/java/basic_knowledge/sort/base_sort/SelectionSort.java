@@ -1,6 +1,5 @@
 package basic_knowledge.sort.base_sort;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
 /**
@@ -47,10 +46,18 @@ public class SelectionSort {
         arr[j] = temp;
     }
 
+    /**
+     * 测试
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         int[] arr = {10, 9, 8, 11, 12, 21, 7};
-        selectionSort(arr);
-        System.out.println(Arrays.toString(arr));
+        System.out.println(Arrays.toString(selectionSort(arr)));
         // [7, 8, 9, 10, 11, 12, 21]
+
+        int[] arr1 = {-4, 9, 8, 11, -2, 21, 0};
+        System.out.println(Arrays.toString(selectionSort(arr1)));
+        // [-4, -2, 0, 8, 9, 11, 21]
     }
 }

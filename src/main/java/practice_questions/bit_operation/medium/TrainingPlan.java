@@ -14,7 +14,7 @@ package practice_questions.bit_operation.medium;
 public class TrainingPlan {
 
     /**
-     * 使用位运算进行状态压缩
+     * 使用 数组 + 位运算 进行状态压缩；
      *
      * @param actions
      * @return
@@ -37,11 +37,29 @@ public class TrainingPlan {
     }
 
     /**
+     * 使用 整数变量 + 位运算 进行状态压缩
+     *
+     * @param nums
+     * @return
+     */
+    private static int getDuplicate(int[] nums) {
+        for (int i = 0, vis = 0; i < nums.length; i++) {
+            if (((vis >> nums[i]) & 1) == 1) {
+                return nums[i];
+            } else {
+                vis |= (1 << nums[i]);
+            }
+        }
+        return -1;
+    }
+
+    /**
      * 测试
      *
      * @param args
      */
     public static void main(String[] args) {
+        System.out.println("=============使用(数组 + 位运算)进行状态压缩【找到数组中出现指定次数的数】==============");
         int[] arr = {5, 7, 5, 5};
         System.out.println(trainingPlan(arr));
         // 7
@@ -49,5 +67,10 @@ public class TrainingPlan {
         int[] arr1 = {12, 1, 6, 12, 6, 12, 6};
         System.out.println(trainingPlan(arr1));
         // 1
+
+        System.out.println("=============使用(整数变量 + 位运算)进行状态压缩【找到数组中第一次出现重复的值，数据量有要求】==============");
+        int[] arr3 = {5, 7, 5, 5};
+        System.out.println(getDuplicate(arr3));
+        // 5
     }
 }

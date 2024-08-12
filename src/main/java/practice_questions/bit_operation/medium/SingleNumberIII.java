@@ -13,7 +13,7 @@ import java.util.Arrays;
  *
  * leetcode: https://leetcode.cn/problems/single-number-iii
  */
-public class SingleNumber {
+public class SingleNumberIII {
 
     /**
      * 出现

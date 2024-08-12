@@ -43,10 +43,10 @@ public class SockCollocation {
     public static void main(String[] args) {
         int[] arr = new int[]{4, 5, 2, 4, 6, 6};
         System.out.println(Arrays.toString(sockCollocation(arr)));
-        //
+        // [5, 2]
 
         int[] arr1 = new int[]{1, 2, 4, 1, 4, 3, 12, 3};
         System.out.println(Arrays.toString(sockCollocation(arr1)));
-        //
+        // [2, 12]
     }
 }

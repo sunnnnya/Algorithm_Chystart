@@ -9,6 +9,8 @@ import java.util.TreeMap;
  * @Author: 丛虹羽
  * @Date: 2024/8/1 下午9:44
  * @Description: 测试使用哈希表和顺序表
+ *
+ * 算法中一般都是使用Hash表进行词频统计，然后进行程序判断；
  */
 public class HashMapAndSortHashMap {
 

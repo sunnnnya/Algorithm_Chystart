@@ -16,7 +16,7 @@ package practice_questions.bit_operation.medium;
 public class OnlyKTimes {
 
     /**
-     * 请保证arr中，只有一种数出现了K次，其他数都出现了M次
+     * 请保证arr中，只有一种数出现了K次，其他数都出现了M次，确保一定出现了K次和M次的数
      *
      * @param nums
      * @param K
@@ -42,13 +42,49 @@ public class OnlyKTimes {
     }
 
     /**
+     * arr中，如果没有出现k次的数字就返回-1
+     *
+     * @param nums
+     * @param K
+     * @param M
+     * @return
+     */
+    public static int onlyKTimesPlus(int[] nums, int K, int M) {
+        int[] arr = new int[32];
+        // 17 -> [... 0, 0, 1, 0, 0, 0, 1]
+        for (int number : nums) {
+            for (int i = 0; i < 32; i++) {
+                arr[i] += (number >> i) & 1;
+            }
+        }
+        int ans = 0;
+        // 证明：一个数出现 M 次，说明arr[i] % M == 0
+        for (int i = 0; i < 32; i++) {
+            if (arr[i] % M != 0) {
+                if (arr[i] % M == K) {
+                    ans |= (1 << i);
+                } else {
+                    return -1;
+                }
+            }
+        }
+        return ans;
+    }
+
+    /**
      * 测试
      *
      * @param args
      */
     public static void main(String[] args) {
+        // 其中：2 出现了 K = 2次，3、5、1 出现了 M = 4次
         int[] arr = {2, 3, 3, 3, 3, 2, 1, 5, 5, 5, 5, 1, 1, 1};
         System.out.println(onlyKTimes(arr, 2, 4));
         // 2
+
+        // 如果并没有出现K次的数就返回 -1,其他数肯定都是出现 M 次的
+        int[] arr1 = {1, 1, 3, 4, 3, 3, 4, 4};
+        System.out.println(onlyKTimesPlus(arr1, 1, 3));
+        // -1
     }
 }

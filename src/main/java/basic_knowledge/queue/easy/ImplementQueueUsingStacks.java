@@ -40,7 +40,7 @@ public class ImplementQueueUsingStacks {
          *
          * @param t
          */
-        private void push(T t) {
+        public void push(T t) {
             inStack.push(t);
             // 如果 outStack 全部为null的话，直接全部倒过去
             fromInStackToOutStack();
@@ -51,7 +51,7 @@ public class ImplementQueueUsingStacks {
          *
          * @return
          */
-        private T pop() {
+        public T pop() {
             // 只有outstack删除干净之后，才会从insatck把值倒出来，否则就是用outstack中的值
             fromInStackToOutStack();
             return outStack.pop();

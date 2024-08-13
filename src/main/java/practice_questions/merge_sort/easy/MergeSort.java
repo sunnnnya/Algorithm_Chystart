@@ -1,4 +1,4 @@
-package practice_questions.merge_sort;
+package practice_questions.merge_sort.easy;
 
 import java.util.Arrays;
 

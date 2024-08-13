@@ -6,6 +6,7 @@ package practice_questions.merge_sort;
  * @Author: 丛虹羽
  * @Date: 2024/7/30 下午3:50
  * @Description:  小和问题
+ *
  * 在一个数组中，每一个数左边比当前数小的数累加起来，叫做这个数组的小和。求一个数组的小和。
  * 例子:[1,3,4,2,5] 1左边比1小的数，没有;3左边比3小的数，1;4左边比4小的数，1、3;2左边比2小的数，1;5左边比5小的数，1、3、4、2;
  * 小和: 1 + 1 + 3 + 1 + 1 + 3 + 4 + 2 = 16
@@ -39,9 +40,12 @@ public class SmallSum {
         if(l == r) {
             return 0;
         }
-        int mid = r + ((l - r) >> 1);
+        int mid = l + ((r - l) >> 1);
         // merge表示的是当前拆分字段排序的结果，但是我们还需要由以前数组排序成现在数组形成的最小和数量
-        return process(arr, l, mid) + process(arr, mid + 1, r) + merge(arr, l, mid, r);
+        int leftSmallSum = process(arr, l, mid); // 左侧合并的小和
+        int rightSmallSum = process(arr, mid + 1,  r); // 右侧合并的小和
+        int mergeSmallSum = merge(arr, l, mid, r); // 归并的小和
+        return leftSmallSum + rightSmallSum + mergeSmallSum; // 总和
     }
 
     /**

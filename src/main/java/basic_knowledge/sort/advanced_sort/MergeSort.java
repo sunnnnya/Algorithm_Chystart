@@ -1,6 +1,5 @@
 package basic_knowledge.sort.advanced_sort;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
 /**
@@ -11,15 +10,14 @@ import java.util.Arrays;
  * @Description: 归并排序
  *
  * master公式：分析 等规模子问题 递归函数的时间复杂度的
- * T(N) = a * (N / b) + O(N ^ d)
- * log(b^a) < d = O(N^d)
- * log(b^a) > d = O(N^log(b^a))
- * log(b^a) = d = O(N^d * log N)
- *
- * T(N) = 2 * (N / 2) + O(N ^ 1)
- * a = 2、b = 2、d = 1
- * log(2^2) = 1 == d -> O(N * logN) 下面递归的时间复杂度分析
- *
+ *      T(N) = a * (N / b) + O(N ^ d)
+ *      log(b^a) < d = O(N^d)
+ *      log(b^a) > d = O(N^log(b^a))
+ *      log(b^a) = d = O(N^d * log N)
+ * 举例：
+ *      T(N) = 2 * (N / 2) + O(N ^ 1)
+ *      a = 2、b = 2、d = 1
+ *      log(2^2) = 1 == d -> O(N * logN) 下面递归的时间复杂度分析
  */
 public class MergeSort {
 

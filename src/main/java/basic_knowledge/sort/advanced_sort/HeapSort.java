@@ -93,7 +93,7 @@ public class HeapSort {
         int heapSize = arr.length;
         swap(arr, 0, --heapSize);
         while (heapSize > 0) {
-            // 始终都是堆顶的元素做 heapIfy
+            // 始终都是堆顶的元素做 heapIfy，最后的数组就会被调整为大根堆
             heapIfy(arr, 0, --heapSize);
             swap(arr, 0, heapSize);
         }
@@ -111,5 +111,6 @@ public class HeapSort {
         // heapSize = 12
         heapSort(arr);
         System.out.println(Arrays.toString(arr));
+        // [1, 2, 3, 4, 5, 6, 8, 9, 10, 12, 21, 67]
     }
 }

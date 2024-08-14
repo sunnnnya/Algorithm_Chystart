@@ -1,4 +1,4 @@
-package practice_questions.quick_sort;
+package practice_questions.quick_sort.medium;
 
 import java.util.Arrays;
 

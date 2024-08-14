@@ -29,6 +29,8 @@ public class SortColors {
         }
         int less = -1;
         int more = arr.length;
+        // 注意这里面的 index 其实是很坑人的，如果要求在 l 到 r 的范围上进行排序，就会出现错误的问题
+        // index = l 而不是 index = 0
         int index =  0;
         while (index < more) {
             if (arr[index] < 1) {
@@ -63,5 +65,6 @@ public class SortColors {
         int[] arr = {2, 0, 2, 1, 1, 0};
         sortColors(arr);
         System.out.println(Arrays.toString(arr));
+        // [0, 0, 1, 1, 2, 2]
     }
 }

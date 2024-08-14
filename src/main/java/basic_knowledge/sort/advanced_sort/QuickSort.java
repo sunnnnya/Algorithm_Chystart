@@ -81,5 +81,10 @@ public class QuickSort {
         quickSort(arr);
         System.out.println(Arrays.toString(arr));
         // [2, 2, 5, 6, 8, 8, 10, 10, 11, 12]
+
+        int[] arr1 = {0, 2, 6, 8};
+        quickSort(arr1);
+        System.out.println(Arrays.toString(arr1));
+        // [0, 2, 6, 8]
     }
 }

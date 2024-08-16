@@ -51,9 +51,10 @@ public class HasCycle {
         if (head == null || head.next == null || head.next.next == null) {
             return false;
         }
-        ListNode S = head.next;
         ListNode F = head.next.next;
+        ListNode S = head.next;
         while(F != S) {
+            // 说明快指针已经走到末尾了
             if (F.next == null || F.next.next == null) {
                 return false;
             }

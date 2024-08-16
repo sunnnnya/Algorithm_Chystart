@@ -2,6 +2,8 @@ package practice_questions.list.easy;
 
 import practice_questions.list.common.ListNode;
 
+import java.util.Arrays;
+
 /**
  * @BelongsPackage: practice_questions.list.easy
  * @ClassName: Partition
@@ -101,6 +103,50 @@ public class Partition {
     }
 
     /**
+     * 进行partition的过程， < = >
+     *
+     * @param head
+     * @param number
+     * @return
+     */
+    public static int[] partitionToArray(ListNode head, int number) {
+        int[] arr = new int[getListLength(head)];
+        int index = 0;
+        while (head != null) {
+            arr[index++] = head.val;
+            head = head.next;
+        }
+        int i = 0;
+        int less = -1;
+        int more = index;
+        while(i < more) {
+            if(arr[i] < number) {
+                swap(arr, i++, ++less);
+            } else if (arr[i] > number) {
+                swap(arr, i, --more);
+            } else {
+                i++;
+            }
+        }
+        return arr;
+    }
+
+    /**
+     * 获取链表的长度
+     *
+     * @param head
+     * @return
+     */
+    public static int getListLength(ListNode head) {
+        int len = 0;
+        while (head != null) {
+            head = head.next;
+            ++len;
+        }
+        return len;
+    }
+
+    /**
      * 打印链表信息
      *
      * @param head
@@ -118,6 +164,19 @@ public class Partition {
             head = head.next;
         }
         System.out.println();
+    }
+
+    /**
+     * 交换两个数字
+     *
+     * @param arr
+     * @param i
+     * @param j
+     */
+    public static void swap(int[] arr, int i, int j) {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
     }
 
     /**
@@ -157,7 +216,7 @@ public class Partition {
         print(listNode1);
         // 6 -> 3 -> 2 -> 6 -> 1 -> 3 -> 7 -> 9 -> 10 -> 5 -> 8 -> 8 -> 8 -> 8
 
-        System.out.println("===================分区之后的链表====================");
+        System.out.println("===================分区之后的链表===============");
         // < = >
         // print(partition(listNode1, 8));
         // 6 -> 3 -> 2 -> 6 -> 1 -> 3 -> 7 -> 5 -> 8 -> 8 -> 8 -> 8 -> 9 -> 10
@@ -179,7 +238,18 @@ public class Partition {
         // 6 -> 3 -> 2 -> 6 -> 1 -> 3 -> 7 -> 9 -> 5 -> 8 -> 8 -> 8 -> 8 -> 10
 
         // < >
-        print(partition(listNode1, 4));
+        // print(partition(listNode1, 4));
         // 3 -> 2 -> 1 -> 3 -> 6 -> 6 -> 7 -> 9 -> 10 -> 5 -> 8 -> 8 -> 8 -> 8
+
+        System.out.println("==========链表转数组进行parition的过程===========");
+
+        // System.out.println(Arrays.toString(partitionToArray(listNode1, 6)));
+        // [3, 2, 1, 3, 5, 6, 6, 10, 9, 8, 8, 8, 8, 7]
+
+        // System.out.println(Arrays.toString(partitionToArray(listNode1, 1)));
+        // [1, 2, 6, 3, 3, 7, 9, 10, 5, 8, 8, 8, 8, 6]
+
+        System.out.println(Arrays.toString(partitionToArray(listNode1, 3)));
+        // [2, 1, 3, 3, 6, 7, 9, 10, 5, 8, 8, 8, 8, 6]
     }
 }

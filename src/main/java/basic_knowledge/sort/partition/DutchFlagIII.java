@@ -1,4 +1,4 @@
-package basic_knowledge.sort.common;
+package basic_knowledge.sort.partition;
 
 import java.util.Arrays;
 
@@ -61,7 +61,7 @@ public class DutchFlagIII {
      */
     public static void main(String[] args) {
         int[] arr = new int[]{10, 2, 3, 2, 1, 5, 5, 8, 10, 12, 5, 19, 0, 1, 2, 21, 23, 5};
-        System.out.print("partitation数组：");
+        System.out.print("partition：");
         System.out.println(Arrays.toString(dutchFlagIII(arr)));
         // partitation数组：[7, 10]
 

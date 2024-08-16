@@ -1,4 +1,4 @@
-package basic_knowledge.sort.common;
+package basic_knowledge.sort.partition;
 
 import java.util.Arrays;
 

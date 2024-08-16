@@ -1,8 +1,6 @@
 package practice_questions.list.easy;
 
 import practice_questions.list.common.ListNode;
-
-import java.util.List;
 import java.util.Stack;
 
 /**

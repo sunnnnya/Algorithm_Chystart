@@ -1,7 +1,6 @@
 package practice_questions.list.easy;
 
 import practice_questions.list.common.ListNode;
-
 import java.util.Arrays;
 
 /**
@@ -12,15 +11,17 @@ import java.util.Arrays;
  * @Description: 给定一个链表，按照 <=  == >= 区域进行划分
  *
  */
+@SuppressWarnings("ALL")
 public class Partition {
 
     /**
      * 进行分区，使用链表的方式，不使用容器
+     * 自己写的 V1.0 版本
      *
      * @param head
      * @return
      */
-    public static ListNode partition(ListNode head, int number) {
+    public static ListNode partition1(ListNode head, int number) {
         if(head == null) {
             return null;
         }
@@ -100,6 +101,68 @@ public class Partition {
         }
         // 到达不了
         return null;
+    }
+
+    /**
+     * 优化之后的代码实现
+     *
+     * @param head
+     * @param number
+     * @return
+     */
+    public static ListNode partition(ListNode head, int number) {
+        if(head == null) {
+            return null;
+        }
+        ListNode lessHead = null;
+        ListNode lessTail = null;
+        ListNode equalHead = null;
+        ListNode equalTail = null;
+        ListNode moreHead = null;
+        ListNode moreTail = null;
+        ListNode next = null;
+        while (head != null) {
+            next = head.next;
+            // 当前的每一个节点的都处理成独立的节点，node.next = null，这样后面就不需要进行置空处理了
+            head.next = null;
+            if (head.val < number) {
+                if (lessHead == null && lessTail == null) {
+                    lessHead = head;
+                    lessTail = head;
+                } else {
+                    lessTail.next = head;
+                    lessTail = lessTail.next;
+                }
+            } else if (head.val > number) {
+                if (moreHead == null && moreTail == null) {
+                    moreTail = head;
+                    moreHead = head;
+                } else {
+                    moreTail.next = head;
+                    moreTail = moreTail.next;
+                }
+            } else {
+                if (equalHead == null && equalTail == null) {
+                    equalTail = head;
+                    equalHead = head;
+                } else {
+                    equalTail.next = head;
+                    equalTail = equalTail.next;
+                }
+            }
+            head = next;
+        }
+        if (lessTail != null) {
+            lessTail.next = equalHead;
+            equalTail = equalTail == null ? lessTail : equalTail;
+            // 下一步，一定是需要用 equalTail 去接 大于区域的头
+            // 有等于区域：equalTail -> 等于区域的尾结点
+            // 无等于区域：equalTail -> 小于区域的尾结点
+        }
+        if (equalTail != null) {
+            equalTail.next = moreHead;
+        }
+        return lessHead != null ? lessHead : (equalHead != null ? equalHead : moreHead);
     }
 
     /**
@@ -238,7 +301,7 @@ public class Partition {
         // 6 -> 3 -> 2 -> 6 -> 1 -> 3 -> 7 -> 9 -> 5 -> 8 -> 8 -> 8 -> 8 -> 10
 
         // < >
-        // print(partition(listNode1, 4));
+        print(partition(listNode1, 4));
         // 3 -> 2 -> 1 -> 3 -> 6 -> 6 -> 7 -> 9 -> 10 -> 5 -> 8 -> 8 -> 8 -> 8
 
         System.out.println("==========链表转数组进行parition的过程===========");
@@ -249,7 +312,7 @@ public class Partition {
         // System.out.println(Arrays.toString(partitionToArray(listNode1, 1)));
         // [1, 2, 6, 3, 3, 7, 9, 10, 5, 8, 8, 8, 8, 6]
 
-        System.out.println(Arrays.toString(partitionToArray(listNode1, 3)));
+        // System.out.println(Arrays.toString(partitionToArray(listNode1, 3)));
         // [2, 1, 3, 3, 6, 7, 9, 10, 5, 8, 8, 8, 8, 6]
     }
 }

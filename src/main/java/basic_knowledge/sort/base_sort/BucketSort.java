@@ -22,7 +22,18 @@ import java.util.Arrays;
  * 按照arr原数组：从后向前遍历，比如：062个位数为2，然后对应count的前缀和数组count[2] = 4表示当前数组中个位数<=2的数有四个，故当前值放在index为3的位置，然后count[2]--
  *    help辅助数组 = [021, 011, 052, 062, 013]
  *
+ *    如果出现了负数的情况：先将所有的值加上最小值的绝对值，这样所有的值都是 >= 的数，然后排序之后的值，再统一减去最小值的绝对值
  *
+ *                           各个时间复杂度总结：
+ *             排序算法	    时间复杂度	  额外空间复杂度	  稳定性
+ *             选择排序	      O(N^2)          O(1)	       无
+ *             冒泡排序	      O(N^2)	      O(1)	       有
+ *             插入排序	      O(N^2)	      O(1)	       有
+ *             归并排序	     O(N*logN)	      O(N) 	       有
+ *             随机快排	     O(N*logN)	     O(logN)	   无
+ *             堆排序	     O(N*logN)	      O(1)	       无
+ *             计数排序	       O(N)	          O(M)         有
+ *             基数排序	       O(N)	          O(N)         有
  */
 public class BucketSort {
 
@@ -53,7 +64,7 @@ public class BucketSort {
      * @return
      */
     public static int getDigit(int x, int d){
-        return ((x / ((int) Math.pow(10, d - 1))) % 10);
+        return (x / ((int) Math.pow(10, d - 1))) % 10;
     }
 
     /**
@@ -79,7 +90,7 @@ public class BucketSort {
             }
             for (i = R; i >= L; i--) {
                 j = getDigit(arr[i], d);
-                // 此处位置相当于重新赋值bucket数组
+                // 此处位置相当于重新赋值bucket数组，为什么要准备 bucket的存在是否则的话会破坏 arr[] 原数组
                 bucket[count[j] - 1] = arr[i];
                 count[j]--;
             }

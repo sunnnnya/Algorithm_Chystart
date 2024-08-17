@@ -1,4 +1,4 @@
-package practice_questions.list.medium;
+package practice_questions.tree.medium;
 
 import practice_questions.tree.base.TreeNode;
 import java.util.ArrayList;

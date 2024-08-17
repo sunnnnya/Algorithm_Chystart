@@ -1,12 +1,7 @@
 package practice_questions.tree.easy;
 
-import practice_questions.list.common.ListNode;
 import practice_questions.tree.base.TreeNode;
-
-import java.util.Collection;
-import java.util.Collections;
 import java.util.LinkedList;
-import java.util.List;
 
 /**
  * @BelongsPackage: practice_questions.tree.easy

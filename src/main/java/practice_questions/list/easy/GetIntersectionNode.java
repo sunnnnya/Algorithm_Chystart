@@ -85,6 +85,6 @@ public class GetIntersectionNode {
         listNode7.next = listNode8;
         listNode8.next = listNode3;
         System.out.println(getIntersectionNode(listNode1, listNode6).val);
-        //
+        // 8
     }
 }

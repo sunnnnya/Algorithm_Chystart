@@ -1,6 +1,6 @@
 package basic_knowledge.tree.binary_tree.middle;
 
-import practice_questions.tree.base.TreeNode;
+import practice_questions.binary_tree.base.TreeNode;
 
 /**
  * @BelongsPackage: practice_questions.tree.middle

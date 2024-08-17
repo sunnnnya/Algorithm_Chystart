@@ -1,6 +1,6 @@
 package basic_knowledge.tree.binary_tree.middle;
 
-import practice_questions.tree.base.TreeNode;
+import practice_questions.binary_tree.base.TreeNode;
 
 /**
  * @BelongsPackage: practice_questions.tree.middle
@@ -58,6 +58,11 @@ public class IsBinaryBalanceTree {
         return process(root).isBalanced;
     }
 
+    /**
+     * 测试
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         TreeNode treeNode1 = new TreeNode(1);
         TreeNode treeNode2 = new TreeNode(2);

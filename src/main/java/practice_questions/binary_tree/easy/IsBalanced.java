@@ -1,20 +1,52 @@
-package practice_questions.tree.easy;
+package practice_questions.binary_tree.easy;
 
-import practice_questions.tree.base.TreeNode;
+import practice_questions.binary_tree.base.TreeNode;
 
 /**
  * @BelongsPackage: practice_questions.tree.easy
  * @ClassName: IsBalanced
  * @Author: 丛虹羽
  * @Date: 2024/8/6 下午8:33
- * @Description: 检查平衡性
+ * @Description: 平衡二叉树
  *
- * 实现一个函数，检查二叉树是否平衡。在这个问题中，平衡树的定义如下：任意一个节点，其两棵子树的高度差不超过 1。
+ * 给定一个二叉树，判断它是否是平衡二叉树？
+ *
+ * leetcode: https://leetcode.cn/problems/balanced-binary-tree
  */
 public class IsBalanced {
 
     /**
-     * 直接判断左右子树的高度差
+     * 消息体
+     */
+    public static class Info {
+        public boolean isBalanced;
+        public int height;
+        public Info(boolean isBalanced, int height) {
+            this.isBalanced = isBalanced;
+            this.height = height;
+        }
+    }
+
+    /**
+     * 递归程序体
+     *
+     * @param root
+     * @return
+     */
+    public static Info process(TreeNode root) {
+        if (root == null) {
+            return new Info(true, 0);
+        }
+        Info leftInfo = process(root.left);
+        Info rightInfo = process(root.right);
+        return new Info(leftInfo.isBalanced &&
+                rightInfo.isBalanced &&
+                Math.abs(leftInfo.height - rightInfo.height) <= 1,
+                Math.max(leftInfo.height, rightInfo.height) + 1);
+    }
+
+    /**
+     * 主方法
      *
      * @param root
      * @return
@@ -23,16 +55,14 @@ public class IsBalanced {
         if (root == null) {
             return true;
         }
-        return Math.abs(process(root.left) - process(root.right)) <= 1 && isBalanced(root.left) && isBalanced(root.right);
+        return process(root).isBalanced;
     }
 
-    public static int process(TreeNode root) {
-        if (root == null) {
-            return 0;
-        }
-        return Math.max(process(root.left), process(root.right)) + 1;
-    }
-
+    /**
+     * 测试
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         // 测试1
         TreeNode treeNode1 = new TreeNode(3);

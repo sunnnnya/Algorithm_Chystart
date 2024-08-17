@@ -1,4 +1,4 @@
-package practice_questions.tree.base;
+package practice_questions.binary_tree.base;
 
 /**
  * @BelongsPackage: practice_questions.tree.base

@@ -1,6 +1,6 @@
-package practice_questions.tree.medium;
+package practice_questions.binary_tree.medium;
 
-import practice_questions.tree.base.TreeNode;
+import practice_questions.binary_tree.base.TreeNode;
 
 /**
  * @BelongsPackage: practice_questions.tree.middle
@@ -8,6 +8,7 @@ import practice_questions.tree.base.TreeNode;
  * @Author: 丛虹羽
  * @Date: 2024/7/28 上午9:05
  * @Description: 根据先序和中序顺序，构建一棵树
+ *
  * leetcode:https://leetcode.cn/problems/construct-binary-tree-from-preorder-and-inorder-traversal/
  */
 public class BuildTree {

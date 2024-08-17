@@ -1,6 +1,6 @@
-package practice_questions.tree.easy;
+package practice_questions.binary_tree.easy;
 
-import practice_questions.tree.base.TreeNode;
+import practice_questions.binary_tree.base.TreeNode;
 
 /**
  * @BelongsPackage: practice_questions.tree.easy

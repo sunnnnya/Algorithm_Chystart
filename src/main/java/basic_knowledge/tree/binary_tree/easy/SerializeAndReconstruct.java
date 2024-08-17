@@ -1,6 +1,6 @@
 package basic_knowledge.tree.binary_tree.easy;
 
-import practice_questions.tree.base.TreeNode;
+import practice_questions.binary_tree.base.TreeNode;
 import java.util.LinkedList;
 import java.util.Objects;
 import java.util.Queue;

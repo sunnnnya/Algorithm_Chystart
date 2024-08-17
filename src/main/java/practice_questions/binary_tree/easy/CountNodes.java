@@ -1,6 +1,6 @@
-package practice_questions.tree.easy;
+package practice_questions.binary_tree.easy;
 
-import practice_questions.tree.base.TreeNode;
+import practice_questions.binary_tree.base.TreeNode;
 
 /**
  * @BelongsPackage: practice_questions.tree.easy
@@ -9,7 +9,7 @@ import practice_questions.tree.base.TreeNode;
  * @Date: 2024/8/6 下午9:24
  * @Description: 完全二叉树的节点个数
  *
- * leetcode： https://leetcode.cn/problems/count-complete-tree-nodes/description/
+ * leetcode： https://leetcode.cn/problems/count-complete-tree-nodes
  *
  * 给你一棵 完全二叉树 的根节点 root ，求出该树的节点个数。
  *

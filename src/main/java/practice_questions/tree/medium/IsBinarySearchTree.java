@@ -20,6 +20,9 @@ import practice_questions.tree.base.TreeNode;
  */
 public class IsBinarySearchTree {
 
+    /**
+     * 递归的节点信息
+     */
     public static class Info {
         // 是否是二叉搜索树
         public boolean isBST;
@@ -34,6 +37,12 @@ public class IsBinarySearchTree {
         }
     }
 
+    /**
+     * 递归方程
+     *
+     * @param root
+     * @return
+     */
     public static Info process(TreeNode root) {
         if (root == null) {
            return null;

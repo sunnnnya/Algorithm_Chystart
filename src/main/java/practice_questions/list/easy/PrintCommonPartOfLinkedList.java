@@ -8,8 +8,6 @@ import practice_questions.list.common.ListNode;
  * @Author: 丛虹羽
  * @Date: 2024/8/10 上午8:59
  * @Description: 打印两个顺序链表的公共部分
- *
- *
  */
 public class PrintCommonPartOfLinkedList {
 
@@ -24,26 +22,26 @@ public class PrintCommonPartOfLinkedList {
         if (head1 == null || head2 == null) {
             return null;
         }
-        ListNode head = null;
-        ListNode cur = null;
+        ListNode commonHead = null;
+        ListNode commonTail = null;
         while (head1 != null && head2 != null) {
             if(head1.val < head2.val) {
                 head1 = head1.next;
             } else if (head1.val > head2.val) {
                 head2 = head2.next;
             } else {
-                if (head == null) {
-                    head = new ListNode(head1.val);
-                    cur = head;
+                if (commonHead == null) {
+                    commonHead = new ListNode(head1.val);
+                    commonTail = commonHead;
                 } else {
-                    cur.next = new ListNode(head1.val);
-                    cur = cur.next;
+                    commonTail.next = new ListNode(head1.val);
+                    commonTail = commonTail.next;
                 }
                 head1 = head1.next;
                 head2 = head2.next;
             }
         }
-        return head;
+        return commonHead;
     }
 
     /**
@@ -82,6 +80,7 @@ public class PrintCommonPartOfLinkedList {
         listNode5.next = listNode6;
         System.out.print("链表1：");
         printList(listNode1);
+        // 1 -> 5 -> 7 -> 8 -> 10 -> 12
 
         ListNode listNode7 = new ListNode(3);
         ListNode listNode8 = new ListNode(5);
@@ -92,8 +91,10 @@ public class PrintCommonPartOfLinkedList {
         listNode9.next = listNode10;
         System.out.print("链表2：");
         printList(listNode7);
+        // 3 -> 5 -> 10 -> 12
 
         System.out.print("获取链表公共信息：");
         printList(printCommonPartOfLinkedList(listNode1, listNode7));
+        // 1 -> 5 -> 7 -> 8 -> 10 -> 12
     }
 }

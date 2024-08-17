@@ -1,4 +1,4 @@
-package basic_knowledge.tree.binary_tree.easy;
+package practice_questions.list.medium;
 
 import practice_questions.tree.base.TreeNode;
 import java.util.ArrayList;
@@ -11,10 +11,23 @@ import java.util.List;
  * @Author: 丛虹羽
  * @Date: 2024/7/28 上午9:51
  * @Description: 层序遍历
- * 1：拿出此时队列的size，size有多少个，就执行操作2多少回，
- * 2：弹出节点，以此添加左，右
  *
- * 推荐使用数组替换Stack
+ *  给定一课树：求逆序按层遍历打印每层的节点信息：
+ *          1
+ *        /   \
+ *       2     3
+ *        \   / \
+ *         4 5   6
+ *        / \   \   \
+ *       7   8   9   10
+ *                \  /
+ *                11 12
+ *
+ *  [[11, 12], [7, 8, 9, 10], [4, 5, 6], [2, 3], [1]]
+ *
+ *  做法：
+ *      （1）拿出此时队列的size，size有多少个，就执行操作2多少回，
+ *      （2）弹出节点，以此添加左，右
  */
 public class LevelOrderTraversal {
 
@@ -52,6 +65,11 @@ public class LevelOrderTraversal {
         return ans;
     }
 
+    /**
+     * 测试
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         TreeNode treeNode1 = new TreeNode(1);
         TreeNode treeNode2 = new TreeNode(2);
@@ -78,5 +96,21 @@ public class LevelOrderTraversal {
         treeNode1.right.right.right.left = treeNode12;
         List<List<Integer>> lists = levelOrderTraversal(treeNode1);
         System.out.println(lists);
+        // [[11, 12], [7, 8, 9, 10], [4, 5, 6], [2, 3], [1]]
+
+        System.out.println("============动态数组的逆序添加测试=============");
+        ArrayList<Integer> list = new ArrayList<>();
+        list.add(0, 21);
+        list.add(0, 22);
+        list.add(0, 23);
+        list.add(0, 24);
+        // 不会出现覆盖的问题，而是会逆序塞入
+        for (int number : list)  {
+            System.out.println("number: " + number);
+        }
+        // number: 24
+        // number: 23
+        // number: 22
+        // number: 21
     }
 }

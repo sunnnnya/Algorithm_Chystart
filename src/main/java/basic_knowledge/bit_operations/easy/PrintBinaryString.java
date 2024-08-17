@@ -25,6 +25,17 @@ public class PrintBinaryString {
     }
 
     /**
+     * 打印十进制的数对应的二进制字符串
+     *
+     * @param number
+     */
+    public static void printBinStr(int number) {
+        for (int i = 31; i >= 0; i--) {
+            System.out.print(((number & (1 << i))) > 0 ? "1" : "0");
+        }
+    }
+
+    /**
      * 测试
      *
      * @param args
@@ -33,5 +44,8 @@ public class PrintBinaryString {
         int number = 21;
         System.out.println(printBinaryString(number));
         // 10101
+
+        printBinStr(920);
+        // 00000000000000000000001110011000
     }
 }

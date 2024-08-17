@@ -1,4 +1,4 @@
-package practice_questions.tree.hard;
+package basic_knowledge.tree.binary_tree.middle;
 
 import practice_questions.tree.base.TreeNode;
 

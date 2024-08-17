@@ -1,6 +1,7 @@
-package practice_questions.tree.medium;
+package basic_knowledge.tree.binary_tree.middle;
 
 import practice_questions.tree.base.TreeNode;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;

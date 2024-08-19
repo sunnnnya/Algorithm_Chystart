@@ -36,7 +36,7 @@ public class ClimbStairs {
      *
      * @return
      */
-    public static int climbStairs(int n) {
+    public static int climbStairs2(int n) {
         int[] dp = new int[n + 1];
         Arrays.fill(dp, -1);
         return f2(n, dp);
@@ -70,6 +70,29 @@ public class ClimbStairs {
             arr[i] = arr[i - 1] + arr[i - 2];
         }
         return arr[n];
+    }
+
+    /**
+     * 滚动数组
+     *
+     * @param n
+     * @return
+     */
+    public static int climbStairs(int n) {
+        if (n == 1) {
+            return 1;
+        }
+        if (n == 2) {
+            return 2;
+        }
+        int a = 1;
+        int b = 2;
+        for (int i = 3, c; i <= n; i++) {
+            c = a + b;
+            a = b;
+            b = c;
+        }
+        return b;
     }
 
     /**

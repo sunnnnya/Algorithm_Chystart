@@ -20,7 +20,7 @@ package basic_knowledge.fast_power.mult_fast_power;
  *      75 = 64 + 8 + 2 + 1
  *      10 的 75 次幂 = (10 的 64 次幂) * (10 的 8 次幂) * (10 的 2 次幂) * (10 的 1 次幂)
  */
-public class MultQuickPower {
+public class MultiplyQuickPower {
 
     /**
      * 乘法快速幂，输入的数字都是整数；

@@ -36,9 +36,9 @@ public class NumIslands {
     }
 
     public static void process(char[][] grid, int i, int j) {
-        // i < 0 || i == grid.length || j < 0 || j == grid[0].length：是边界条件
-        // grid[i][j] == '2' || grid[i][j] == '0'：遇到 '0' 和遇到 '2'的是否没有必要继续了
-        if (i < 0 || i == grid.length || j < 0 || j == grid[0].length || grid[i][j] == '2' || grid[i][j] == '0') {
+        // i < 0 || i == grid.length || j < 0 || j == grid[0].length：是边界条件直接返回
+        // grid[i][j] != '1'：表示遇到感染过的点和非岛屿直接返回
+        if (i < 0 || i == grid.length || j < 0 || j == grid[0].length || grid[i][j] != '1') {
             return ;
         }
         grid[i][j] = '2';

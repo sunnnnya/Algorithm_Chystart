@@ -145,5 +145,6 @@ public class NumTilings {
         // 24
 
         System.out.println(numTilings(30));
+        // 312342182
     }
 }

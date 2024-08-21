@@ -14,6 +14,8 @@ package practice_questions.matrix_fast_power.medium;
  */
 public class NumTilings {
 
+    private static final int MOD = 1000000007;
+
     /**
      * 暴力打标
      *
@@ -49,11 +51,76 @@ public class NumTilings {
     }
 
     /**
+     * 使用矩阵快速幂
+     *
+     * @param n
+     * @return
+     */
+    public static int numTilings(int n) {
+        int[][] base = new int[][]{{1, 2, 5, 11}};
+        if (n <= 4) {
+            return base[0][n - 1];
+        }
+        int[][] loop = new int[][]{{0, 0, 0, 0},
+                                   {1, 0, 0, 1},
+                                   {0, 1, 0, 0},
+                                   {0, 0, 1, 2}};
+        int[][] ans = matrixPower(loop, n - 4);
+        // 这部分 + mod 的原因：防止前面出现负数
+        return (matrixMultiply(base, ans)[0][3] + MOD) % MOD;
+    }
+
+    /**
+     * 矩阵乘法
+     *
+     * @param a
+     * @param b
+     * @return
+     */
+    public static int[][] matrixMultiply(int[][] a, int [][] b) {
+        int N = a.length;
+        int K = a[0].length;
+        int M = b[0].length;
+        int[][] ans = new int[N][M];
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < M; j++) {
+                for (int k = 0; k < K; k++) {
+                    ans[i][j] = (int)(((long)a[i][k] * b[k][j] + ans[i][j]) % MOD);
+                }
+            }
+        }
+        return ans;
+    }
+
+    /**
+     * 矩阵快速幂
+     *
+     * @param arr
+     * @param m
+     * @return
+     */
+    public static int[][] matrixPower(int[][] arr, int m) {
+        int N = arr.length;
+        int[][] init = new int[N][N];
+        for (int i = 0; i < N; i++) {
+            init[i][i] = 1;
+        }
+        for ( ; m > 0; m >>>= 1) {
+            if ((m & 1) == 1) {
+                init = matrixMultiply(init, arr);
+            }
+            arr = matrixMultiply(arr, arr);
+        }
+        return init;
+    }
+
+    /**
      * 测试
      *
      * @param args
      */
     public static void main(String[] args) {
+        System.out.println("======================打表开始======================");
         table(9);
         // 2 * 1 的瓷砖总共有铺法: 有 1 种;
         // 2 * 2 的瓷砖总共有铺法: 有 2 种;
@@ -70,5 +137,13 @@ public class NumTilings {
         //      f(3) = 5
         //      f(4) = 11
         //      f(n) = 2 * f(n-1) + f(n-3)
+        System.out.println("===================矩阵快速幂实现====================");
+        System.out.println(numTilings(3));
+        // 5
+
+        System.out.println(numTilings(5));
+        // 24
+
+        System.out.println(numTilings(30));
     }
 }

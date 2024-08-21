@@ -62,6 +62,28 @@ public class Basics {
     }
 
     /**
+     * 有一个数出现了1次，其他的出现了3次，找到出现了1次的数
+     *
+     * @param arr
+     * @return
+     */
+    private static int getSingleNumber(int[] arr) {
+        int[] init = new int[32];
+        for (int number : arr) {
+            for (int i = 0; i < 32; i++) {
+                init[i] += (number >> i) & 1;
+            }
+        }
+        int result = 0;
+        for(int i = 0; i < init.length; i++) {
+            if (init[i] % 3 == 1) {
+                result |= 1 << i;
+            }
+        }
+        return result;
+    }
+
+    /**
      * 测试
      *
      * @param args
@@ -81,5 +103,10 @@ public class Basics {
         int result2 = getBitCount(128);
         System.out.println("result2 = " + result2);
         // result2 = 1
+
+        // 有一个数出现了1次，其他的出现了3次，找到出现了1次的数
+        int[] ans = new int[]{1, 1, 1, 3, 4, 4, 4, 9, 3, 3};
+        System.out.println(getSingleNumber(ans));
+        // 9
     }
 }

@@ -38,6 +38,7 @@ public class TrainingPlan {
 
     /**
      * 使用 整数变量 + 位运算 进行状态压缩
+     * 十分的首先，压缩成整数信息了
      *
      * @param nums
      * @return

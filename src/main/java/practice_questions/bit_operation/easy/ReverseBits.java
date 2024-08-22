@@ -22,12 +22,31 @@ public class ReverseBits {
      * @param n
      * @return
      */
-    public static int reverseBits(int n) {
+    public static int reverseBits1(int n) {
         int ans = 0;
         for (int i = 0; i < 32; i++) {
             ans |= (((n >>> i) & 1) << (31 - i));
         }
         return ans;
+    }
+
+    /**
+     *   abcdef            abcdef
+     * & 101010          & 010101
+     * = a0c0e0 >> 1     = 0b0d0f << 1
+     * = 0a0c0e     |    = b0d0f0
+     * = badcfe【相当于隔位交换了，然后接着交换1、2、4、8、16】
+     *
+     * @param n
+     * @return
+     */
+    public static int reverseBits(int n) {
+        n = ((n & 0Xaaaaaaaa) >>> 1) | ((n & 0x55555555) << 1);
+        n = ((n & 0Xcccccccc) >>> 2) | ((n & 0x33333333) << 2);
+        n = ((n & 0xf0f0f0f0) >>> 4) | ((n & 0x0f0f0f0f) << 4);
+        n = ((n & 0xff00ff00) >>> 8) | ((n & 0x00ff00ff) << 8);
+        n= (n >>> 16) | (n << 16);
+        return n;
     }
 
     /**

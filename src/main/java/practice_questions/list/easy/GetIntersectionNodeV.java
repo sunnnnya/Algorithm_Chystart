@@ -56,7 +56,7 @@ public class GetIntersectionNodeV {
      * @param headB
      * @return
      */
-    public static ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+    public static ListNode getIntersectionNode1(ListNode headA, ListNode headB) {
         if (headA == null || headB == null) {
             return null;
         }
@@ -78,6 +78,25 @@ public class GetIntersectionNodeV {
         return SHead;
     }
 
+    /**
+     * 追赶的思想实现,相差多少的长度，就几轮，短的逐渐边长的过程
+     *
+     * @param headA
+     * @param headB
+     * @return
+     */
+    public static ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+       if (headA == null || headB == null) {
+           return null;
+       }
+       ListNode curA = headA;
+       ListNode curB = headB;
+       while (curA != curB) {
+           curA = curA == null ? headB : curA.next;
+           curB = curB == null ? headA : curB.next;
+       }
+       return curA;
+    }
 
     /**
      * 测试

@@ -1,4 +1,4 @@
-package basic_knowledge.fast_power.mult_fast_power;
+package basic_knowledge.fast_power.multiply_fast_power;
 
 /**
  * @BelongsPackage: basic_knowledge.fast_power.mult_fast_power
@@ -32,12 +32,10 @@ public class MultiplyQuickPower {
      */
     public static int quickPower(int n,  int m, int mod) {
         long ans = 1;
-        while (m > 0) {
-            if((m & 1) == 1) {
+        for (; m > 0; m >>= 1, n = (n * n) % mod) {
+            if ((m & 1) == 1) {
                 ans = (ans * n) % mod;
             }
-            n = (n * n) % mod;
-            m >>= 1;
         }
         return (int) ans;
     }
@@ -48,9 +46,9 @@ public class MultiplyQuickPower {
      * @param args
      */
     public static void main(String[] args) {
-        int result = quickPower(2, 3, 7);
+        int result = quickPower(2, 3, 3);
         System.out.println("result = " + result);
-        // result = 1
+        // result = 2
 
         int result1 = quickPower(3, 3, 1);
         System.out.println("result1 = " + result1);

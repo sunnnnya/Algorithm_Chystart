@@ -57,6 +57,9 @@ public class GetIntersectionNodeV {
      * @return
      */
     public static ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        if (headA == null || headB == null) {
+            return null;
+        }
         Info infoA = getInfo(headA);
         Info infoB = getInfo(headB);
         if (infoA.tail != infoB.tail) {

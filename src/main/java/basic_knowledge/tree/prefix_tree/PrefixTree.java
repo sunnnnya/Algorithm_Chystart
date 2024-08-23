@@ -7,7 +7,7 @@ import java.util.Scanner;
  * @ClassName: PrefixTree
  * @Author: 丛虹羽
  * @Date: 2024/8/16 上午9:26
- * @Description: 前缀树 又称 字典树 Trie树
+ * @Description: 使用 类结构 编写前缀树 又称 字典树 Trie树
  *
  * （1）单个字符串中，字符从前到后的加到一棵多叉树上；
  * （2）字符放在”路上“节点上有专属的数据项(常见的是 pass[通过了几次] 和 end[是多少个字符串的结尾节点] 值)；

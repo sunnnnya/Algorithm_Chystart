@@ -41,6 +41,7 @@ public class CountConsistentKeys {
             return new int[]{};
         }
         // System.out.println("a[][]数组：");
+        // [3, 6, 50, 10] -> "3#44#-40#"
         for (int[] arr : a) {
             // System.out.println(getStringByArr(arr));
             insert(getStringByArr(arr));

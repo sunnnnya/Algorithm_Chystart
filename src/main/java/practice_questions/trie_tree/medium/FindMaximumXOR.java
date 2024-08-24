@@ -1,5 +1,7 @@
 package practice_questions.trie_tree.medium;
 
+import java.util.HashSet;
+
 /**
  * @BelongsPackage: practice_questions.trie_tree.medium
  * @ClassName: FindMaximumXOR
@@ -27,7 +29,7 @@ public class FindMaximumXOR {
      *
      * @return
      */
-    public static int findMaximumXOR(int[] nums) {
+    public static int findMaximumXOR1(int[] nums) {
         build(nums);
         int ans = 0;
         for (int number : nums) {
@@ -99,6 +101,35 @@ public class FindMaximumXOR {
         for (int i = 1; i <= cnt; i++) {
             tree[i][0] = tree[i][1] = 0;
         }
+    }
+
+    /**
+     * 使用哈希表
+     *
+     * @param nums
+     * @return
+     */
+    public static int findMaximumXOR(int[] nums) {
+        int max = Integer.MIN_VALUE;
+        for (int number : nums) {
+            max = Math.max(max, number);
+        }
+        int high = 31 - Integer.numberOfLeadingZeros(max);
+        int ans = 0;
+        HashSet<Integer> set = new HashSet<>();
+        for (int i = high; i >= 0; i--) {
+            set.clear();
+            int better = ans | (1 << i);
+            for (int num : nums) {
+                num = (num >> i) << i;
+                set.add(num);
+                if (set.contains(better ^ num)) {
+                    ans = better;
+                    break;
+                }
+            }
+        }
+        return ans;
     }
 
     /**

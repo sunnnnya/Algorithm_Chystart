@@ -1,9 +1,9 @@
-package basic_knowledge.monotonic_stack;
+package practice_questions.monotonic_stack;
 
 import java.io.*;
 
 /**
- * @BelongsPackage: basic_knowledge.monotonic_stack
+ * @BelongsPackage: practice_questions.monotonic_stack
  * @ClassName: Demo
  * @Author: 丛虹羽
  * @Date: 2024/8/25 上午10:37

@@ -1,4 +1,4 @@
-package practice_questions.monotonic_stack;
+package practice_questions.monotonic_stack.medium;
 
 import java.util.Arrays;
 

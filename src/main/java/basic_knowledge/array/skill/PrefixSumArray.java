@@ -55,7 +55,7 @@ public class PrefixSumArray {
     }
 
     /**
-     * fanhui
+     * 使用数组位置，返回前缀和信息
      *
      * @param arr
      * @param l

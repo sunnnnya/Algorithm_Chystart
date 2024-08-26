@@ -33,7 +33,7 @@ public class CorpFlightBookings {
         }
         // 加工前缀和数组
         for (int i = 1; i < n; i++) {
-            diff[i] = diff[i] + diff[i - 1];
+            diff[i] += diff[i - 1];
         }
         int[] ans = new int[n];
         for (int i = 0; i < n; i++) {

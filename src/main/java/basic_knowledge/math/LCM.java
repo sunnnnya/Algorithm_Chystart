@@ -21,7 +21,7 @@ public class LCM {
     }
 
     /**
-     * 最小公倍数
+     * 最小公倍数：利用最大公因数
      *
      * @param a
      * @param b

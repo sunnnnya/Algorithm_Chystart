@@ -10,7 +10,7 @@ package basic_knowledge.math;
 public class LCM {
 
     /**
-     * 最大公因数
+     * 最大公因数：欧几里得算法
      *
      * @param a
      * @param b

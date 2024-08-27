@@ -32,7 +32,7 @@ public class LCM {
     }
 
     /**
-     * 测试数据
+     * 测试数据填充
      *
      * @param args
      */

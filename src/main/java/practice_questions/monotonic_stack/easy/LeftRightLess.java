@@ -9,7 +9,9 @@ import java.io.*;
  * @Date: 2024/8/25 上午10:37
  * @Description: 单调栈
  *
- * nowcode：https://www.nowcoder.com/practice/2a2c00e7a88a498693568cef63a4b7bb
+ * 单调栈中存放的数据应该是有序的，所以单调栈也分为单调递增栈和单调递减栈
+ *
+ * nowcoder：https://www.nowcoder.com/practice/2a2c00e7a88a498693568cef63a4b7bb
  */
 public class LeftRightLess {
 
@@ -18,7 +20,7 @@ public class LeftRightLess {
     public static int[] arr = new int[MAXN];
 
     /**
-     * 技巧：数组充当栈
+     * 技巧：使用数组充当栈
      */
     public static int[] stack = new int[MAXN];
 

@@ -9,7 +9,7 @@ import java.util.Arrays;
  * @Date: 2024/8/1 下午10:39
  * @Description: kmp字符串匹配算法
  *
- * 非常重要！！！！！！！！！！
+ * 非常重要！！！！！！！！！！精彩
  */
 public class KMP {
 
@@ -32,12 +32,12 @@ public class KMP {
         int y = 0;
         // 获取Next数组，重点！！！！！
         int[] next = getNextArray(str2);
-        while (x < str1.length && y < str1.length) {
+        while (x < str1.length && y < str2.length) {
             if (str1[x] == str2[y]) {
                 x++;
                 y++;
             } else if (next[y] == -1) {
-                // x 字符串移动++从开头匹配y
+                // 走到这里的位置，说明头也不相同，直接x移动
                 x++;
             } else {
                 y = next[y];
@@ -90,5 +90,10 @@ public class KMP {
         // [-1, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4]
         System.out.println(getIndexOf(str1, str2));
         // 12
+
+        String s1 = "cabcabg";
+        String s2 = "cabg";
+        System.out.println(getIndexOf(s1, s2));
+        // 3
     }
 }

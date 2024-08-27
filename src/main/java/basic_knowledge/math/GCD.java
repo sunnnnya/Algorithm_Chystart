@@ -21,7 +21,7 @@ public class GCD {
     }
 
     /**
-     * 测试
+     * 测试得数据填充
      *
      * @param args
      */
@@ -29,5 +29,8 @@ public class GCD {
         long gcd = gcd(50, 30);
         System.out.println("gcd = " + gcd);
         // gcd = 10
+
+        System.out.println(gcd(10, 4));
+        //
     }
 }

@@ -39,7 +39,7 @@ public class SerializeAndReconstruct {
     }
 
     /**
-     * 填充 ans 结果队列
+     * 填充 ans 结果队列，搞清楚 值传递 和 引用传递 的区别，使用创建好的队列来统一接收字符串
      *
      * @param ans
      * @param root

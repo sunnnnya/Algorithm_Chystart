@@ -30,7 +30,8 @@ public class GCD {
         System.out.println("gcd = " + gcd);
         // gcd = 10
 
-        System.out.println(gcd(10, 4));
-        //
+        long gcd1 = gcd(10, 4);
+        System.out.println("gcd1 = " + gcd1);
+        // gcd1 = 2
     }
 }

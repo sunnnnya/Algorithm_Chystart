@@ -37,7 +37,7 @@ public class InputOutput {
     }
 
     /**
-     * 测试
+     * 测试（推荐写法，速度会快一些，acm风格）
      *
      * @param args
      */
@@ -57,16 +57,17 @@ public class InputOutput {
                     mat[i][j] = (int) in.nval;
                 }
             }
-            System.out.println(getMaxNumberInMatrix(mat));
+            // sout 输出用来查看效果的，提交的时候不需要提交，执行一次进行一次io费时
+            // System.out.println(getMaxNumberInMatrix(mat));
             // 同样使用内存托管使用
-            // out.print(getMaxNumberInMatrix(mat));
+            out.print(getMaxNumberInMatrix(mat));
         }
         out.flush();
         out.close();
     }
 
     /**
-     * 测试
+     * 测试（简单写法，速度比较慢）
      *
      * @param args
      */

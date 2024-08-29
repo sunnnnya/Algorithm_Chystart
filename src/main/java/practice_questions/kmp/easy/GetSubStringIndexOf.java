@@ -15,6 +15,7 @@ package practice_questions.kmp.easy;
  */
 public class GetSubStringIndexOf {
 
+
     /**
      * 使用KMP算法进行加速处理
      *
@@ -23,7 +24,7 @@ public class GetSubStringIndexOf {
      * @return
      */
     public static int strStr(String haystack, String needle) {
-        if (needle == null || needle.isEmpty()) {
+        if (needle == null || needle.length() == 0) {
             return -1;
         }
         char[] c1 = haystack.toCharArray();
@@ -82,11 +83,9 @@ public class GetSubStringIndexOf {
         String str = "sadbutsad";
         String subStr = "sad";
         System.out.println(strStr(str, subStr));
-        // 0
 
         String str1 = "leetcode";
         String subStr1 = "leeto";
         System.out.println(strStr(str1, subStr1));
-        // -1
     }
 }

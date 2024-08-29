@@ -17,6 +17,7 @@ public class InputOutput {
 
     public static int[][] mat = new int[MAXN][MAXN];
 
+    // 全局维护，持续够用，不断的修改复制，但边界一定使用的是 n,m 否则就会出现问题
     public static int n, m;
 
     /**
@@ -27,8 +28,8 @@ public class InputOutput {
      */
     public static int getMaxNumberInMatrix(int[][] arr) {
         int max = Integer.MIN_VALUE;
-        for (int i = 0; i < arr.length; i++) {
-            for (int j = 0; j < arr[0].length; j++) {
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
                 max = Math.max(max, arr[i][j]);
             }
         }
@@ -36,22 +37,11 @@ public class InputOutput {
     }
 
     /**
-     * 清空处理
-     */
-    public static void clear() {
-        for (int i = 0; i < mat.length; i++) {
-            for (int j = 0; j < mat[0].length; j++) {
-                mat[i][j] = 0;
-            }
-        }
-    }
-
-    /**
      * 测试
      *
      * @param args
      */
-    public static void main1(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException {
         // 相当于依次把测试文件中的数据，一次性读到了内存托管区
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         // 忽略空格和回车
@@ -67,8 +57,9 @@ public class InputOutput {
                     mat[i][j] = (int) in.nval;
                 }
             }
+            System.out.println(getMaxNumberInMatrix(mat));
             // 同样使用内存托管使用
-            out.print(getMaxNumberInMatrix(mat));
+            // out.print(getMaxNumberInMatrix(mat));
         }
         out.flush();
         out.close();
@@ -79,7 +70,7 @@ public class InputOutput {
      *
      * @param args
      */
-    public static void main(String[] args) throws IOException {
+    public static void main1(String[] args) throws IOException {
         Scanner scanner = new Scanner(System.in);
         while (true) {
             n = scanner.nextInt();
@@ -90,7 +81,6 @@ public class InputOutput {
                 }
             }
             System.out.println(getMaxNumberInMatrix(mat));
-            clear();
         }
     }
 }

@@ -67,7 +67,7 @@ public class Basics {
     }
 
     /**
-     * 有一个数出现了1次，其他的出现了3次，找到出现了1次的数
+     * 有一个数出现了 1 次，其他的出现了 3 次，找到出现了 1 次的数
      *
      * @param arr
      * @return
@@ -81,7 +81,7 @@ public class Basics {
         }
         int result = 0;
         for(int i = 0; i < init.length; i++) {
-            if (init[i] % 3 == 1) {
+            if (init[i] % 3 != 0) {
                 result |= 1 << i;
             }
         }

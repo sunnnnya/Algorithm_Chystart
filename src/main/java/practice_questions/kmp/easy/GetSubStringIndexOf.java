@@ -11,10 +11,8 @@ package practice_questions.kmp.easy;
  * （下标从 0 开始）。如果 needle 不是 haystack 的一部分，则返回  -1
  *
  * leetcode: https://leetcode.cn/problems/find-the-index-of-the-first-occurrence-in-a-string/description/
- *
  */
 public class GetSubStringIndexOf {
-
 
     /**
      * 使用KMP算法进行加速处理
@@ -24,7 +22,7 @@ public class GetSubStringIndexOf {
      * @return
      */
     public static int strStr(String haystack, String needle) {
-        if (needle == null || needle.length() == 0) {
+        if (needle == null || needle.isEmpty()) {
             return -1;
         }
         char[] c1 = haystack.toCharArray();
@@ -36,7 +34,7 @@ public class GetSubStringIndexOf {
             if (c1[x] == c2[y]) {
                 x++;
                 y++;
-            } else if (next[y] == -1) {
+            } else if (y == 0) {
                 x++;
             } else {
                 // 加速
@@ -48,7 +46,7 @@ public class GetSubStringIndexOf {
     }
 
     /**
-     * 获取next数组
+     * 获取 next 数组
      *
      * @param str
      * @return
@@ -83,9 +81,11 @@ public class GetSubStringIndexOf {
         String str = "sadbutsad";
         String subStr = "sad";
         System.out.println(strStr(str, subStr));
+        // 0
 
         String str1 = "leetcode";
         String subStr1 = "leeto";
         System.out.println(strStr(str1, subStr1));
+        // -1
     }
 }

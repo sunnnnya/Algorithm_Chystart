@@ -69,14 +69,14 @@ public class Fib {
     public static int[][] power(int[][] arr, int n) {
         int N = arr.length;
         int[][] unit = new int[N][N];
+        // 生成单位矩阵
         for (int i = 0; i < N; i++) {
             unit[i][i] = 1;
         }
-        for (; n > 0; n >>= 1) {
+        for (; n > 0; n >>= 1, arr = multiply(arr, arr)) {
             if ((n & 1) == 1) {
                 unit = multiply(unit, arr);
             }
-            arr = multiply(arr, arr);
         }
         return unit;
     }

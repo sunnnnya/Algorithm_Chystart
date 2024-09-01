@@ -1,5 +1,7 @@
 package practice_questions.dp.medium;
 
+import java.util.Arrays;
+
 /**
  * @BelongsPackage: practice_questions.dp.medium
  * @ClassName: MincostTickets
@@ -17,7 +19,11 @@ package practice_questions.dp.medium;
  *
  * https://leetcode.cn/problems/minimum-cost-for-tickets
  */
-public class MincostTickets {
+public class MinCostTickets {
+
+    public static int MAXN = 366;
+
+    public static int[] dp = new int[MAXN];
 
     public static int[] duration = {1, 7, 30};
 
@@ -57,11 +63,37 @@ public class MincostTickets {
     }
 
     /**
+     * 使用动态规划
+     *
+     * @param days
+     * @param costs
+     * @return
+     */
+    public static int minCostTickets(int[] days, int[] costs) {
+        int n = days.length;
+        // dp[0, .. n - 1, n]
+        Arrays.fill(dp, 0, n + 1, Integer.MAX_VALUE);
+        dp[n] = 0;
+        for (int i = n - 1; i >= 0; i--) {
+            for (int k = 0, j = i; k < 3; k++) {
+                while (j < n && days[i] + duration[k] > days[j]) {
+                    j++;
+                }
+                dp[i] = Math.min(dp[i], costs[k] + dp[j]);
+            }
+        }
+        return dp[0];
+    }
+
+    /**
      * 测试
      *
      * @param args
      */
     public static void main(String[] args) {
-
+        int[] days = new int[]{1,4,6,7,8,20};
+        int[] cost = new int[]{2,7,15};
+        System.out.println(minCostTickets(days, cost));
+        // 11
     }
 }

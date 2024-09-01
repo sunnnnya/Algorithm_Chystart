@@ -23,7 +23,7 @@ package basic_knowledge.fast_power.multiply_fast_power;
 public class MultiplyQuickPower {
 
     /**
-     * 乘法快速幂，输入的数字都是整数；
+     * 乘法快速幂，输入的数字都是整数，且只能是正数；
      *
      * @param n    n 的 m 次幂
      * @param m    n 的 m 次幂

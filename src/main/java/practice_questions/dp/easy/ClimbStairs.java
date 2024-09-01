@@ -28,6 +28,7 @@ public class ClimbStairs {
         if(n == 2) {
             return 2;
         }
+        // 原始递归的方式有很多次重复计算
         return climbStairs1(n - 1) + climbStairs1(n - 2);
     }
 
@@ -39,6 +40,7 @@ public class ClimbStairs {
     public static int climbStairs2(int n) {
         int[] dp = new int[n + 1];
         Arrays.fill(dp, -1);
+        // 理解递归中的 值传递(各一份) 和 引用传递(共享一份) 的区别
         return f2(n, dp);
     }
 
@@ -78,7 +80,7 @@ public class ClimbStairs {
      * @param n
      * @return
      */
-    public static int climbStairs(int n) {
+    public static int climbStairs4(int n) {
         if (n == 1) {
             return 1;
         }
@@ -96,15 +98,83 @@ public class ClimbStairs {
     }
 
     /**
+     * 使用矩阵快速幂O（log N）
+     *
+     * @param n
+     * @return
+     */
+    public static int climbStairs(int n) {
+        if(n >= 1 && n <= 2) {
+            return n;
+        }
+        int[][] arr = new int[][]{{1, 2}};
+        int[][] loop = new int[][]{{0, 1}, {1, 1}};
+        int[][] result = matrixFasterPower(loop, n - 2);
+        return matrixMulti(arr, result)[0][1];
+    }
+
+    /**
+     * 矩阵的乘法
+     *
+     * @param a
+     * @param b
+     * @return
+     */
+    public static int[][] matrixMulti(int[][] a, int[][] b) {
+        if (a[0].length != b.length) {
+            throw new RuntimeException("矩阵 a 的行数和矩阵b的列数对应不上");
+        }
+        int N = a.length;
+        int K = a[0].length;
+        int M = b[0].length;
+        int[][] ans = new int[N][M];
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < M; j++) {
+                for (int k = 0; k < K; k++) {
+                    ans[i][j] += (a[i][k] * b[k][j]);
+                }
+            }
+        }
+        return ans;
+    }
+
+    /**
+     * 矩阵快速幂
+     *
+     * @param arr
+     * @param n
+     * @return
+     */
+    public static int[][] matrixFasterPower(int[][] arr, int n) {
+        int N = arr.length;
+        int[][] unit = new int[N][N];
+        for (int i = 0; i < N; i++) {
+            unit[i][i] = 1;
+        }
+        for (; n > 0; n >>= 1, arr = matrixMulti(arr, arr)) {
+            if ((n & 1) == 1) {
+                unit = matrixMulti(unit, arr);
+            }
+        }
+        return unit;
+    }
+
+    /**
      * 测试
      *
      * @param args
      */
     public static void main(String[] args) {
-        System.out.println(climbStairs(2));
+        System.out.println(climbStairs1(2));
         // 2
 
-        System.out.println(climbStairs(3));
+        System.out.println(climbStairs2(3));
         // 3
+
+        System.out.println(climbStairs3(45));
+        // 1836311903
+
+        System.out.println(climbStairs(45));
+        // 1836311903
     }
 }

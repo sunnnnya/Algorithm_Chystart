@@ -79,6 +79,7 @@ public class MinCostTickets {
                 while (j < n && days[i] + duration[k] > days[j]) {
                     j++;
                 }
+                // 实际上利用了已经计算的过的信息
                 dp[i] = Math.min(dp[i], costs[k] + dp[j]);
             }
         }

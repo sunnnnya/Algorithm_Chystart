@@ -46,7 +46,7 @@ public class LeftRightLess {
             ans[cur][0] = r > 0 ? stack[r - 1] : -1;
             ans[cur][1] = -1;
         }
-        // 修正阶段
+        // 修正阶段，重点从右侧开始，进行逆序设置答案，设置当前答案的右侧就是准确值
         for (int i = n - 2; i >= 0; i--) {
             if (ans[i][1] != -1 && arr[ans[i][1]] == arr[i]) {
                 ans[i][1] = ans[ans[i][1]][1];

@@ -1,4 +1,4 @@
-package practice_questions.array.easy;
+package practice_questions.prefix_sum_array.easy;
 
 import java.io.*;
 

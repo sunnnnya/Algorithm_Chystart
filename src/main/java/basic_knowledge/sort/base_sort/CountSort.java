@@ -15,13 +15,14 @@ public class CountSort {
      * @param arr
      */
     public static void countSort(int[] arr) {
+       // MAXN 表示数据的范围
        int MAXN = 201;
        int[] count = new int[MAXN];
        for (int number : arr) {
            count[number]++;
        }
-       for (int i = 0; i < arr.length; i++) {
-           for (int j = 0; j < count[i]; j++) {
+       for (int i = 0; i < MAXN; i++) {
+           for(int j = 0; j < count[i]; j++) {
                System.out.print(i + " ");
            }
        }
@@ -33,7 +34,7 @@ public class CountSort {
      * @param args
      */
     public static void main(String[] args) {
-        int[] arr = {10, 2, 4, 5 ,2 ,1 ,7, 8, 2, 10, 21};
+        int[] arr = {10, 2, 4, 5 ,2 ,1 ,7, 100, 2, 10, 21};
         countSort(arr);
         // 1 2 2 2 4 5 7 8 10 10
     }

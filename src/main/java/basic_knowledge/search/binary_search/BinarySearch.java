@@ -15,17 +15,17 @@ public class BinarySearch {
      *
      * @param arr 数组
      * @param num 要找的值
-     * @return 返回是否包含元素
+     * @return    返回是否包含元素
      */
-    public static boolean baseBinaruSearch(int[] arr,  int num) {
+    public static boolean baseBinarySearch(int[] arr,  int num) {
         if (arr == null || arr.length == 0) {
             return false;
         }
         int l = 0;
         int r = arr.length - 1;
-        // 相等时也需要判断，只有出现错位时才停止循环
+        // 相等时也需要判断，比如一个数的时候，只有出现错位时才停止循环
         while (l <= r) {
-            int mid  = l + ((r - l) >> 1);
+            int mid = l + ((r - l) >> 1);
             if (arr[mid] == num) {
                 return true;
             } else if (arr[mid] < num) {
@@ -34,7 +34,7 @@ public class BinarySearch {
                 r = mid - 1;
             }
         }
-        // 循环判断结束，否没有找到值，返回false
+        // 循环判断结束，否没有找到值，返回 false
         return false;
     }
 
@@ -53,7 +53,6 @@ public class BinarySearch {
         int l = 0;
         int r = arr.length - 1;
         while (l <= r) {
-            // 位运算，防止溢出
             int middleIndex = l + ((r - l) >> 1);
             if (arr[middleIndex] >= num) {
                 // 当前的值一定 >= num，进行记录
@@ -93,26 +92,25 @@ public class BinarySearch {
     }
 
     public static void main(String[] args) {
-        // 有序数组
         int[] arr = new int[]{1, 2, 5, 7, 9, 10, 12, 14, 15, 18};
-        System.out.println(baseBinaruSearch(arr, 9));
+        System.out.println(baseBinarySearch(arr, 9));
         // true
-        System.out.println(baseBinaruSearch(arr, 3));
+        System.out.println(baseBinarySearch(arr, 3));
         // false
 
         int[] arr1 = new int[]{3, 6, 6, 7, 9, 13, 13, 13, 13, 17, 24};
-        // 3, 6, 6, 7, 9, 13, 13, 13, 13, 17, 24
-        // 0  1  2  3  4  5  6  7  8  9  10
-        // l             mid              r
-        // 0  1  2  3  4  5  6  7  8  9  10
-        // l    mid    r
-        // 0  1  2  3  4  5  6  7  8  9  10
-        // l  r
+        //  3, 6, 6, 7, 9, 13, 13, 13, 13, 17, 24
+        //  0  1  2  3  4  5  6  7  8  9  10
+        //  l             mid              r
+        //  0  1  2  3  4  5  6  7  8  9  10
+        //  l    mid    r
+        //  0  1  2  3  4  5  6  7  8  9  10
+        //  l  r
         // mid
-        // 0  1  2  3  4  5  6  7  8  9  10
-        //    l
-        //    r
-        //   mid
+        //  0  1  2  3  4  5  6  7  8  9  10
+        //     l
+        //     r
+        //    mid
         System.out.println(findTheLeftIndexOfTheSpecifiedValueInTheArray(arr1, 5));
         // 1
         System.out.println(findTheLeftIndexOfTheSpecifiedValueInTheArray(arr1, 0));

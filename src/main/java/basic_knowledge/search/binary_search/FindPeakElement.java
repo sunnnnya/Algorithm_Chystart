@@ -1,5 +1,7 @@
 package basic_knowledge.search.binary_search;
 
+import java.util.Arrays;
+
 /**
  * @BelongsPackage: search
  * @ClassName: FindPeakElement
@@ -7,7 +9,7 @@ package basic_knowledge.search.binary_search;
  * @Date: 2024/7/22 上午2:25
  * @Description: 获取山峰的峰值点
  * 知识点：无序数组使用二分
- * 分析得出是下坡还是上坡，来进行判断之间一定存在峰值点，然后进行二分
+ *      分析得出是下坡还是上坡，来进行判断之间一定存在峰值点，然后进行二分，
  *
  * leetcode：https://leetcode.cn/problems/find-peak-element/
  */
@@ -37,11 +39,11 @@ public class FindPeakElement {
         int result = -1;
         while (l <= r) {
             int middleIndex = l + ((r - l) >> 1);
-            //       / 斜右上山峰
+            //       \ 斜右山峰
             if (arr[middleIndex - 1] > arr[middleIndex]) {
                 r = middleIndex - 1;
             }
-            //      \ 斜右下山峰
+            //      / 斜左山峰
             else if (arr[middleIndex] < arr[middleIndex + 1]) {
                 l = middleIndex + 1;
             }
@@ -61,11 +63,11 @@ public class FindPeakElement {
      */
     public static void main(String[] args) {
         int[] arr = new int[]{1, 2, 1, 3, 5, 6, 4};
-        System.out.println(findPeakElement(arr));
-        // 5
+        System.out.println("arr数组：" + Arrays.toString(arr) + " 的局部峰值点索引为：" + findPeakElement(arr));
+        // arr数组：[1, 2, 1, 3, 5, 6, 4] 的局部峰值点索引为：5
 
         int[] arr1 = new int[]{1, 2, 3, 1};
-        System.out.println(findPeakElement(arr1));
-        // 2
+        System.out.println("arr1数组：" + Arrays.toString(arr1) + " 的局部峰值点索引为：" + findPeakElement(arr1));
+        // arr1数组：[1, 2, 3, 1] 的局部峰值点索引为：2
     }
 }

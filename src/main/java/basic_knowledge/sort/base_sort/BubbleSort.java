@@ -46,6 +46,21 @@ public class BubbleSort {
     }
 
     /**
+     * 使用异或的方式实现数组索引下标的交换
+     * 0 ^ N = N
+     * N ^ N = 0
+     *
+     * @param arr
+     * @param i
+     * @param j
+     */
+    public static void swapWithXor(int[] arr, int i, int j) {
+        arr[i] = arr[i] ^ arr[j];
+        arr[j] = arr[i] ^ arr[j];
+        arr[i] = arr[i] ^ arr[j];
+    }
+
+    /**
      * 测试
      *
      * @param args
@@ -56,5 +71,14 @@ public class BubbleSort {
         System.out.println("排序后：" + Arrays.toString(bubbleSort(arr)));
         // 排序前：[19, 2, 4, 2, 1, -1, 88, 12, 29]
         // 排序后：[88, 29, 19, 12, 4, 2, 2, 1, -1]
+
+        int[] arr1 = new int[]{1, 2, 4, 4, 6, 7, 8};
+        swapWithXor(arr1, 2, 6);
+        System.out.println(Arrays.toString(arr1));
+        // [1, 2, 8, 4, 6, 7, 4]
+
+        swapWithXor(arr1, 2, 2);
+        System.out.println(Arrays.toString(arr1));
+        // [1, 2, 0, 4, 6, 7, 4]
     }
 }

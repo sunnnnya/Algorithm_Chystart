@@ -1,6 +1,6 @@
 package basic_knowledge.list.easy;
 
-import basic_knowledge.list.common.SingleListNode;
+import basic_knowledge.list.common.Node;
 
 /**
  * @BelongsPackage: basic_knowledge.list.easy
@@ -9,7 +9,6 @@ import basic_knowledge.list.common.SingleListNode;
  * @Date: 2024/8/1 下午3:54
  * @Description: 移除链表中指定的值
  *
- * 注意头节点的处理
  */
 public class RemoveValue {
 
@@ -20,20 +19,15 @@ public class RemoveValue {
      * @param num
      * @return
      */
-    public static SingleListNode removeValue(SingleListNode head, int num) {
-        // base case
-        if (head == null) {
-            return null;
-        }
-        // 处理头节点未要删除的节点信息，找到第一个不等于num的节点
+    public static Node removeValue(Node head, int num) {
         while (head != null) {
             if (head.val != num) {
                 break;
             }
             head = head.next;
         }
-        SingleListNode pre = head;
-        SingleListNode cur = head;
+        Node pre = head;
+        Node cur = head;
         while (cur != null) {
             if (cur.val == num){
                 pre.next = cur.next;
@@ -50,7 +44,7 @@ public class RemoveValue {
      *
      * @param head
      */
-    public static void print(SingleListNode head) {
+    public static void print(Node head) {
         while (head != null) {
             if (head.next == null) {
                 System.out.print(head.val);
@@ -67,16 +61,16 @@ public class RemoveValue {
      * @param args
      */
     public static void main(String[] args) {
-        SingleListNode node1 = new SingleListNode(2);
-        SingleListNode node2 = new SingleListNode(2);
-        SingleListNode node3 = new SingleListNode(3);
-        SingleListNode node4 = new SingleListNode(2);
-        SingleListNode node5 = new SingleListNode(1);
-        SingleListNode node6 = new SingleListNode(13);
-        SingleListNode node7 = new SingleListNode(4);
-        SingleListNode node8 = new SingleListNode(6);
-        SingleListNode node9 = new SingleListNode(2);
-        SingleListNode node10 = new SingleListNode(2);
+        Node node1 = new Node(2);
+        Node node2 = new Node(2);
+        Node node3 = new Node(3);
+        Node node4 = new Node(2);
+        Node node5 = new Node(1);
+        Node node6 = new Node(13);
+        Node node7 = new Node(4);
+        Node node8 = new Node(6);
+        Node node9 = new Node(2);
+        Node node10 = new Node(2);
         node1.next = node2;
         node2.next = node3;
         node3.next = node4;
@@ -86,7 +80,14 @@ public class RemoveValue {
         node7.next = node8;
         node8.next = node9;
         node9.next = node10;
+        System.out.print("原始链表：");
+        print(node1);
+        // 原始链表：2 -> 2 -> 3 -> 2 -> 1 -> 13 -> 4 -> 6 -> 2 -> 2
+
+        System.out.println();
+
+        System.out.print("移除之后的链表是：");
         print(removeValue(node1, 2));
-        // 3 -> 1 -> 13 -> 4 -> 6
+        // 移除之后的链表是：3 -> 1 -> 13 -> 4 -> 6
     }
 }

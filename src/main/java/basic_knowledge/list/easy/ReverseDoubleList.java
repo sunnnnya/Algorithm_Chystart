@@ -1,5 +1,7 @@
 package basic_knowledge.list.easy;
 
+import basic_knowledge.list.common.DoubleNode;
+
 /**
  * @BelongsPackage: basic_knowledge.list.easy
  * @ClassName: ReverseDoubleList
@@ -10,31 +12,16 @@ package basic_knowledge.list.easy;
 public class ReverseDoubleList {
 
     /**
-     * 双端链表的节点信息
-     */
-    public static class DoubleNode {
-        public int value;
-        // 前引用指针
-        public DoubleNode last;
-        // 后引用指针
-        public DoubleNode next;
-        public DoubleNode(int data) {
-            this.value = data;
-        }
-    }
-
-    /**
-     * 反转双端链表
+     * 双链表的反转 - 和单链表的反转的区别只是多了一个 last 的指向
      *
      * @param head
      * @return
      */
-    public static DoubleNode reverseDoubleNode(DoubleNode head) {
-        DoubleNode pre = null;
+    public static DoubleNode reverseDoubleList(DoubleNode head) {
         DoubleNode next = null;
-        while (head != null) {
+        DoubleNode pre = null;
+        while(head != null) {
             next = head.next;
-            // 和单链表的区别在于last和next指针的调整
             head.next = pre;
             head.last = next;
             pre = head;
@@ -44,42 +31,48 @@ public class ReverseDoubleList {
     }
 
     /**
-     * 打印双端链表
+     * 打印双链表信息
      *
      * @param head
      */
-    public static void printDoubleNode(DoubleNode head) {
-        if (head == null) {
-            return;
-        }
+    public static void printDoubleList(DoubleNode head) {
         while (head != null) {
             if (head.next == null) {
-                System.out.print(head.value);
+                System.out.print(head.data);
             } else {
-                System.out.print(head.value + " -> ");
+                System.out.print(head.data + " -> ");
             }
             head = head.next;
         }
     }
 
-
     /**
-     * 测试函数
+     * 测试
      *
      * @param args
      */
     public static void main(String[] args) {
-        DoubleNode doubleNode = new DoubleNode(12);
-        DoubleNode doubleNode1 = new DoubleNode(21);
-        DoubleNode doubleNode2 = new DoubleNode(11);
-        // 12 -> 21 -> 11
-        doubleNode.next = doubleNode1;
-        doubleNode.last = null;
+        DoubleNode doubleNode1 = new DoubleNode(12);
+        DoubleNode doubleNode2 = new DoubleNode(2);
+        DoubleNode doubleNode3 = new DoubleNode(1);
+        DoubleNode doubleNode4 = new DoubleNode(4);
+        DoubleNode doubleNode5 = new DoubleNode(8);
+        doubleNode1.last = null;
         doubleNode1.next = doubleNode2;
-        doubleNode1.last = doubleNode;
-        doubleNode2.next = null;
         doubleNode2.last = doubleNode1;
-        DoubleNode newHead = reverseDoubleNode(doubleNode);
-        printDoubleNode(newHead);
+        doubleNode2.next = doubleNode3;
+        doubleNode3.last = doubleNode2;
+        doubleNode3.next = doubleNode4;
+        doubleNode4.last = doubleNode3;
+        doubleNode4.next = doubleNode5;
+        doubleNode5.last = doubleNode4;
+        doubleNode5.next = null;
+        System.out.print("原始链表：");
+        printDoubleList(doubleNode1);
+
+        System.out.println();
+
+        System.out.print("反转后的链表：");
+        printDoubleList(reverseDoubleList(doubleNode1));
     }
 }

@@ -6,7 +6,7 @@ import java.util.Arrays;
  * @BelongsPackage: basic_knowledge.xor
  * @ClassName: FindOddNumberInArrayII
  * @Author: 丛虹羽
- * @Date: 2024/7/29 上午11:42
+ * @Date: 2024/12/2 上午11:42
  * @Description: 数组中只有 "两个" 出现奇数次的数,且这两个数不相同，其他的所有数都出现了偶数次，找到这两个数！！
  */
 public class FindOddNumberInArrayII {
@@ -46,7 +46,7 @@ public class FindOddNumberInArrayII {
      */
     public static void main(String[] args) {
         int[] arr = {2, 2, 2, 2, 1, 4, 2, 4, 1, 1, 5, 5, 6, 6, 7, 7};
-        System.out.println(Arrays.toString(findOddNumberInArrayII(arr)));
+        System.out.println("两个出现奇数次的数是：" + Arrays.toString(findOddNumberInArrayII(arr)));
 
         // 相反数测试
         int number = 3;

@@ -1,25 +1,15 @@
 package basic_knowledge.list.easy;
 
+import basic_knowledge.list.common.Node;
+
 /**
  * @BelongsPackage: basic_knowledge.list
- * @ClassName: SingleList
+ * @ClassName: ReverseSingleList
  * @Author: 丛虹羽
- * @Date: 2024/7/22 上午12:34
+ * @Date: 2024/12/2 上午12:34
  * @Description: 单链表的反转
  */
 public class ReverseSingleList {
-
-    /**
-     * 单链表中的节点信息
-     */
-    public static class ListNode {
-        public int val;
-        public ListNode next;
-        public ListNode(int val, ListNode next) {
-            this.val = val;
-            this.next = next;
-        }
-    }
 
     /**
      * 链表的反转
@@ -27,11 +17,10 @@ public class ReverseSingleList {
      * @param head
      * @return
      */
-    public static ListNode reverseSingleList(ListNode head) {
-        // 本质其实就是使用变量 进行状态移动
-        ListNode pre = null;
-        ListNode next = null;
-        while (head != null) {
+    public static Node reverseSingleList(Node head) {
+        Node next = null;
+        Node pre = null;
+        while(head != null) {
             next = head.next;
             head.next = pre;
             pre = head;
@@ -45,12 +34,9 @@ public class ReverseSingleList {
      *
      * @param head
      */
-    public static void printSingleListNode(ListNode head) {
-        if (head == null) {
-            return;
-        }
+    public static void printSingleList(Node head) {
         while (head != null) {
-            if(head.next == null) {
+            if (head.next == null) {
                 System.out.print(head.val);
             } else {
                 System.out.print(head.val + " -> ");
@@ -59,19 +45,25 @@ public class ReverseSingleList {
         }
     }
 
+    /**
+     * 测试
+     *
+     * @param args
+     */
     public static void main(String[] args) {
-        ListNode listNodeFive = new ListNode(10, null);
-        ListNode listNodeFour = new ListNode(8, listNodeFive);
-        ListNode listNodeThree = new ListNode(6, listNodeFour);
-        ListNode listNodeTwo= new ListNode(3, listNodeThree);
-        ListNode head = new ListNode(2, listNodeTwo);
-        printSingleListNode(head);
-        // 2 -> 3 -> 6 -> 8 -> 10
+        Node node1 = new Node(1);
+        Node node2 = new Node(6);
+        Node node3 = new Node(7);
+        Node node4 = new Node(3);
+        node1.next = node2;
+        node2.next = node3;
+        node3.next = node4;
+        System.out.print("原链表：");
+        printSingleList(node1);
 
-        ListNode afterReverseListNewHead = reverseSingleList(head);
         System.out.println();
 
-        printSingleListNode(afterReverseListNewHead);
-        // 10 -> 8 -> 6 -> 3 -> 2
+        System.out.print("反转后的链表：");
+        printSingleList(reverseSingleList(node1));
     }
 }

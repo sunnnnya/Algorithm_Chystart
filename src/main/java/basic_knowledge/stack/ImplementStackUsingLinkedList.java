@@ -4,7 +4,7 @@ package basic_knowledge.stack;
  * @BelongsPackage: basic_knowledge.list.easy
  * @ClassName: CreatingStackUsingLinkedList
  * @Author: 丛虹羽
- * @Date: 2024/7/26 下午10:31
+ * @Date: 2024/12/3 下午11:51
  * @Description: 使用链表实现栈结构
  */
 public class ImplementStackUsingLinkedList {

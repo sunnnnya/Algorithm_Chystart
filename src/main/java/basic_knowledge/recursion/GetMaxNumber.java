@@ -4,7 +4,7 @@ package basic_knowledge.recursion;
  * @BelongsPackage: basic_knowledge.recursion
  * @ClassName: GetMaxNumber
  * @Author: 丛虹羽
- * @Date: 2024/7/29 下午11:31
+ * @Date: 2024/12/3 下午11:31
  * @Description: 使用递归的方式获取数组中的最大的值
  *
  * 主要注意的就是递归函数抽象化(返回值、basecase、形参)，这三点一定要抽象好；
@@ -37,6 +37,7 @@ public class GetMaxNumber {
             return arr[l];
         }
         int mid = l + ((r - l) >> 1);
+        // 变成子规模
         int number1 = process(arr, l, mid);
         int number2 = process(arr, mid + 1, r);
         return Math.max(number1, number2);
@@ -57,10 +58,10 @@ public class GetMaxNumber {
     }
 
     /**
-     * 获取最小值
+     * 获取最大值
      *
-     * @param arr
-     * @param n   数组的长度，不是index
+     * @param arr 原始数组
+     * @param n   数组的长度，不是 index
      * @return
      */
     public static int getMaxNumberInArray(int[] arr, int n) {

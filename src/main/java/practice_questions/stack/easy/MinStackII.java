@@ -4,14 +4,14 @@ package practice_questions.stack.easy;
  * @BelongsPackage: practice_questions.stack.easy
  * @ClassName: MinStackII
  * @Author: 丛虹羽
- * @Date: 2024/8/13 下午2:41
- * @Description: 最小栈
+ * @Date: 2024/12/3 下午2:41
+ * @Description: 最小栈（使用数组模拟栈数据结构）
  *
  * 设计一个支持 push ，pop ，top 操作，并能在常数时间内检索到最小元素的栈。
  *
  * 实现 MinStack 类:
  *      MinStack() 初始化堆栈对象。
- *      void push(int val) 将元素val推入堆栈。
+ *      void push(int val) 将元素 val 推入堆栈。
  *      void pop() 删除堆栈顶部的元素。
  *      int top() 获取堆栈顶部的元素。
  *      int getMin() 获取堆栈中的最小元素。
@@ -32,7 +32,9 @@ public class MinStackII {
     }
 
     /**
-     * 向栈中添加元素
+     * 向数据栈中添加元素，同时向最小栈中添加元素
+     *      如果最小栈的栈顶元素比当前元素大 -> 当前元素入栈顶
+     *      如果最小栈的栈顶元素比当前元素小 -> 栈顶元素重新栈顶
      *
      * @param val
      */
@@ -41,12 +43,8 @@ public class MinStackII {
         if (size == 0) {
             minStack[size] = val;
         } else {
-            // minStack[size - 1]：表示栈顶元素
-            if (minStack[size - 1] > val) {
-                minStack[size] = val;
-            } else {
-                minStack[size] = minStack[size - 1];
-            }
+            // 最小栈的栈顶（当前值和栈顶中的最小值）
+            minStack[size] = Math.min(val, minStack[size - 1]);
         }
         size++;
     }
@@ -68,7 +66,7 @@ public class MinStackII {
     }
 
     /**
-     * 获取最小的值
+     * 获取最小的值，size 表示的是要添加到的元素的位置，栈顶元素的位置是 size - 1
      *
      * @return
      */

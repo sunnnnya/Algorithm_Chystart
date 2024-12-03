@@ -4,7 +4,7 @@ package basic_knowledge.random.easy;
  * @BelongsPackage: basic_knowledge.random.easy
  * @ClassName: RandomToRandom
  * @Author: 丛虹羽
- * @Date: 2024/7/26 下午3:53
+ * @Date: 2024/12/3 下午3:53
  * @Description: 随机概率变成其他随机概率
  */
 public class RandomToRandom {
@@ -25,7 +25,7 @@ public class RandomToRandom {
     }
 
     /**
-     * 变成等概率0、1发生器
+     * 变成等概率0、1发生器，重点：构造出来等概率 0、1 发生器
      *
      * @return
      */
@@ -39,6 +39,7 @@ public class RandomToRandom {
 
     /**
      * 使用等概率0、1发生器拼成0 ~ 7 随机 000 ~ 111
+     *
      * @return
      */
     public static int f3() {
@@ -47,6 +48,7 @@ public class RandomToRandom {
 
     /**
      * 过滤掉 0 变成 1 ~ 7之间随机
+     *
      * @return
      */
     public static int f4() {

@@ -67,12 +67,21 @@ public class ImplementQueueUsingStacks {
             return outStack.peek();
         }
 
+        /**
+         * 判断是否为 空
+         *
+         * @return
+         */
         public boolean empty() {
             return inStack.empty() && outStack.empty();
         }
     }
 
-
+    /**
+     * 测试
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         MyQueue<Integer> queue = new MyQueue<>();
         queue.push(23);

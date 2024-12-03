@@ -7,7 +7,7 @@ import java.util.Queue;
  * @BelongsPackage: basic_knowledge.queue
  * @ClassName: ImplementStackUsingQueue
  * @Author: 丛虹羽
- * @Date: 2024/7/22 下午12:39
+ * @Date: 2024/12/3下午12:39
  * @Description: 使用 队列 模拟 实现 栈
  * 面试题：请使用 队列 实现图的 深度优先遍历 <=> 使用队列来模拟栈
  *
@@ -15,7 +15,7 @@ import java.util.Queue;
  *
  * leetcode: https://leetcode.cn/problems/implement-stack-using-queues/
  */
-public class ImplementStackUsingQueue {
+public class ImplementStackUsingOneQueue {
 
     public static class MyStack<T> {
 

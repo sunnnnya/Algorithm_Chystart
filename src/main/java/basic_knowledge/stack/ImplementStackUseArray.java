@@ -23,13 +23,13 @@ public class ImplementStackUseArray {
         }
 
         /**
-         * 入栈
+         * 入栈，size 表示要填入的位置
+         * stack[size++] = val; -> stack[0] = val | size = 1
          *
          * @param val
          */
         public void push(int val) {
             stack[size++] = val;
-            // size = i + 1 但 stack[i] = value
         }
 
         /**

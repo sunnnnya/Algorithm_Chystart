@@ -102,6 +102,11 @@ public class ImplementQueueUsingLinkedList {
         }
     }
 
+    /**
+     * 测试
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         MyQueue<Integer> queue = new MyQueue<>();
         queue.offer(23);

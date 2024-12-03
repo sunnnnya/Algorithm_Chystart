@@ -1,5 +1,7 @@
 package practice_questions.merge_sort.medium;
 
+import java.util.Arrays;
+
 /**
  * @BelongsPackage: practice_questions.merge_sort
  * @ClassName: SmallSum
@@ -18,7 +20,7 @@ public class SmallSum {
     /**
      * 进行递归排序，寻找最小和
      *
-     * @param arr
+     * @param arr 原始数组
      * @return
      */
     public static int smallSum(int[] arr) {
@@ -31,21 +33,20 @@ public class SmallSum {
     /**
      * 递归调用的过程
      *
-     * @param arr
-     * @param l
-     * @param r
-     * @return
+     * @param arr  原始数组
+     * @param l    左边界
+     * @param r    右边界
+     * @return     小和的值
      */
     public static int process(int[] arr, int l, int r) {
         if(l == r) {
             return 0;
         }
         int mid = l + ((r - l) >> 1);
-        // merge表示的是当前拆分字段排序的结果，但是我们还需要由以前数组排序成现在数组形成的最小和数量
-        int leftSmallSum = process(arr, l, mid); // 左侧合并的小和
-        int rightSmallSum = process(arr, mid + 1,  r); // 右侧合并的小和
-        int mergeSmallSum = merge(arr, l, mid, r); // 归并的小和
-        return leftSmallSum + rightSmallSum + mergeSmallSum; // 总和
+        // merge 表示的是当前拆分字段排序的结果，但是我们还需要由以前数组排序成现在数组形成的最小和数量
+        return process(arr, l, mid)         // 左侧合并的小和
+                + process(arr, mid + 1,  r) // 右侧合并的小和
+                + merge(arr, l, mid, r);      // 归并的小和
     }
 
     /**
@@ -65,6 +66,7 @@ public class SmallSum {
         int p2 = mid + 1;
         while (p1 <= mid && p2 <= r) {
             sum += arr[p1] < arr[p2] ? (arr[p1] * (r - p2 + 1)) : 0;
+            // 当值相等的时候，先拷贝右边的值
             help[index++] = arr[p1] < arr[p2] ? arr[p1++] : arr[p2++];
         }
         while (p1 <= mid) {
@@ -86,7 +88,7 @@ public class SmallSum {
      */
     public static void main(String[] args) {
         int[] arr = {1, 3, 4, 2, 5};
-        System.out.println(smallSum(arr));
-        // 16
+        System.out.println("数组：" + Arrays.toString(arr) + " 的小和结果是：" + smallSum(arr));
+        // 数组：[1, 3, 4, 2, 5] 的小和结果是：16
     }
 }

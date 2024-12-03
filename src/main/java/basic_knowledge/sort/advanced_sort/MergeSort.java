@@ -4,9 +4,9 @@ import java.util.Arrays;
 
 /**
  * @BelongsPackage: basic_knowledge.sort.advanced_sort
- * @ClassName: MerageSort
+ * @ClassName: MergeSort
  * @Author: 丛虹羽
- * @Date: 2024/7/30 下午1:47
+ * @Date: 2024/12/3 下午1:47
  * @Description: 归并排序
  * java 中 Arrays.sort()
  *      如果要比较的数据是 "基础数据类型"    -> 底层使用快排排序【不考虑稳定性，只求速度快】
@@ -27,7 +27,7 @@ public class MergeSort {
     /**
      * 归并排序
      *
-     * @param arr
+     * @param arr 待排序的数组
      * @return
      */
     public static void mergeSort(int[] arr) {
@@ -40,9 +40,9 @@ public class MergeSort {
     /**
      * 逐渐的排序过程
      *
-     * @param arr
-     * @param l
-     * @param r
+     * @param arr  待排序的数组
+     * @param l    左边界
+     * @param r    右边界
      */
     private static void process(int[] arr, int l, int r) {
         if (l == r) {
@@ -92,8 +92,10 @@ public class MergeSort {
      */
     public static void main(String[] args) {
         int[] arr = {10, 2, 4, 2, 1, 6, 10, 22, 89, 100, 121, 2, 3, 8};
+        System.out.println("排序之前的数组：" + Arrays.toString(arr));
+        // 排序之前的数组：[10, 2, 4, 2, 1, 6, 10, 22, 89, 100, 121, 2, 3, 8]
         mergeSort(arr);
-        System.out.println(Arrays.toString(arr));
-        // [1, 2, 2, 2, 3, 4, 6, 8, 10, 10, 22, 89, 100, 121]
+        System.out.println("归并排序之后的数组：" + Arrays.toString(arr));
+        // 归并排序之后的数组：[1, 2, 2, 2, 3, 4, 6, 8, 10, 10, 22, 89, 100, 121]
     }
 }

@@ -6,14 +6,13 @@ import java.util.Arrays;
  * @BelongsPackage: basic_knowledge.sort.common
  * @ClassName: DutchFlagI
  * @Author: 丛虹羽
- * @Date: 2024/7/30 下午9:18
+ * @Date: 2024/12/4 下午9:18
  * @Description: 荷兰国旗问题
  *
  * 给定一个数组arr，和一个数num，
  *      请把小于等于num的数放在数组的左边，
  *      大于num的数放在数组的右边。
  * 要求额外空间复杂度0(1)，时间复杂度O(N)
- *
  */
 public class DutchFlagI {
 
@@ -21,22 +20,18 @@ public class DutchFlagI {
      * arr[i] <= num, 把 arr[i]和 <=区域 的下一个数进行交换，然后 <= 区域 往右扩
      * arr[i] > num i++，<= 区域不变
      *
-     * @param arr
-     * @param num
+     * @param arr 原始数组
+     * @param num 划分的值
      * @return
      */
     public static void dutchFlag(int[] arr, int num) {
-        if (arr == null) {
+        if(arr == null || arr.length < 2) {
             return ;
         }
-        if (arr.length == 1) {
-            return ;
-        }
-        int L = 0; // 左边界
-        int index = 0;
-        while (index <= arr.length - 1) {
-            if (arr[index] <= num) {
-                swap(arr, L++, index++);
+        int index = 0, L = 0;
+        while(index < arr.length) {
+            if(arr[index] <= num) {
+                swap(arr, index++, L++);
             } else {
                 index++;
             }
@@ -62,14 +57,11 @@ public class DutchFlagI {
      * @param args
      */
     public static void main(String[] args) {
-        int[] arr = {10, 5, 2, 5, 6, 12, 5, 3, 7, 9, 10};
-        dutchFlag(arr, 9);
-        System.out.println(Arrays.toString(arr));
-        // [5, 2, 5, 6, 5, 3, 7, 9, 10, 12, 10]
-
-        int[] arr1 = {3, 5, 5, 2};
-        dutchFlag(arr1, 4);
-        System.out.println(Arrays.toString(arr1));
-        // [3, 2, 5, 5]
+        int[] arr = {4, 5, 3, 2, 5, 6, 5, 3, 2, 1, 2};
+        System.out.println("原始数组：" + Arrays.toString(arr));
+        dutchFlag(arr, 2);
+        System.out.println("荷兰国旗后的数组" + Arrays.toString(arr));
+        // 原始数组：[4, 5, 3, 2, 5, 6, 5, 3, 2, 1, 2]
+        // 荷兰国旗后的数组[2, 2, 1, 2, 5, 6, 5, 3, 5, 3, 4]
     }
 }

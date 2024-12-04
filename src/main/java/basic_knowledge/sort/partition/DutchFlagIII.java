@@ -61,7 +61,7 @@ public class DutchFlagIII {
         System.out.println("partition：" + Arrays.toString(dutchFlagIII(arr)));
         System.out.println("分区之后的数组：" + Arrays.toString(arr));
 
-        int[] arr1 = new int[]{6, 5, 6, 6};
+        int[] arr1 = new int[]{6, 6, 6, 5};
         System.out.println("原数组：" + Arrays.toString(arr1));
         System.out.println("partition：" + Arrays.toString(dutchFlagIII(arr1)));
         System.out.println("分区之后的数组：" + Arrays.toString(arr1));

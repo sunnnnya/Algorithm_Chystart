@@ -6,7 +6,7 @@ import java.util.Arrays;
  * @BelongsPackage: practice_questions.merge_sort.hard
  * @ClassName: reversePairsII
  * @Author: 丛虹羽
- * @Date: 2024/8/14 上午9:43
+ * @Date: 2024/12/4 上午9:43
  * @Description: 翻转对 **
  *
  * 给定一个数组 nums ，如果 i < j 且 nums[i] > 2*nums[j] 我们就将 (i, j) 称作一个重要翻转对。
@@ -60,7 +60,7 @@ public class ReversePairsII {
         // 改写不一定要分析在合并的过程中，也可以出现在单独的过程中
         for (int i = l; i <= mid; i++) {
             // 注意点：可能会出现溢出的问题！！
-            while (pp2 <= r && arr[i] > (arr[pp2] << 1)) {
+            while (pp2 <= r && arr[i] > (arr[pp2] * 2L)) {
                 pp2++;
             }
             sum += pp2 - mid - 1;
@@ -90,11 +90,14 @@ public class ReversePairsII {
     public static void main(String[] args) {
         int[] arr = new int[]{1, 3, 2, 3, 1};
         System.out.println("数组：" + Arrays.toString(arr) + " 的逆序对的个数是： " + reversePairs(arr));
+        // 数组：[1, 3, 2, 3, 1] 的逆序对的个数是： 2
 
         int[] arr1 = new int[]{2, 4, 3, 5, 1};
         System.out.println("数组：" + Arrays.toString(arr1) + " 的逆序对的个数是： " + reversePairs(arr1));
+        // 数组：[2, 4, 3, 5, 1] 的逆序对的个数是： 3
 
         int[] arr2 = new int[]{5, 4, 3, 2, 1};
         System.out.println("数组：" + Arrays.toString(arr2) + " 的逆序对的个数是： " + reversePairs(arr2));
+        // 数组：[5, 4, 3, 2, 1] 的逆序对的个数是： 4
     }
 }

@@ -4,7 +4,7 @@ package basic_knowledge.random.easy;
  * @BelongsPackage: basic_knowledge.random.easy
  * @ClassName: RandomBecomesNonRandom
  * @Author: 丛虹羽
- * @Date: 2024/7/26 下午4:14
+ * @Date: 2024/12/5 下午4:14
  * @Description:
  * 非等概率返回等概率
  * f() 0  1
@@ -13,7 +13,8 @@ package basic_knowledge.random.easy;
 public class UnequalProbabilitiesReturnEqualProbabilities {
 
     /**
-     * 不等概率返回 0 或 1
+     * 不等概率返回 0 或 1，系统提供的函数，只是不等概率的返回数值
+     *
      * @return
      */
     public static int x() {

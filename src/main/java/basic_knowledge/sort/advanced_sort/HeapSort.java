@@ -6,7 +6,7 @@ import java.util.Arrays;
  * @BelongsPackage: basic_knowledge.sort.advanced_sort
  * @ClassName: Heap
  * @Author: 丛虹羽
- * @Date: 2024/7/31 上午9:22
+ * @Date: 2024/12/6 上午9:22
  * @Description: 使用数组模拟堆结构 + 堆排序
  * 主要该数组使用的是 index 从 0 ~ arr.length - 1
  * i 父节点 -> 左孩子 = 2 * i + 1
@@ -18,9 +18,9 @@ public class HeapSort {
     /**
      * 交换数组中指定两个下标位置的元素
      *
-     * @param arr
-     * @param i
-     * @param j
+     * @param arr 原始数组
+     * @param i   索引下标
+     * @param j   索引下标
      */
     public static void swap(int[] arr, int i, int j) {
         int temp = arr[i];
@@ -56,8 +56,8 @@ public class HeapSort {
         // 还有左孩子的时候
         while (leftChild < heapSize) {
             // 有右孩子，找到左右孩子中数组更大的那个索引下标
-            int largeIndex = ((leftChild + 1 < heapSize) && (arr[leftChild] > arr[leftChild + 1]))
-                    ? leftChild : leftChild + 1;
+            int largeIndex = ((leftChild + 1 < heapSize) && (arr[leftChild] < arr[leftChild + 1]))
+                    ? leftChild + 1 : leftChild;
             // 找到父亲，左右孩子中数值大的索引下标
             largeIndex = arr[largeIndex] > arr[index] ? largeIndex : index;
             // 如果当前节点最大，则不进行交换
@@ -86,23 +86,19 @@ public class HeapSort {
         for (int i = 0; i < arr.length; i++) {
             heapInsert(arr, i);
         }
-        System.out.println("--------check---------");
-        System.out.println(Arrays.toString(arr));
-        System.out.println("--------check---------");
         // heapSize表示堆的大小
         int heapSize = arr.length;
-        swap(arr, 0, --heapSize);
         while (heapSize > 0) {
+            swap(arr, 0, --heapSize);
             // 始终都是堆顶的元素做 heapIfy，最后的数组就会被调整为大根堆
-            heapIfy(arr, 0, --heapSize);
-            swap(arr, 0, heapSize);
+            heapIfy(arr, 0, heapSize);
         }
     }
 
     /**
      * 测试
      * 使用系统提供的优先队列（堆结构），不能进行值的修改，如果堆结构要重新调整，只能重新全部扫描一下。
-     * 手写的可以对指定节点进行修改，看heapify或者heapinsert
+     * 手写的可以对指定节点进行修改，先进行 heapInsert 再进行 heapify
      *
      * @param args
      */

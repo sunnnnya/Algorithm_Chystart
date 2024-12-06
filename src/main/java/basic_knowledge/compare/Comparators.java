@@ -1,12 +1,13 @@
 package basic_knowledge.compare;
 
 import java.util.Arrays;
+import java.util.Comparator;
 
 /**
  * @BelongsPackage: basic_knowledge.compare
  * @ClassName: Comparer
  * @Author: 丛虹羽
- * @Date: 2024/7/27 下午10:35
+ * @Date: 2024/12/6 下午10:35
  * @Description: 比较器的使用
  */
 public class Comparators {
@@ -51,6 +52,7 @@ public class Comparators {
         // 返回 负数 的时候，第一个参数放在前面。
         // 返回 正数 的时候，第二个参数放在前面。
         Arrays.sort(students, (o1, o2) -> o2.age - o1.age);
+        // 按照学生的年龄从大到小
         System.out.println(Arrays.toString(students));
     }
 }

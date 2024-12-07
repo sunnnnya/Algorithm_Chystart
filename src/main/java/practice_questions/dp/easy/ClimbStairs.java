@@ -6,7 +6,7 @@ import java.util.Arrays;
  * @BelongsPackage: practice_questions.recursion.easy
  * @ClassName: ClimbStairs
  * @Author: 丛虹羽
- * @Date: 2024/8/15 下午11:47
+ * @Date: 2024/12/7 下午11:47
  * @Description: 爬楼梯
  *
  * 假设你正在爬楼梯。需要 n 阶你才能到达楼顶。每次你可以爬 1 或 2 个台阶。你有多少种不同的方法可以爬到楼顶呢？
@@ -14,6 +14,8 @@ import java.util.Arrays;
  * leetcode:https://leetcode.cn/problems/climbing-stairs
  */
 public class ClimbStairs {
+
+    public static int number = 10;
 
     /**
      * 使用递归解题(不使用记忆化搜索)，时间复杂度O（2^N）
@@ -122,7 +124,7 @@ public class ClimbStairs {
      */
     public static int[][] matrixMulti(int[][] a, int[][] b) {
         if (a[0].length != b.length) {
-            throw new RuntimeException("矩阵 a 的行数和矩阵b的列数对应不上");
+            throw new RuntimeException("矩阵 a 的行数和矩阵 b 的列数对应不上，不能进行计算！！！");
         }
         int N = a.length;
         int K = a[0].length;
@@ -147,6 +149,7 @@ public class ClimbStairs {
      */
     public static int[][] matrixFasterPower(int[][] arr, int n) {
         int N = arr.length;
+        // 单位矩阵
         int[][] unit = new int[N][N];
         for (int i = 0; i < N; i++) {
             unit[i][i] = 1;

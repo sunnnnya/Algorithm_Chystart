@@ -9,6 +9,8 @@ package practice_questions.math.easy;
  *      丑数就是只包含质因数 2、3 和 5 的 正整数。
  *
  *      给你一个整数 n，请你判断 n 是否为丑数 。如果是，返回 true ；否则，返回 false 。
+ *
+ *      leetcode: https://leetcode.cn/problems/ugly-number/?envType=study-plan-v2&envId=primers-list
  */
 public class IsUgly {
 

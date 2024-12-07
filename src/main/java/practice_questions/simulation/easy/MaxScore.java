@@ -1,4 +1,4 @@
-package practice_questions.string;
+package practice_questions.simulation.easy;
 
 /**
  * @BelongsPackage: practice_questions.string

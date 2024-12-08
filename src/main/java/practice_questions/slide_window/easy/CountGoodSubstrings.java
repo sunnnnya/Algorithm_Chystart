@@ -15,9 +15,11 @@ import java.util.Map;
  * leetcode: https://leetcode.cn/problems/substrings-of-size-three-with-distinct-characters
  */
 public class CountGoodSubstrings {
+
     /**
+     * 滑动窗口 + 哈希表
      *
-     * @param s
+     * @param s 原始字符串
      * @return
      */
     public static int countGoodSubstrings(String s) {

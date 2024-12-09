@@ -1,4 +1,4 @@
-package practice_questions.slide_window.medium.not_fixed_length;
+package practice_questions.slide_window.medium.not_fixed_length.max_length;
 
 import java.util.Set;
 import java.util.concurrent.CopyOnWriteArraySet;

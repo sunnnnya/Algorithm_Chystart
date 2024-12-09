@@ -1,4 +1,4 @@
-package practice_questions.slide_window.medium;
+package practice_questions.slide_window.medium.fixed_length;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -21,11 +21,11 @@ import java.util.Map;
 public class MaxSum {
 
     /**
-     * 滑动窗口 + 哈希表
+     * 定长滑动窗口 + 哈希表
      *
-     * @param nums
-     * @param m
-     * @param k
+     * @param nums 原始数组
+     * @param m    至少 m 个元素
+     * @param k    窗口的宽度
      * @return
      */
     public static long maxSum(List<Integer> nums, int m, int k) {

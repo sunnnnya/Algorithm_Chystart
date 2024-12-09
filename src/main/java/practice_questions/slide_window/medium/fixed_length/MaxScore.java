@@ -1,7 +1,6 @@
-package practice_questions.slide_window.medium;
+package practice_questions.slide_window.medium.fixed_length;
 
 import java.util.Arrays;
-import java.util.Map;
 
 /**
  * @BelongsPackage: practice_questions.slide_window.medium
@@ -9,10 +8,12 @@ import java.util.Map;
  * @Author: 丛虹羽
  * @Date: 2024/12/8 上午11:25
  * @Description: 可获得的最大点数
+ *
+ * leetcode： https://leetcode.cn/problems/maximum-points-you-can-obtain-from-cards
  */
 public class MaxScore {
     /**
-     * 对问题进行转换
+     * 对问题进行转换 -> 左右获取到的最大点数 <=> 最小子数组长度 定长 length - k
      *
      * @param cardPoints
      * @param k

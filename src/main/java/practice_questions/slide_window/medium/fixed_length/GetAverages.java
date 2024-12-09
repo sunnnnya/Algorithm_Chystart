@@ -1,6 +1,5 @@
-package practice_questions.slide_window.medium;
+package practice_questions.slide_window.medium.fixed_length;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
 /**

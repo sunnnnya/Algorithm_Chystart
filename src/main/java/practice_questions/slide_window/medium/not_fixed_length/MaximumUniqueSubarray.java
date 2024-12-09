@@ -1,4 +1,4 @@
-package practice_questions.slide_window.medium;
+package practice_questions.slide_window.medium.not_fixed_length;
 
 import java.util.HashSet;
 

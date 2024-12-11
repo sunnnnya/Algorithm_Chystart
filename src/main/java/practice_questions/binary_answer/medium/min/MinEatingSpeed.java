@@ -1,4 +1,4 @@
-package practice_questions.binary_answer.medium;
+package practice_questions.binary_answer.medium.min;
 
 /**
  * @BelongsPackage: practice_questions.binary_answer.medium

@@ -23,7 +23,9 @@ public class MinSubArrayLen {
         for (int i = 0, left = 0; i < nums.length; i++) {
             sum += nums[i];
             while (sum >= target) {
+                // 当找到 >= target 时，进行答案的记录更新！！！
                 ans = Math.min(ans, i - left + 1);
+                // 然后窗口的左边界进行值的更新！！！
                 sum -= nums[left++];
             }
         }

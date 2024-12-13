@@ -43,6 +43,28 @@ public class Trap {
     }
 
     /**
+     * 接雨水
+     *   使用双指针的方式实现，对原始的问题进行二次抽象，短板效应
+     *   双指针问题 + 单调性分析
+     *
+     * @param nums 原始数组
+     * @return     返回的雨水数
+     */
+    public static int trap2(int[] nums) {
+        int l = 1, r = nums.length - 2, lmax = nums[0], rmax = nums[nums.length - 1],  ans = 0;
+        while(l <= r) {
+            if(lmax <= rmax) {
+                ans += Math.max(0, lmax - nums[l]);
+                lmax = Math.max(lmax, nums[l++]);
+            } else {
+                ans += Math.max(0, rmax - nums[r]);
+                rmax = Math.max(rmax, nums[r--]);
+            }
+        }
+        return ans;
+    }
+
+    /**
      * 测试
      *
      * @param args

@@ -1,17 +1,13 @@
-package practice_questions.difference.medium;
+package practice_questions.data_pre_processing.difference.medium;
 
 import java.util.Arrays;
 
 /**
- * @BelongsPackage: practice_questions.difference.medium
+ * @BelongsPackage: practice_questions.data_pre_processing.difference.medium
  * @ClassName: CorpFlightBookings
  * @Author: 丛虹羽
- * @Date: 2024/8/26 下午6:54
+ * @Date: 2024/12/13 下午6:54
  * @Description: 航班预订统计
- *
- * 这里有 n 个航班，它们分别从 1 到 n 进行编号。
- * 有一份航班预订表 bookings ，表中第 i 条预订记录 bookings[i] = [firsti, lasti, seatsi] 意味着在从 firsti 到 lasti （包含 firsti 和 lasti ）的 每个航班 上预订了 seatsi 个座位。
- * 请你返回一个长度为 n 的数组 answer，里面的元素是每个航班预定的座位总数。
  *
  * leetcode：https://leetcode.cn/problems/corporate-flight-bookings
  */
@@ -20,9 +16,9 @@ public class CorpFlightBookings {
     /**
      * 差分数组的基本使用
      *
-     * @param bookings
-     * @param n
-     * @return
+     * @param bookings 原始数组
+     * @param n        结果数组的长度信息
+     * @return         返回差分之后的前缀和数组
      */
     public static int[] corpFlightBookings(int[][] bookings, int n) {
         // 防止出现越界，准备 n + 1 的位置

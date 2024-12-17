@@ -33,9 +33,11 @@ public class LeftRightLess {
         int cur;
         // stack中存储的是下标
         for (int i = 0; i < n; i++) {
+            // 说明栈中存在元素，并且栈顶元素 >= 当前元素
             while(r > 0 && arr[stack[r - 1]] >= arr[i]) {
-                // 栈顶元素对应的下标
+                // 弹出栈顶元素对应下标
                 cur = stack[--r];
+                // stack[r - 1] 栈顶的下一个元素的索引下标
                 ans[cur][0] = r > 0 ? stack[r - 1] : -1;
                 ans[cur][1] = i;
             }

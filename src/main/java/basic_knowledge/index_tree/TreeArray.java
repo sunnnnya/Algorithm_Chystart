@@ -1,4 +1,4 @@
-package basic_knowledge.tree_array;
+package basic_knowledge.index_tree;
 
 import java.util.Arrays;
 

@@ -1,4 +1,4 @@
-package basic_knowledge.bit_operations.easy;
+package basic_knowledge.bit_operations;
 
 import java.util.Arrays;
 

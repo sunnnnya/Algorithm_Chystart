@@ -1,4 +1,4 @@
-package basic_knowledge.queue.easy;
+package basic_knowledge.queue;
 
 /**
  * @BelongsPackage: basic_knowledge.queue
@@ -6,9 +6,10 @@ package basic_knowledge.queue.easy;
  * @Author: 丛虹羽
  * @Date: 2024/7/22 下午11:44
  * @Description: 使用 数组 模拟队列
+ *
  * 本质就是边界指针的作用，因为不会出现在头部添加的情况，所以没有向双端链表那么复杂的边界判断
  */
-public class ImplementQueueUseArray {
+public class UseArrayImplementQueue {
 
     public static class MyQueue {
         int[] queue;
@@ -59,6 +60,11 @@ public class ImplementQueueUseArray {
         }
     }
 
+    /**
+     * 测试
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         MyQueue queue = new MyQueue(7);
         queue.add(12);

@@ -9,8 +9,6 @@ import practice_questions.binary_tree.base.TreeNode;
  * @Date: 2024/8/3 上午11:41
  * @Description: 求二叉树的最小深度
  *
- * 给定一个二叉树，找出其最小深度。最小深度是从根节点到最近叶子节点的最短路径上的节点数量。
- * 说明：叶子节点是指没有子节点的节点。
  * leetcode:https://leetcode.cn/problems/minimum-depth-of-binary-tree/description/
  */
 public class MinDepthOfBinaryTree {
@@ -35,6 +33,9 @@ public class MinDepthOfBinaryTree {
      * @return
      */
     public static int process(TreeNode head) {
+        if (head == null) {
+            return 0;
+        }
         if (head.left == null && head.right == null) {
             return 1;
         }

@@ -4,12 +4,12 @@ import java.util.Arrays;
 
 /**
  * @BelongsPackage: basic_knowledge.tree_array
- * @ClassName: TreeArray
+ * @ClassName: SingleModifyRangeQuery
  * @Author: 丛虹羽
  * @Date: 2024/12/19 下午3:55
- * @Description: 单点增加 + 范围查询
+ * @Description: 单点修改 + 范围查询
  *
- *  原始数组，如下：
+ * 原始数组，如下：
  * [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
  *  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16
  *  —  —  —  —  —  —  —  —  —  —  —  —  —  —  —  —
@@ -65,11 +65,11 @@ import java.util.Arrays;
  *
  *  https://blog.csdn.net/z135733/article/details/136507999
  */
-public class TreeArray {
+public class SingleModifyRangeQuery {
 
     public static final int MAXN = 50001;
 
-    public static int[] tree = new int[MAXN];
+    public static final int[] tree = new int[MAXN];
 
     public static int n;
 
@@ -91,9 +91,8 @@ public class TreeArray {
      * @param v 要增加的值
      */
     public static void add(int i, int v) {
-        while(i <= n) {
+        for(; i <= n; i += lowBit(i)) {
             tree[i] += v;
-            i += lowBit(i);
         }
     }
 
@@ -105,9 +104,8 @@ public class TreeArray {
      */
     public static int sum(int i) {
         int ans = 0;
-        while(i > 0) {
+        for(;i > 0; i -= lowBit(i)) {
             ans += tree[i];
-            i -= lowBit(i);
         }
         return ans;
     }
@@ -128,8 +126,8 @@ public class TreeArray {
      */
     public static void printTree() {
         System.out.print("[");
-        for(int i = 1; i <= TreeArray.n; i++) {
-            if(i != TreeArray.n) {
+        for(int i = 1; i <= SingleModifyRangeQuery.n; i++) {
+            if(i != SingleModifyRangeQuery.n) {
                 System.out.print(tree[i] + ", ");
             } else {
                 System.out.print(tree[i]);
@@ -145,38 +143,38 @@ public class TreeArray {
      */
     public static void main(String[] args) {
         // 初始化树状数组
-        TreeArray.n = 16;
+        SingleModifyRangeQuery.n = 16;
         int[] nums = new int[]{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
 
         System.out.println("原始数组：" + Arrays.toString(nums));
 
         for (int i = 0; i < nums.length; i++) {
-            TreeArray.add(i + 1, nums[i]);
+            SingleModifyRangeQuery.add(i + 1, nums[i]);
         }
 
         System.out.print("树状数组：");
         printTree();
 
         System.out.println("----------------------------测试用例：单点增加----------------------------");
-        TreeArray.add(5, 3);
+        SingleModifyRangeQuery.add(5, 3);
         System.out.print("5 位置值 +3 之后的树状数组：");
         printTree();
-        System.out.println("索引 5 的值: " + TreeArray.range(5,5));
-        System.out.println("前 5 个数的和: " + TreeArray.range(1,5));
+        System.out.println("索引 5 的值: " + SingleModifyRangeQuery.range(5,5));
+        System.out.println("前 5 个数的和: " + SingleModifyRangeQuery.range(1,5));
         System.out.println();
 
         System.out.println("----------------------------测试用例：范围查询----------------------------");
-        int rangeResult = TreeArray.range(3,10);
+        int rangeResult = SingleModifyRangeQuery.range(3,10);
         System.out.println("范围[3，10]的和: " + rangeResult);
         System.out.println();
 
         System.out.println("------------------------------多次修改和查询------------------------------");
-        TreeArray.add(2,2);
-        TreeArray.add(7,4);
-        TreeArray.add(10,5);
-        int sumAfterModifications = TreeArray.range(1, 10);
+        SingleModifyRangeQuery.add(2,2);
+        SingleModifyRangeQuery.add(7,4);
+        SingleModifyRangeQuery.add(10,5);
+        int sumAfterModifications = SingleModifyRangeQuery.range(1, 10);
         System.out.println("前 10 个数的和: " + sumAfterModifications);
-        int rangeAfterModifications = TreeArray.range(5,10);
+        int rangeAfterModifications = SingleModifyRangeQuery.range(5,10);
         System.out.println("范围[5，10]的和: " + rangeAfterModifications);
         System.out.println();
     }

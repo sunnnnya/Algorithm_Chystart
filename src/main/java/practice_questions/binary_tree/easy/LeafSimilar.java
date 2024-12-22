@@ -1,8 +1,6 @@
 package practice_questions.binary_tree.easy;
 
 import practice_questions.binary_tree.base.TreeNode;
-import sun.reflect.generics.tree.Tree;
-
 import java.util.ArrayList;
 import java.util.List;
 

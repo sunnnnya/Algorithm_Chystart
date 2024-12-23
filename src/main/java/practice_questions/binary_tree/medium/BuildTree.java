@@ -16,11 +16,11 @@ public class BuildTree {
     /**
      * 构建二叉树
      *
-     * @param preorder
-     * @param inorder
+     * @param preorder 先序遍历数组
+     * @param inorder  中序遍历数组
      * @return
      */
-    public TreeNode buildTree(int[] preorder, int[] inorder) {
+    public static TreeNode buildTree(int[] preorder, int[] inorder) {
         if (preorder == null || inorder == null || preorder.length != inorder.length) {
             return null;
         }
@@ -55,7 +55,14 @@ public class BuildTree {
         return head;
     }
 
+    /**
+     * 测试
+     *
+     * @param args
+     */
     public static void main(String[] args) {
-
+        int[] preorder = new int[]{3,9,20,15,7};
+        int[] inorder = new int[]{9,3,15,20,7};
+        System.out.println(buildTree(preorder, inorder).val);
     }
 }

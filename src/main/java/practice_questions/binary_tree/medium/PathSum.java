@@ -1,7 +1,7 @@
 package practice_questions.binary_tree.medium;
 
 import practice_questions.binary_tree.base.TreeNode;
-
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,7 +23,52 @@ public class PathSum {
      * @return
      */
     public static List<List<Integer>> pathSum(TreeNode root, int targetSum) {
-        return null;
+        List<List<Integer>> ans = new ArrayList<>();
+        if(root != null) {
+            List<Integer> path = new ArrayList<>();
+            process(root, targetSum, 0, path, ans);
+        }
+        return ans;
+    }
+
+    /**
+     * 递归函数
+     *
+     * @param node      节点
+     * @param targetSum 目标值
+     * @param sum       当前路径的总和信息
+     * @param path      List<Integer> 路径
+     * @param ans       最终的答案
+     */
+    private static void process(TreeNode node, int targetSum, int sum, List<Integer> path, List<List<Integer>> ans) {
+        // 说明根节点，并且相加的总和 == targetSum
+        if(node.left == null && node.right == null) {
+            if(node.val + sum == targetSum) {
+                path.add(node.val);
+                copy(path, ans);
+                path.remove(path.size() - 1);
+            }
+        } else {
+            path.add(node.val);
+            if(node.left != null) {
+                process(node.left, targetSum, sum + node.val, path, ans);
+            }
+            if(node.right != null) {
+                process(node.right, targetSum, sum + node.val, path, ans);
+            }
+            path.remove(path.size() - 1);
+        }
+    }
+
+    /**
+     * 进行数组的复制
+     *
+     * @param path 某一个符合条件的路径
+     * @param ans  最终答案
+     */
+    private static void copy(List<Integer> path, List<List<Integer>> ans) {
+        List<Integer> copy = new ArrayList<>(path);
+        ans.add(copy);
     }
 
     /**

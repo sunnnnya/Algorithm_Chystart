@@ -8,6 +8,8 @@ import practice_questions.binary_tree.base.TreeNode;
  * @Author: 丛虹羽
  * @Date: 2024/12/24 下午12:51
  * @Description: 二叉搜索树的最低公共祖先
+ *
+ * leetcode: https://leetcode.cn/problems/lowest-common-ancestor-of-a-binary-search-tree/description/?envType=problem-list-v2&envId=nbQFMpWe
  */
 public class LowestCommonAncestor {
 

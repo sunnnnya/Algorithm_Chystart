@@ -1,4 +1,4 @@
-package practice_questions.dp.easy;
+package practice_questions.dynamic_program.easy;
 
 import java.util.Arrays;
 

@@ -1,4 +1,4 @@
-package basic_knowledge.dynamic_programming.two_dimensional;
+package basic_knowledge.dynamic_program.two_dimensional;
 
 /**
  * @BelongsPackage: basic_knowledge.dynamic_programming.two_dimensional

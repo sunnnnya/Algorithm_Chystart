@@ -1,4 +1,4 @@
-package basic_knowledge.dynamic_programming.one_dimensional;
+package basic_knowledge.dynamic_program.one_dimensional;
 
 /**
  * @BelongsPackage: basic_knowledge.dynamic_programming.one_dimensional

@@ -26,7 +26,7 @@ public class RobotWalk {
     }
 
     /**
-     * 暴力递归 —— 首先明确函数的返回值，然后一定确定返回的参数
+     * 暴力递归 —— 首先明确函数的返回值，然后一定确定返回的参数，以及 base case 的正确设置
      *
      * @param cur  机器人当前来到的位置 cur
      * @param rest 还有 rest 步要走
@@ -48,7 +48,7 @@ public class RobotWalk {
     }
 
     /**
-     * 暴力递归 + 缓存表
+     * 暴力递归 + 缓存表 = 记忆化搜索
      *
      * @param N     一共的格子
      * @param start 开始的位置
@@ -71,7 +71,7 @@ public class RobotWalk {
 
     /**
      * 暴力递归 + 缓存表 —— 首先明确函数的返回值，然后一定确定返回的参数,
-     * 不要想着理解整个递归的全部流程，分某个特定部分进行分情况讨论，然后输出回答案！！！！
+     *      不要想着理解整个递归的全部流程，分某个特定部分进行分情况讨论，然后输出回答案！！！！
      *
      * @param cur  机器人当前来到的位置 cur
      * @param rest 还有 rest 步要走
@@ -128,7 +128,7 @@ public class RobotWalk {
      * @param args
      */
     public static void main(String[] args) {
-        // 暴力递归
+        // 暴力递归：使用自然智慧进行尝试
         System.out.println(ways1(4, 2, 4, 4));
         // 3
 
@@ -136,6 +136,7 @@ public class RobotWalk {
         System.out.println(ways2(4, 2, 4, 4));
         // 3
 
+        // 动态规划：按照尝试策略总结状态转移方程 <=> 自底向上
         System.out.println(ways3(4, 2, 4, 4));
         // 3
     }

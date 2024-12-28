@@ -76,6 +76,77 @@ public class CardsInline {
     }
 
     /**
+     * 根据规则返回，获胜者的分数
+     *
+     * @param arr
+     * @return
+     */
+    public static int win2(int[] arr) {
+        if(arr == null || arr.length == 0) {
+            return 0;
+        }
+        int N = arr.length;
+        int[][] offensiveMap = new int[N][N];
+        int[][] defensiveMap = new int[N][N];
+        for(int i = 0; i < N; i++) {
+            for(int j = 0; j < N; j++) {
+                offensiveMap[i][j] = -1;
+                defensiveMap[i][j] = -1;
+            }
+        }
+        int first = offensive2(arr, 0, arr.length - 1, offensiveMap, defensiveMap);
+        int second = defensive2(arr, 0, arr.length - 1, offensiveMap, defensiveMap);
+        return Math.max(first, second);
+    }
+
+    /**
+     * 先手函数：以先手的情况下，在 arr[left ... right] 可以获取到的最大分数
+     *      先手玩家希望最大化自己的得分
+     *
+     * @param arr   牌的原始数组
+     * @param left  左侧的下标
+     * @param right 右侧的下标
+     * @return
+     */
+    public static int offensive2(int[] arr, int left, int right, int[][] offensiveMap, int[][] defensiveMap) {
+        if(offensiveMap[left][right] != -1) {
+            return offensiveMap[left][right];
+        }
+        int ans = 0;
+        if(left == right) {
+            ans = arr[left];
+        } else {
+            int p1 = arr[left] + defensive2(arr, left + 1, right, offensiveMap, defensiveMap);
+            int p2 = arr[right] + defensive2(arr, left, right - 1, offensiveMap, defensiveMap);
+            ans = Math.max(p1, p2);
+        }
+        offensiveMap[left][right] = ans;
+        return ans;
+    }
+
+    /**
+     * 后手函数：以后手的情况下，在 arr[left ... right] 可以获取到的最大分数
+     *      后手玩家则试图最小化先手玩家的得分
+     *
+     * @param arr   牌的原始数组
+     * @param left  左侧的下标
+     * @param right 右侧的下标
+     * @return
+     */
+    public static int defensive2(int[] arr, int left, int right, int[][] offensiveMap, int[][] defensiveMap) {
+        if(defensiveMap[left][right] != -1) {
+            return defensiveMap[left][right];
+        }
+        if(left == right) {
+            return 0;
+        }
+        int p1 = offensive2(arr, left + 1, right, offensiveMap, defensiveMap);
+        int p2 = offensive2(arr, left, right - 1, offensiveMap, defensiveMap);
+        defensiveMap[left][right] = Math.min(p1, p2);
+        return defensiveMap[left][right];
+    }
+
+    /**
      * 测试
      *
      * @param args
@@ -84,45 +155,45 @@ public class CardsInline {
         // 测试用例1: 基础测试
         int[] arr1 = {4, 7, 9, 5};
         System.out.println("测试用例1: " + Arrays.toString(arr1));
-        System.out.println("结果: " + win1(arr1));
+        System.out.println("结果: " + win2(arr1));
 
         // 测试用例2: 只有两个数
         int[] arr2 = {1, 100};
         System.out.println("\n测试用例2: " + Arrays.toString(arr2));
-        System.out.println("结果: " + win1(arr2));
+        System.out.println("结果: " + win2(arr2));
 
         // 测试用例3: 单个数字
         int[] arr3 = {50};
         System.out.println("\n测试用例3: " + Arrays.toString(arr3));
-        System.out.println("结果: " + win1(arr3));
+        System.out.println("结果: " + win2(arr3));
 
         // 测试用例4: 所有数字相等
         int[] arr4 = {5, 5, 5, 5};
         System.out.println("\n测试用例4: " + Arrays.toString(arr4));
-        System.out.println("结果: " + win1(arr4));
+        System.out.println("结果: " + win2(arr4));
 
         // 测试用例5: 递增序列
         int[] arr5 = {1, 2, 3, 4, 5};
         System.out.println("\n测试用例5: " + Arrays.toString(arr5));
-        System.out.println("结果: " + win1(arr5));
+        System.out.println("结果: " + win2(arr5));
 
         // 测试用例6: 递减序列
         int[] arr6 = {5, 4, 3, 2, 1};
         System.out.println("\n测试用例6: " + Arrays.toString(arr6));
-        System.out.println("结果: " + win1(arr6));
+        System.out.println("结果: " + win2(arr6));
 
         // 测试用例7: 较大数组
         int[] arr7 = {10, 20, 30, 40, 50, 60, 70};
         System.out.println("\n测试用例7: " + Arrays.toString(arr7));
-        System.out.println("结果: " + win1(arr7));
+        System.out.println("结果: " + win2(arr7));
 
         // 测试用例8: 空数组
         int[] arr8 = {};
         System.out.println("\n测试用例8: 空数组");
-        System.out.println("结果: " + win1(arr8));
+        System.out.println("结果: " + win2(arr8));
 
         // 测试用例9: null
         System.out.println("\n测试用例9: null");
-        System.out.println("结果: " + win1(null));
+        System.out.println("结果: " + win2(null));
     }
 }

@@ -18,27 +18,16 @@ public class PivotIndex {
      */
     public static int pivotIndex(int[] nums) {
         int N = nums.length;
-        if(N == 1) {
-            return 0;
+        int[] sum = new int[N + 1];
+        for(int i = 1; i <= N; i++) {
+            sum[i] = sum[i - 1] + nums[i - 1];
         }
-        // 构建前缀和数组
-        for(int i = 1; i < N; i++) {
-            nums[i] += nums[i - 1];
-        }
-        if(nums[N - 1] - nums[0] == 0) {
-            return 0;
-        }
-        int ans = -1;
-        for (int i = 1; i < N - 1; i++) {
-            if (nums[N - 1] - nums[i] == nums[i - 1]) {
-                ans = i;
-                break;
+        for(int i = 1; i <= N; i++) {
+            if(sum[N] - sum[i] == sum[i - 1]) {
+                return i - 1;
             }
         }
-        if (ans == -1 && nums[nums.length - 2] == 0) {
-            return nums.length - 1;
-        }
-        return ans;
+        return -1;
     }
 
     /**

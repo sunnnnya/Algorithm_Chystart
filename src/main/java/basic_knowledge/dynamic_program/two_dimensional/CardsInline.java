@@ -147,6 +147,53 @@ public class CardsInline {
     }
 
     /**
+     * 严格表位置依赖的动态规划
+     *
+     * @param arr 原始数组
+     * @return
+     */
+    public static int win3(int[] arr) {
+        int N = arr.length;
+        int[][] offensiveMap = new int[N][N];
+        int[][] defensiveMap = new int[N][N];
+        // arr[] = {7, 4, 16, 15, 1}
+        // 因为 L <= R 所以矩阵左下角全部无效
+
+        // offensiveMap[][]:
+        //   0  1  2  3  4
+        // 0 7
+        // 1 x  4
+        // 2 x  x  16
+        // 3 x  x  x  15
+        // 4 x  x  x   x  1
+
+        // defensiveMap[][]:
+        //   0  1  2  3  4
+        // 0 0
+        // 1 x  0
+        // 2 x  x  0
+        // 3 x  x  x  0
+        // 4 x  x  x  x  0
+
+        // 填充先手矩阵的对角线
+        for(int i = 0; i < N; i++) {
+            offensiveMap[i][i] = arr[i];
+        }
+        // 严格位置依赖
+        for(int startCol = 1; startCol < N; startCol++) {
+            int row = 0;
+            int col = startCol;
+            for(; col < N;) {
+                offensiveMap[row][col] = Math.max(arr[row] + defensiveMap[row + 1][col], arr[col] + defensiveMap[row][col - 1]);
+                defensiveMap[row][col] = Math.min(offensiveMap[row + 1][col], offensiveMap[row][col - 1]);
+                row++;
+                col++;
+            }
+        }
+        return Math.max(offensiveMap[0][N - 1], defensiveMap[0][N - 1]);
+    }
+
+    /**
      * 测试
      *
      * @param args

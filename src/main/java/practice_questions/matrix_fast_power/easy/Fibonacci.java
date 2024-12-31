@@ -9,9 +9,6 @@ import java.util.Arrays;
  * @Date: 2024/9/13 下午8:03
  * @Description: 矩阵快速幂的实现
  *
- * 斐波那契数 （通常用 F(n) 表示）形成的序列称为 斐波那契数列 。该数列由 0 和 1 开始，后面的每一项数字都是前面两项数字的和。
- * F(0) = 0，F(1) = 1，F(n) = F(n - 1) + F(n - 2)，其中 n > 1
- *
  * leetcode： https://leetcode.cn/problems/fibonacci-number
  */
 public class Fibonacci {
@@ -91,7 +88,7 @@ public class Fibonacci {
         }
         long[][] base = new long[][]{{0, 1}};
         long[][] loop = new long[][]{{0, 1},
-                                   {1, 1}};
+                                     {1, 1}};
         long[][] result = matrixFasterPow(loop, n - 1);
         return matrixMulti(base, result)[0][1];
     }
@@ -111,7 +108,7 @@ public class Fibonacci {
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < M; j++) {
                 for (int k = 0; k < K; k++) {
-                    c[i][j] += a[i][k] * b[k][j];
+                    c[i][j] = (int)(((long)c[i][j] + ((long)a[i][k] * b[k][j]) % MOD) % MOD);
                 }
             }
         }
@@ -139,26 +136,41 @@ public class Fibonacci {
         return unit;
     }
 
-
     /**
      * 测试
      *
      * @param args
      */
     public static void main(String[] args) {
-        System.out.println(fib(2));
-        // 1
+        // 边界测试
+        System.out.println("=== 边界测试 ===");
+        System.out.println("n = 0: " + fib(0));  // 预期: 0
+        System.out.println("n = 1: " + fib(1));  // 预期: 1
 
-        System.out.println(fib(3));
-        // 2
+        // 小数值测试
+        System.out.println("\n=== 小数值测试 ===");
+        System.out.println("n = 2: " + fib(2));  // 预期: 1
+        System.out.println("n = 3: " + fib(3));  // 预期: 2
+        System.out.println("n = 4: " + fib(4));  // 预期: 3
+        System.out.println("n = 5: " + fib(5));  // 预期: 5
+        System.out.println("n = 6: " + fib(6));  // 预期: 8
 
-        System.out.println(fib(4));
-        // 3
+        // 中等数值测试
+        System.out.println("\n=== 中等数值测试 ===");
+        System.out.println("n = 10: " + fib(10));  // 预期: 55
+        System.out.println("n = 15: " + fib(15));  // 预期: 610
+        System.out.println("n = 20: " + fib(20));  // 预期: 6765
 
-        System.out.println(fib(100));
-        // 3736710778780434371
+        // 大数值测试（需要取模）
+        System.out.println("\n=== 大数值测试（取模后结果）===");
+        System.out.println("n = 30: " + fib(30) % MOD);  // 预期: 832040
+        System.out.println("n = 48: " + fib(48) % MOD);  // 预期: 807526948
+        System.out.println("n = 50: " + fib(50) % MOD);  // 预期: 586268941
 
-        System.out.println(fib(100) % MOD);
-        // 687995182
+        // 超大数值测试
+        System.out.println("\n=== 超大数值测试（取模后结果）===");
+        System.out.println("n = 100: " + fib(100) % MOD);  // 预期: 687995182
+        System.out.println("n = 200: " + fib(200) % MOD); // 预期：349361645
+        System.out.println("n = 1000: " + fib(1000) % MOD);  // 预期: 517691607
     }
 }

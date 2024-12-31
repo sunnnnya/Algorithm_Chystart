@@ -7,9 +7,6 @@ package practice_questions.matrix_fast_power.medium;
  * @Date: 2024/8/21 下午8:24
  * @Description: 多米诺和托米诺平铺
  *
- * 有两种形状的瓷砖：一种是 2 x 1 的多米诺形，另一种是形如 "L" 的托米诺形。两种形状都可以旋转。
- * 给定整数 n ，返回可以平铺 2 x n 的面板的方法的数量。返回对 10^9 + 7 取模 的值。
- *
  * leetcode：https://leetcode.cn/problems/domino-and-tromino-tiling
  */
 public class NumTilings {
@@ -17,9 +14,9 @@ public class NumTilings {
     private static final int MOD = 1000000007;
 
     /**
-     * 暴力打标
+     * 使用暴力递归的方式，打表找规律
      *
-     * @param n
+     * @param n 原始数据
      * @return
      */
     public static void table(int n) {
@@ -29,7 +26,8 @@ public class NumTilings {
     }
 
     /**
-     * 暴力递归
+     * 暴力递归：
+     *      函数含义：当前完整的宽度为 n，且 包含 或者 不包含 多出来一块的方法数有多少？？？
      *
      * @param n  表示宽度
      * @param m  是否单独多出来一块
@@ -41,33 +39,55 @@ public class NumTilings {
             // return m == 0 ? 1 : 0;
         }
         if (n == 1) {
+            // 0        0
+            // 0      0 0
             return 1;
         }
         if (m == 1) {
-            return process(n - 1, 1) + process(n - 1, 0);
+            // 情况一：
+            // 0 0 0 0    -> 1 1 0 0
+            //   0 0 0    ->   0 0 0
+            // 情况二：
+            // 0 0 0 0    -> 1 1 0 0
+            //   0 0 0    ->   1 0 0
+            return process(n - 1, 1) +
+                   process(n - 1, 0);
         } else {
-            return process(n - 1, 0) + 2 * process(n - 2, 1) + process(n - 2, 0);
+            // 情况一：
+            // 0 0 0 0  ->  1 1 0 0
+            // 0 0 0 0  ->  1 1 0 0 -> 必须使用多米诺，没办法使用托米诺
+            // 情况二：
+            // 0 0 0 0  ->  1 1 0 0
+            // 0 0 0 0  ->  1 0 0 0
+            // 情况三：
+            // 0 0 0 0  ->  1 0 0 0
+            // 0 0 0 0  ->  1 1 0 0
+            // 情况四：
+            // 0 0 0 0  ->  1 0 0 0
+            // 0 0 0 0  ->  1 0 0 0
+            return process(n - 1, 0) +
+                    2 * process(n - 2, 1) +
+                    process(n - 2, 0);
         }
     }
 
     /**
      * 使用矩阵快速幂
      *
-     * @param n
+     * @param n 幂次
      * @return
      */
     public static int numTilings(int n) {
-        int[][] base = new int[][]{{1, 2, 5, 11}};
+        int[][] base = new int[][]{{1, 2, 5}};
         if (n <= 4) {
             return base[0][n - 1];
         }
-        int[][] loop = new int[][]{{0, 0, 0, 0},
-                                   {1, 0, 0, 1},
-                                   {0, 1, 0, 0},
-                                   {0, 0, 1, 2}};
-        int[][] ans = matrixPower(loop, n - 4);
+        int[][] loop = new int[][]{{0, 0, 1},
+                                   {1, 0, 0},
+                                   {0, 1, 2}};
+        int[][] ans = matrixPower(loop, n - 3);
         // 这部分 + mod 的原因：防止前面出现负数
-        return (matrixMultiply(base, ans)[0][3] + MOD) % MOD;
+        return (matrixMultiply(base, ans)[0][2] + MOD) % MOD;
     }
 
     /**

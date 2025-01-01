@@ -1,4 +1,4 @@
-package practice_questions.bfs;
+package practice_questions.bfs.medium;
 
 /**
  * @BelongsPackage: practice_questions.bfs

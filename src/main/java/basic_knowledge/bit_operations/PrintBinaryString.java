@@ -23,29 +23,94 @@ public class PrintBinaryString {
     }
 
     /**
+     * 固定位数的打印十进制对应的二进制信息
+     *
+     * @param number 十进制数
+     */
+    public static void printBinaryString(int number) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for(; number > 0; number >>= 1) {
+            stringBuilder.insert(0, number & 1);
+        }
+        if(stringBuilder.length() == 0) {
+            System.out.println("0");
+        } else {
+            System.out.println(stringBuilder.toString());
+        }
+    }
+
+    /**
      * 测试
      *
      * @param args
      */
     public static void main(String[] args) {
-        // Test Case 1
-        System.out.print("Test Case 1 (Input: 0): ");
-        printBinStr(0); // Expected: 00000000000000000000000000000000
+        System.out.println("-------------------Testing printBinStr:-------------------");
+        System.out.print("Number: 0 -> ");
+        printBinStr(0); // 输出: 00000000000000000000000000000000
 
-        // Test Case 2
-        System.out.print("Test Case 2 (Input: 2147483647): ");
-        printBinStr(2147483647); // Expected: 01111111111111111111111111111111
+        System.out.print("Number: 1 -> ");
+        printBinStr(1); // 输出: 00000000000000000000000000000001
 
-        // Test Case 3
-        System.out.print("Test Case 3 (Input: -1): ");
-        printBinStr(-1); // Expected: 11111111111111111111111111111111
+        System.out.print("Number: 2 -> ");
+        printBinStr(2); // 输出: 00000000000000000000000000000010
 
-        // Test Case 4
-        System.out.print("Test Case 4 (Input: -920): ");
-        printBinStr(-920); // Expected: 11111111111111111111110010011000
+        System.out.print("Number: 10 -> ");
+        printBinStr(10); // 输出: 00000000000000000000000000001010
 
-        // Test Case 5
-        System.out.print("Test Case 5 (Input: -2147483648): ");
-        printBinStr(-2147483648); // Expected: 10000000000000000000000000000000
+        System.out.print("Number: 31 -> ");
+        printBinStr(31); // 输出: 00000000000000000000000000011111
+
+        System.out.print("Number: 255 -> ");
+        printBinStr(255); // 输出: 00000000000000000000000011111111
+
+        System.out.print("Number: 256 -> ");
+        printBinStr(256); // 输出: 00000000000000000000000100000000
+
+        System.out.print("Number: -1 -> ");
+        printBinStr(-1); // 输出: 11111111111111111111111111111111
+
+        System.out.print("Number: -10 -> ");
+        printBinStr(-10); // 输出: 11111111111111111111111111110110
+
+        System.out.print("Number: Integer.MAX_VALUE -> ");
+        printBinStr(Integer.MAX_VALUE); // 输出: 01111111111111111111111111111111
+
+        System.out.print("Number: Integer.MIN_VALUE -> ");
+        printBinStr(Integer.MIN_VALUE); // 输出: 10000000000000000000000000000000
+
+        System.out.println("--------------Testing printBinaryString:--------------");
+        System.out.print("Number: 0 -> ");
+        printBinaryString(0); // 输出: 0
+
+        System.out.print("Number: 1 -> ");
+        printBinaryString(1); // 输出: 1
+
+        System.out.print("Number: 2 -> ");
+        printBinaryString(2); // 输出: 10
+
+        System.out.print("Number: 10 -> ");
+        printBinaryString(10); // 输出: 1010
+
+        System.out.print("Number: 31 -> ");
+        printBinaryString(31); // 输出: 11111
+
+        System.out.print("Number: 255 -> ");
+        printBinaryString(255); // 输出: 11111111
+
+        System.out.print("Number: 256 -> ");
+        printBinaryString(256); // 输出: 100000000
+
+        System.out.print("Number: -1 -> ");
+        printBinaryString(-1); // 输出: (打印逻辑可能不明确)
+
+        System.out.print("Number: -10 -> ");
+        printBinaryString(-10); // 输出: (打印逻辑可能不明确)
+
+        System.out.print("Number: Integer.MAX_VALUE -> ");
+        printBinaryString(Integer.MAX_VALUE); // 输出: 1111111111111111111111111111111
+
+        System.out.print("Number: Integer.MIN_VALUE -> ");
+        printBinaryString(Integer.MIN_VALUE); // 输出: (打印逻辑可能不明确)
     }
 }

@@ -9,15 +9,17 @@ package basic_knowledge.dynamic_program.two_dimensional;
  * 规定 1 和 A 对应、2 和 B 对应、3 和 C 对应 ... 26 和 Z 对应
  *      那么一个数字字符串比如 "111" 可以转化为 "AAA"、"KA" 和 "AK"
  *      给定一个只有数字字符组成的字符串 str，返回有多少种转化结果？？
+ *
+ * leetcode：https://leetcode.cn/problems/decode-ways/?envType=problem-list-v2&envId=Za3cwcvz
  **/
 public class ConvertToLetterString {
 
     /**
      * 暴力递归
-     *      表示从 i 到 str.length() - 1 有多少种返回策略？
+     *      表示从 i 到 str.length() - 1 有多少种方法？
      *
      * @param str 数字字符串
-     * @return
+     * @return    返回方法总数
      */
     public static int number1(String str) {
         if(str == null || str.isEmpty()) {
@@ -34,16 +36,18 @@ public class ConvertToLetterString {
      * @return
      */
     public static int process1(char[] c, int i) {
-        // 字符串结束的时候能正常转换
+        // 字符串结束的时候，找到一种转换的方法数
         if(i == c.length) {
             return 1;
         }
+        // 当发现单独遇到了 0 的时候，说明当前的转换方式不对，直接返回 0 方法数
         if(c[i] == '0') {
             return 0;
         }
-        // 字符单独转
+        // 当前单个字符自己单独转，方法数依赖于 下一个 位置
         int ways = process1(c, i + 1);
         // 字符不越界，且两个字符凑出来一种方法
+        // 当前两个字符进行转换，等于跳两个字符的方法数的和
         if(i < c.length - 1 && ((c[i] - '0') * 10 + (c[i + 1] - '0')) <= 26) {
             ways += process1(c, i + 2);
         }
@@ -55,7 +59,7 @@ public class ConvertToLetterString {
      *      从右到左的尝试模型
      *
      * @param str 数字字符串
-     * @return
+     * @return    返回转换的方法数
      */
     public static int number(String str) {
         if(str == null || str.isEmpty()) {
@@ -65,6 +69,7 @@ public class ConvertToLetterString {
         int N = c.length;
         int[] dp = new int[N + 1];
         dp[N] = 1;
+        // 从右往左填写，从右到左的尝试模型
         for(int j = N - 1; j >= 0; j--) {
             if(c[j] != '0') {
                 dp[j] = dp[j + 1];

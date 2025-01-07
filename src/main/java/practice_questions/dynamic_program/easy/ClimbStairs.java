@@ -9,8 +9,6 @@ import java.util.Arrays;
  * @Date: 2024/12/7 下午11:47
  * @Description: 爬楼梯
  *
- * 假设你正在爬楼梯。需要 n 阶你才能到达楼顶。每次你可以爬 1 或 2 个台阶。你有多少种不同的方法可以爬到楼顶呢？
- *
  * leetcode:https://leetcode.cn/problems/climbing-stairs
  */
 public class ClimbStairs {
@@ -20,15 +18,12 @@ public class ClimbStairs {
     /**
      * 使用递归解题(不使用记忆化搜索)，时间复杂度O（2^N）
      *
-     * @param n
+     * @param n 台阶个数
      * @return
      */
     public static int climbStairs1(int n) {
-        if(n == 1) {
-            return 1;
-        }
-        if(n == 2) {
-            return 2;
+        if(n <= 2) {
+            return n;
         }
         // 原始递归的方式有很多次重复计算
         return climbStairs1(n - 1) + climbStairs1(n - 2);
@@ -47,11 +42,8 @@ public class ClimbStairs {
     }
 
     public static int f2(int n, int[] dp) {
-        if (n == 1) {
-            return 1;
-        }
-        if (n == 2) {
-            return 2;
+        if (n <= 2) {
+            return n;
         }
         if (dp[n] != -1) {
             return dp[n];
@@ -83,11 +75,8 @@ public class ClimbStairs {
      * @return
      */
     public static int climbStairs4(int n) {
-        if (n == 1) {
-            return 1;
-        }
-        if (n == 2) {
-            return 2;
+        if (n <= 2) {
+            return n;
         }
         int a = 1;
         int b = 2;
@@ -106,7 +95,7 @@ public class ClimbStairs {
      * @return
      */
     public static int climbStairs(int n) {
-        if(n >= 1 && n <= 2) {
+        if(n <= 2) {
             return n;
         }
         int[][] arr = new int[][]{{1, 2}};

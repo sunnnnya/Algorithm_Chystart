@@ -76,5 +76,17 @@ public class NearestExit {
         int[] entrance = {1, 2};
         System.out.println(nearestExit(maze, entrance));
         // 1
+
+        char[][] maze1 = {{'+', '+', '+'},
+                {'.', '.', '.'},
+                {'+', '+', '+'}};
+        int[] entrance1 = {1, 0};
+        System.out.println(nearestExit(maze1, entrance1));
+        // 2
+
+        char[][] maze2 = {{'.', '+'}};
+        int[] entrance2 = {0, 0};
+        System.out.println(nearestExit(maze2, entrance2));
+        // -1
     }
 }

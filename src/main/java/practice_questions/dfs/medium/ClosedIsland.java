@@ -1,5 +1,7 @@
 package practice_questions.dfs.medium;
 
+import java.sql.SQLOutput;
+
 /**
  * @BelongsPackage: practice_questions.dfs.medium
  * @ClassName: ClosedIsland
@@ -13,7 +15,8 @@ public class ClosedIsland {
 
     /**
      * dfs + 分析
-     * 只要 0 区域接触到了边界证明当前岛屿不是封闭的，遍历完成后，如果在范围内还有 0 存在，证明当前的是就是封闭岛屿
+     *  只要 0 区域接触到了边界证明当前岛屿不是封闭的，遍历完成后，如果在范围内还有 0 存在，证明当前的是就是封闭岛屿
+     *  使用 dfs 进行计数遍历
      *
      * @param grid 原始数组
      * @return
@@ -72,6 +75,16 @@ public class ClosedIsland {
                 {1, 1, 1, 1, 1, 1, 1, 0}
         };
         System.out.println(closedIsland(grid));
+        // 2
+
+        int[][] grid1 = {{1, 1, 1, 1, 1, 1, 1},
+                         {1, 0, 0, 0, 0, 0, 1},
+                         {1, 0, 1, 1, 1, 0, 1},
+                         {1, 0, 1, 0, 1, 0, 1},
+                         {1, 0, 1, 1, 1, 0, 1},
+                         {1, 0, 0, 0, 0, 0, 1},
+                         {1, 1, 1, 1, 1, 1, 1}};
+        System.out.println(closedIsland(grid1));
         // 2
     }
 }

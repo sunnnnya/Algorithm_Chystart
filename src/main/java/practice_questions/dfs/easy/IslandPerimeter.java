@@ -70,5 +70,17 @@ public class IslandPerimeter {
                         {1, 1, 0, 0}};
         System.out.println(islandPerimeter(grid));
         // 16
+
+        int[][] grid1 = {{1}};
+        System.out.println(islandPerimeter(grid1));
+        // 4
+
+        int[][] grid2 = {{1, 0}};
+        System.out.println(islandPerimeter(grid2));
+        // 4
+
+        int[][] grid3 = {{0}};
+        System.out.println(islandPerimeter(grid3));
+        // 0
     }
 }

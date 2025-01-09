@@ -12,7 +12,7 @@ package practice_questions.dfs.medium;
 public class NumEnclaves {
 
     /**
-     * dfs 渲染
+     * dfs 渲染，使用原始数组充当 vis[][]
      *
      * @param grid 原始数组
      * @return
@@ -70,5 +70,14 @@ public class NumEnclaves {
         };
         System.out.println(numEnclaves(grid));
         // 3
+
+        int[][] grid1 = {
+                {0, 1, 1, 0},
+                {0, 0, 1, 0},
+                {0, 0, 1, 0},
+                {0, 0, 0, 0}
+        };
+        System.out.println(numEnclaves(grid1));
+        // 0
     }
 }

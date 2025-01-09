@@ -19,13 +19,14 @@ public class MyPow {
      * @return
      */
     public static double myPow(double x, int n) {
-        if(n < 0) {
+        long N = n;
+        if(N < 0) {
             x = 1 / x;
-            n = -n;
+            N = -N;
         }
         double mul = 1.0;
-        for(; n > 0 ; n >>= 1, x = x * x) {
-            if((n & 1) == 1) {
+        for(; N > 0 ; N >>= 1, x = x * x) {
+            if((N & 1) == 1) {
                 mul = mul * x;
             }
         }

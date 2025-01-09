@@ -9,27 +9,14 @@ import java.util.Arrays;
  * @Date: 2024/9/2 下午3:04
  * @Description: 解码方法
  *
- * 一条包含字母 A-Z 的消息通过以下映射进行了 编码 ：
- *     "1" -> 'A'
- *     "2" -> 'B'
- *     ...
- *     "25" -> 'Y'
- *     "26" -> 'Z'
- * 然而，在 解码 已编码的消息时，你意识到有许多不同的方式来解码，因为有些编码被包含在其它编码当中（"2" 和 "5" 与 "25"）。
- * 例如，"11106" 可以映射为：
- *      "AAJF" ，将消息分组为 (1, 1, 10, 6)
- *      "KJF" ，将消息分组为 (11, 10, 6)
- *      消息不能分组为  (1, 11, 06) ，因为 "06" 不是一个合法编码（只有 "6" 是合法的）。
- * 注意，可能存在无法解码的字符串。
- *
  * leetcode:https://leetcode.cn/problems/decode-ways
  */
 public class NumDecodings {
 
     /**
-     * 暴力递归，(超时)
+     * 暴力递归 —— TLE
      *
-     * @param s
+     * @param s 原始字符串
      * @return
      */
     public static int numDecodings1(String s) {
@@ -37,25 +24,24 @@ public class NumDecodings {
     }
 
     /**
-     * s：数字字符串
-     * s[i....]有多少种有效的转换方案
+     * 返回 char[] -> c[i....]有多少种有效的转换方案
      *
-     * @param s
-     * @param i
-     * @return
+     * @param s 原始字符串
+     * @param i 当时字符串的索引位置
+     * @return  返回转换的方法数
      */
     public static int process(char[] s, int i) {
+        // 说明当前字符串已经遍历结束都没返回 0，说明找到一种转换方法
         if (i == s.length) {
             return 1;
         }
-        // i 没越界
         int ans;
         if (s[i] == '0') {
             ans = 0;
         } else {
-            // i 自己单独
+            // c[i] 单独转换
             ans = process(s, i + 1);
-            // [.. i, i + 1...] 的位置去转
+            // c[i] + c[i + 1] 一起转换
             if(i + 1 < s.length && ((s[i] - '0') * 10 + (s[i + 1] - '0')) <= 26) {
                 ans += process(s, i + 2);
             }
@@ -64,9 +50,9 @@ public class NumDecodings {
     }
 
     /**
-     * 使用暴力递归 + 记忆化搜索
+     * 暴力递归 + 缓存表 => 记忆化搜索
      *
-     * @param s
+     * @param s 原始字符串
      * @return
      */
     public static int numDecodings2(String s) {
@@ -78,10 +64,10 @@ public class NumDecodings {
     /**
      * 方案一样，只是加了缓存表
      *
-     * @param s
-     * @param i
-     * @param dp
-     * @return
+     * @param s  原始字符串
+     * @param i  字符串索引位置
+     * @param dp 缓存表
+     * @return   返回方法数
      */
     public static int process1(char[] s, int i, int[] dp) {
         if (i == s.length) {
@@ -106,7 +92,7 @@ public class NumDecodings {
     /**
      * 采用动态规划的方式进行填充
      *
-     * @param s
+     * @param s 原始字符串
      * @return
      */
     public static int numDecodings(String s) {
@@ -135,5 +121,11 @@ public class NumDecodings {
     public static void main(String[] args) {
         System.out.println(numDecodings("226"));
         // 3
+
+        System.out.println(numDecodings("06"));
+        // 0
+
+        System.out.println(numDecodings("12"));
+        // 2
     }
 }

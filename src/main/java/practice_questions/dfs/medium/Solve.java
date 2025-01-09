@@ -70,5 +70,10 @@ public class Solve {
         solve(board);
         System.out.println(Arrays.deepToString(board));
         // [[X, X, X, X], [X, X, X, X], [X, X, X, X], [X, O, X, X]]
+
+        char[][] board1 = {{'X'}};
+        solve(board1);
+        System.out.println(Arrays.deepToString(board1));
+        // [[X]]
     }
 }

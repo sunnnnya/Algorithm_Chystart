@@ -1,4 +1,4 @@
-package basic_knowledge.tree.segment_tree;
+package basic_knowledge.segment_tree;
 
 /**
  * @BelongsPackage: basic_knowledge.tree.segment_tree
@@ -6,6 +6,7 @@ package basic_knowledge.tree.segment_tree;
  * @Author: 丛虹羽
  * @Date: 2024/8/4 下午5:41
  * @Description: 线段树：如果原数组的长度是 N ，则准备 4N 长度的数组一定够用。
+ *
  * 因为数组是从 1 ~ arr.length：
  *     结论：
  *         一个节点的父亲 ： i / 2

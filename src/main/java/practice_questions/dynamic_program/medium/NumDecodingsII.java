@@ -213,5 +213,8 @@ public class NumDecodingsII {
 
         System.out.println(numDecodings("2*"));
         // 15
+
+        System.out.println(numDecodings("7*9*3*6*3*0*5*4*9*7*3*7*1*8*3*2*0*0*6*"));
+        // 196465252
     }
 }

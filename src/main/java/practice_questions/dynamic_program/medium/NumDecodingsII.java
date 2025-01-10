@@ -150,6 +150,7 @@ public class NumDecodingsII {
                 }
             }
         }
+        ways %= MOD;
         dp[i] = ways;
         return ways;
     }

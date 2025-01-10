@@ -1,6 +1,5 @@
 package practice_questions.dynamic_program.medium;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
 /**
@@ -75,7 +74,7 @@ public class MaxMoves {
      * @param grid 原始数组
      * @return
      */
-    public static int maxMoves(int[][] grid) {
+    public static int maxMoves2(int[][] grid) {
         int m = grid.length, n = grid[0].length, ans = 0;
         int[][] dp = new int[m][n];
         for(int i = 0; i < m; i++) {
@@ -117,6 +116,42 @@ public class MaxMoves {
     }
 
     /**
+     * 使用动态规划求解问题
+     *
+     * @param grid 原始数组
+     * @return     最大步数
+     */
+    public static int maxMoves(int[][] grid) {
+        int m = grid.length, n = grid[0].length;
+        int[][] dp = new int[m][n];
+        for (int i = 0; i < m; i++) {
+            Arrays.fill(dp[i], 0);
+        }
+        // 从右向左逐列计算 dp 值
+        for (int col = n - 2; col >= 0; col--) {
+            for (int row = 0; row < m; row++) {
+                int max = 0;
+                // 检查三个可能的方向，并选择满足条件的路径
+                if (row > 0 && grid[row - 1][col + 1] > grid[row][col]) {
+                    max = Math.max(max, dp[row - 1][col + 1] + 1);
+                }
+                if (grid[row][col + 1] > grid[row][col]) {
+                    max = Math.max(max, dp[row][col + 1] + 1);
+                }
+                if (row < m - 1 && grid[row + 1][col + 1] > grid[row][col]) {
+                    max = Math.max(max, dp[row + 1][col + 1] + 1);
+                }
+                dp[row][col] = max;
+            }
+        }
+        int ans = 0;
+        for (int row = 0; row < m; row++) {
+            ans = Math.max(ans, dp[row][0]);
+        }
+        return ans;
+    }
+
+    /**
      * 测试
      *
      * @param args
@@ -140,6 +175,15 @@ public class MaxMoves {
                 {10, 9, 13, 15}
         };
         System.out.println(maxMoves(grid1));
+        // 3
+
+        int[][] grid2 = {
+                {2, 4, 3, 5},
+                {5, 4, 9, 3},
+                {3, 4, 2, 11},
+                {10, 9, 13, 15}
+        };
+        System.out.println(maxMoves(grid2));
         // 3
     }
 }

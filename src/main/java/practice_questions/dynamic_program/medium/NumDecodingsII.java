@@ -21,6 +21,7 @@ public class NumDecodingsII {
      * @return  返回有效的转换方法数
      */
     public static int numDecodings(String s) {
+        // 计算结果的过程中可能出现，爆 int 的情况，索引直接使用 long 进行处理，最后转换就可以！！！
         return (int)dfs(s.toCharArray(), 0);
     }
 

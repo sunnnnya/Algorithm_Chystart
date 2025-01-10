@@ -13,7 +13,7 @@ import java.util.Arrays;
  */
 public class NumDecodingsII {
 
-    // 题目要求取余
+    // 一般情况下 1000000007 使用 long 类型进行处理
     public static long MOD = 1000000007;
 
     /**
@@ -28,8 +28,8 @@ public class NumDecodingsII {
     }
 
     /**
-     * 暴力递归函数的定义：
-     *      从 i 到 结束 位置返回的方法数
+     * 暴力递归函数含义：
+     *      从 i 到 最后位置 返回的方法数
      *
      * @param c 字符数组
      * @param i 索引位置
@@ -43,7 +43,9 @@ public class NumDecodingsII {
             return 0;
         }
         long ways = dfs1(c, i + 1) * (c[i] == '*' ? 9 : 1) % MOD;
-        // i 位置单独转：* -> 9种、1 ~ 9 -> 1种
+        // i 位置单独转：
+        //     *   -> 9 种转换方法
+        //   1 ~ 9 -> 1 种方法
         if(i + 1 < c.length) {
             if(c[i] != '*') {
                 if(c[i + 1] != '*') {
@@ -112,7 +114,9 @@ public class NumDecodingsII {
             return dp[i];
         }
         long ways = dfs2(c, i + 1, dp) * (c[i] == '*' ? 9 : 1) % MOD;
-        // i 位置单独转：* -> 9种、1 ~ 9 -> 1种
+        // i 位置单独转：
+        //     * -> 9种
+        //     1 ~ 9 -> 1种
         if(i + 1 < c.length) {
             if(c[i] != '*') {
                 if(c[i + 1] != '*') {

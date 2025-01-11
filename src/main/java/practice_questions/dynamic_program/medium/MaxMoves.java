@@ -177,6 +177,7 @@ public class MaxMoves {
         System.out.println(maxMoves(grid1));
         // 3
 
+        // 动态规划版本
         int[][] grid2 = {
                 {2, 4, 3, 5},
                 {5, 4, 9, 3},

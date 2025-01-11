@@ -115,8 +115,8 @@ public class NumDecodingsII {
         }
         long ways = dfs2(c, i + 1, dp) * (c[i] == '*' ? 9 : 1) % MOD;
         // i 位置单独转：
-        //     * -> 9种
-        //     1 ~ 9 -> 1种
+        //     * -> 可以转换成 1 ~ 9 种方案
+        //     1 ~ 9 -> 只能转换成 1 种方案
         if(i + 1 < c.length) {
             if(c[i] != '*') {
                 if(c[i + 1] != '*') {

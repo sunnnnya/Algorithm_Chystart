@@ -51,6 +51,26 @@ public class IsPalindrome {
     }
 
     /**
+     * 字符数组返回整数
+     *
+     * @param c
+     * @return
+     */
+    public static int charArrayToInteger(char[] c, boolean leftToRight) {
+        int rev = 0;
+        if(leftToRight) {
+            for (char value : c) {
+                rev = rev * 10 + (value - '0');
+            }
+        } else {
+            for(int i = c.length - 1; i >= 0; i--) {
+                rev = rev * 10 + (c[i] - '0');
+            }
+        }
+        return rev;
+    }
+
+    /**
      * 测试
      *
      * @param args
@@ -61,5 +81,12 @@ public class IsPalindrome {
 
         System.out.println(isPalindrome(-121));
         // false
+
+        char[] c = new char[]{'1', '2', '7'};
+        System.out.println(charArrayToInteger(c, true));
+        // 127
+
+        System.out.println(charArrayToInteger(c, false));
+        // 721
     }
 }

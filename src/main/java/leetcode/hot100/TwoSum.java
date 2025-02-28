@@ -15,20 +15,37 @@ import java.util.HashMap;
 public class TwoSum {
 
     /**
-     * 两数之和
-     *  1: 使用 哈希表 进行处理
+     * 哈希表
      *
      * @param nums
      * @param target
      * @return
      */
-    public static int[] twoSum(int[] nums, int target) {
+    public static int[] twoSum1(int[] nums, int target) {
         HashMap<Integer, Integer> map = new HashMap<>();
         for(int i = 0; i < nums.length; i++) {
             if(map.containsKey(target - nums[i])) {
                 return new int[]{i, map.get(target-nums[i])};
             }
             map.put(nums[i], i);
+        }
+        return new int[]{-1, -1};
+    }
+
+    /**
+     * 双重 for 循环
+     *
+     * @param nums
+     * @param target
+     * @return
+     */
+    public static int[] twoSum(int[] nums, int target) {
+        for(int i = 0; i < nums.length; i++) {
+            for(int j = i + 1; j < nums.length; j++) {
+                if(nums[i] + nums[j] == target) {
+                    return new int[]{i, j};
+                }
+            }
         }
         return new int[]{-1, -1};
     }

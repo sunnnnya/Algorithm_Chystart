@@ -1,5 +1,6 @@
 package leetcode.hot100;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 
@@ -17,11 +18,11 @@ public class TwoSum {
     /**
      * 哈希表
      *
-     * @param nums
-     * @param target
+     * @param nums   原始数组
+     * @param target 目标值
      * @return
      */
-    public static int[] twoSum(int[] nums, int target) {
+    public static int[] twoSum1(int[] nums, int target) {
         HashMap<Integer, Integer> map = new HashMap<>();
         for(int i = 0; i < nums.length; i++) {
             if(map.containsKey(target - nums[i])) {
@@ -35,16 +36,45 @@ public class TwoSum {
     /**
      * 双重 for 循环
      *
-     * @param nums
-     * @param target
+     * @param nums   原始数组
+     * @param target 目标值
      * @return
      */
-    public static int[] twoSum1(int[] nums, int target) {
+    public static int[] twoSum2(int[] nums, int target) {
         for(int i = 0; i < nums.length; i++) {
             for(int j = i + 1; j < nums.length; j++) {
                 if(nums[i] + nums[j] == target) {
                     return new int[]{i, j};
                 }
+            }
+        }
+        return new int[]{-1, -1};
+    }
+
+    /**
+     * 双指针
+     *
+     * @param nums   原始数组
+     * @param target 目标值
+     * @return
+     */
+    public static int[] twoSum(int[] nums, int target) {
+        int[] arr = Arrays.copyOf(nums, nums.length);
+        Arrays.sort(arr);
+        int l = 0, r = nums.length - 1;
+        while(l < r) {
+            if(arr[l] + arr[r] < target) {
+                l++;
+            } else if (arr[l] + arr[r] > target) {
+                r--;
+            } else {
+                ArrayList<Integer> list = new ArrayList<>();
+                for(int i = 0; i < nums.length; i++) {
+                    if (nums[i] == arr[l] || nums[i] == arr[r]) {
+                        list.add(i);
+                    }
+                }
+                return new int[]{list.get(0), list.get(1)};
             }
         }
         return new int[]{-1, -1};

@@ -7,11 +7,11 @@ import java.util.Arrays;
  * @ClassName: DutchFlagI
  * @Author: 丛虹羽
  * @Date: 2024/12/4 下午9:18
- * @Description: 荷兰国旗问题
+ * @Description: 基础荷兰国旗问题 I
  *
- * 给定一个数组arr，和一个数num，
- *      请把小于等于num的数放在数组的左边，
- *      大于num的数放在数组的右边。
+ * 给定一个数组 arr，和一个数 num，
+ *      <= num 的数放在数组的左边，
+ *      > num  的数放在数组的右边。
  * 要求额外空间复杂度0(1)，时间复杂度O(N)
  */
 public class DutchFlagI {
@@ -26,7 +26,7 @@ public class DutchFlagI {
      */
     public static void dutchFlag(int[] arr, int num) {
         if(arr == null || arr.length < 2) {
-            return ;
+            return;
         }
         int index = 0, L = 0;
         while(index < arr.length) {
@@ -60,8 +60,8 @@ public class DutchFlagI {
         int[] arr = {4, 5, 3, 2, 5, 6, 5, 3, 2, 1, 2};
         System.out.println("原始数组：" + Arrays.toString(arr));
         dutchFlag(arr, 2);
-        System.out.println("荷兰国旗后的数组" + Arrays.toString(arr));
+        System.out.println("荷兰国旗后的数组：" + Arrays.toString(arr));
         // 原始数组：[4, 5, 3, 2, 5, 6, 5, 3, 2, 1, 2]
-        // 荷兰国旗后的数组[2, 2, 1, 2, 5, 6, 5, 3, 5, 3, 4]
+        // 荷兰国旗后的数组：[2, 2, 1, 2, 5, 6, 5, 3, 5, 3, 4]
     }
 }

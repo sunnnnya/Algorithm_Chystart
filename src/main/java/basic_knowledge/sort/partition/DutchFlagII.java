@@ -10,9 +10,9 @@ import java.util.Arrays;
  * @Description: 荷兰国旗问题
  *
  * 给定一个数组 arr，和一个数 num，
- *      请把小于 num 的数放在数组的左边，
- *      等于 num 的数放在数组的中间，
- *      大于 num 的数放在数组的右边。
+ *      <= num 的数放在数组的左边，
+ *      == num 的数放在数组的中间，
+ *       > num 的数放在数组的右边。
  * 要求额外空间复杂度 O(1)，时间复杂度 O(N)
  */
 public class DutchFlagII {
@@ -30,8 +30,7 @@ public class DutchFlagII {
         if (arr == null || arr.length < 2) {
             return ;
         }
-        int N = arr.length - 1;
-        int less = 0, more = N, index = 0, target = arr[N];
+        int less = 0, more = arr.length - 1, index = 0, target = arr[arr.length - 1];
         while(index <= more) {
             if(arr[index] > target) {
                 swap(arr, index, more--);
@@ -64,7 +63,9 @@ public class DutchFlagII {
     public static void main(String[] args) {
         int[] arr = {10, 5, 2, 8, 6, 12, 5, 3, 8, 9, 14, 6, 6};
         System.out.println("原数组：" + Arrays.toString(arr));
+        // 原数组：[10, 5, 2, 8, 6, 12, 5, 3, 8, 9, 14, 6, 6]
         dutchFlagPlus(arr);
         System.out.println("荷兰国旗后的数组：" + Arrays.toString(arr));
+        // 荷兰国旗后的数组：[5, 2, 3, 5, 6, 6, 6, 8, 9, 14, 12, 8, 10]
     }
 }

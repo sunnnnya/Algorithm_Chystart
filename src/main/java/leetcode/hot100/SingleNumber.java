@@ -12,7 +12,9 @@ package leetcode.hot100;
 public class SingleNumber {
 
     /**
-     * 异或技巧
+     * 异或技巧：
+     *  0 ^ N = N
+     *  N ^ N = 0
      *
      * @param nums 原始数组
      * @return

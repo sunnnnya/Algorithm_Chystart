@@ -8,7 +8,7 @@ import java.util.Arrays;
  * @create: 2025-03-06 20:32
  * @description: 按奇偶排序数组 II
  *
- * leetcode： https://leetcode.cn/problems/sort-array-by-parity-ii/description/
+ * leetcode: https://leetcode.cn/problems/sort-array-by-parity-ii/description/
  **/
 public class SortArrayByParityII {
 
@@ -59,10 +59,10 @@ public class SortArrayByParityII {
     public static void main(String[] args) {
         int[] arr = new int[]{4, 2, 5, 7};
         System.out.println(Arrays.toString(sortArrayByParityII(arr)));
-        //
+        // [2, 7, 4, 5]
 
         int[] arr1 = new int[]{2, 3};
         System.out.println(Arrays.toString(sortArrayByParityII(arr1)));
-        //
+        // [2, 3]
     }
 }

@@ -23,17 +23,21 @@ public class HasCycle {
      * @return
      */
     public static boolean hasCycle(ListNode head) {
-        if(head == null || head.next == null) {
+        if(head == null || head.next == null || head.next.next == null) {
             return false;
         }
         ListNode S = head.next;
         ListNode F = head.next.next;
-        while(F != null && F.next != null && S != F) {
+        while(S != F) {
+            if(F.next == null || F.next.next == null) {
+                return false;
+            }
             S = S.next;
             F = F.next.next;
         }
-        return S == F;
+        return true;
     }
+
     /**
      * 哈希表，进行判断
      *

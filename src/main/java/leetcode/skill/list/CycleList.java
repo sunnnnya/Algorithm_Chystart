@@ -1,4 +1,4 @@
-package practice_questions.list.easy;
+package leetcode.skill.list;
 
 import practice_questions.list.common.ListNode;
 import java.util.HashSet;
@@ -8,20 +8,19 @@ import java.util.HashSet;
  * @ClassName: ExistsCircle
  * @Author: 丛虹羽
  * @Date: 2024/8/10 下午10:04
- * @Description: 判断链表中是否存在环， 如果存在环，则返回第一个入环的节点；
+ * @Description: 判断链表中是否存在环，如果存在环，则返回第一个入环的节点；
  *
- * 给你一个链表的头节点 head ，判断链表中是否有环。
- * 如果链表中有某个节点，可以通过连续跟踪 next 指针再次到达，则链表中存在环。
- * 如果链表中存在环 ，则返回 true 。 否则，返回 false 。
+ * 给你一个链表的头节点 head ，判断链表中是否有环。如果链表中有某个节点，可以通过连续跟踪 next 指针再次到达，则链表中存在环。
+ * 如果链表中存在环 ，则返回 true。 否则返回 false 。
  *
  * leetcode：https://leetcode.cn/problems/linked-list-cycle/
  */
-public class HasCycle {
+public class CycleList {
 
     /**
      * 使用哈希表判断是否存在环
      *
-     * @param head
+     * @param head 链表头节点
      * @return
      */
     public static boolean hasCycle1(ListNode head) {
@@ -42,8 +41,8 @@ public class HasCycle {
     /**
      * 使用快慢指针：
      *      首先，快指针F一次走两步，慢指针S一次走一步；当两个节点相遇之后，已经证明是有环了。
-     *      ，快指针从节点重新出发，一次走一步，随后再遇到的节点就是第一个入环的节点；
-     * @param head
+     *      快指针从节点重新出发，一次走一步，随后再遇到的节点就是第一个入环的节点；
+     * @param head 链表头节点
      * @return
      */
     public static boolean hasCycle(ListNode head) {

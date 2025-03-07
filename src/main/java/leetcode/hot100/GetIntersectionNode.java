@@ -7,9 +7,9 @@ import leetcode.skill.list.ListNode;
  * @ClassName: GetIntersectionNode
  * @Author: 丛虹羽
  * @Date: 2025/3/7 22:58
- * @Description: 相交链表
+ * @Description: 相交链表 - chystart
  *
- * leetcode： https://leetcode.cn/problems/intersection-of-two-linked-lists/description/?envType=study-plan-v2&envId=top-100-liked
+ * leetcode: https://leetcode.cn/problems/intersection-of-two-linked-lists/description/?envType=study-plan-v2&envId=top-100-liked
  */
 public class GetIntersectionNode {
 

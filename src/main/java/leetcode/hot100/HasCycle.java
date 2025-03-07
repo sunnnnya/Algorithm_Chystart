@@ -2,6 +2,8 @@ package leetcode.hot100;
 
 import leetcode.skill.list.ListNode;
 
+import java.util.HashSet;
+
 /**
  * @BelongsPackage: leetcode.hot100
  * @ClassName: HasCycle
@@ -31,6 +33,26 @@ public class HasCycle {
             F = F.next.next;
         }
         return S == F;
+    }
+    /**
+     * 哈希表，进行判断
+     *
+     * @param head 头节点
+     * @return
+     */
+    public static boolean hasCycle1(ListNode head) {
+        if(head == null || head.next == null || head.next.next == null) {
+            return false;
+        }
+        HashSet<ListNode> set = new HashSet<>();
+        while(head != null) {
+            if(set.contains(head)) {
+                return true;
+            }
+            set.add(head);
+            head = head.next;
+        }
+        return false;
     }
 
     /**

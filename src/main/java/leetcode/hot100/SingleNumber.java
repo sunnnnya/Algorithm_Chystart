@@ -5,7 +5,7 @@ package leetcode.hot100;
  * @ClassName: SingleNumber
  * @Author: 丛虹羽
  * @Date: 2025/3/3 22:55
- * @Description: 只出现一次的数字
+ * @Description: 只出现一次的数字 - chystart
  *
  * leetcode: https://leetcode.cn/problems/single-number/description/?envType=study-plan-v2&envId=top-100-liked
  */

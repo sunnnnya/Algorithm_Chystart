@@ -1,56 +1,64 @@
 package leetcode.hot100;
 
 /**
- * @package: leetcode.hot100
- * @author: chystart
- * @create: 2025-03-08 13:09
- * @description: 接雨水 - chystart
+ * @BelongsPackage: practice_questions.double_pointer.hard
+ * @ClassName: Trap
+ * @Author: 丛虹羽
+ * @Date: 2024/12/13 下午1:28
+ * @Description: 接雨水 - chystart
  *
- * leetcode: https://leetcode.cn/problems/trapping-rain-water/description/?envType=study-plan-v2&envId=top-100-liked
- **/
+ * leetcode：https://leetcode.cn/problems/trapping-rain-water
+ */
 public class Trap {
-
     /**
-     * 辅助数组
+     * 分析：
+     *  当前方格可以容纳的雨水的个数 = min(max(左侧)，max(右侧)) - nums[i]
      *
      * @param height 原始数组
-     * @return
+     * @return       可以容纳的雨水的个数
      */
     public static int trap1(int[] height) {
-        int n = height.length, sum = 0;
+        int n = height.length;
+        // 数据预处理：
+        //      lmax[i] 表示：0 ~ i 之间的最大值
+        //      rmax[i] 表示：i ~ n - 1 之间的最大值
         int[] lmax = new int[n];
         int[] rmax = new int[n];
         lmax[0] = height[0];
+        rmax[n - 1] = height[n - 1];
         for(int i = 1; i < height.length; i++) {
+            // 0 ~ i - 1 之间的最大值，和当前值比较
             lmax[i] = Math.max(lmax[i - 1], height[i]);
         }
-        rmax[n - 1] = height[n - 1];
         for(int i = n - 2; i >= 0; i--) {
+            // i + 1 ~ n 之间的最大值，和当前值比较
             rmax[i] = Math.max(rmax[i + 1], height[i]);
         }
-        for(int i = 1; i < n - 1; i++) {
-            sum += Math.max(Math.min(lmax[i - 1], rmax[i + 1]) - height[i], 0);
+        int ans = 0;
+        for (int i = 1; i < n - 1; i++) {
+            // 左侧和右侧中的最大值中的最小值 - 当前值，表示当前可以容纳多少个水，但如果此位置的值比左右两侧都大，则返回0
+            ans += Math.max((Math.min(lmax[i - 1], rmax[i + 1]) - height[i]), 0);
         }
-        return sum;
+        return ans;
     }
 
     /**
-     * 双指针：
-     *      找到接住雨水的瓶颈是最短边，所以靠近左右侧最短边的值可以确定接住雨水数量，同时一定更新最大值！！
+     * 接雨水
+     *   使用双指针的方式实现，对原始的问题进行二次抽象，短板效应
+     *   双指针问题 + 单调性分析
      *
-     * @param height 原始数组
-     * @return
+     * @param nums 原始数组
+     * @return     返回的雨水数
      */
-    public static int trap(int[] height) {
-        int l = 1, r = height.length - 2, lmax = height[0], rmax = height[height.length - 1];
-        int ans = 0;
+    public static int trap(int[] nums) {
+        int l = 1, r = nums.length - 2, lmax = nums[0], rmax = nums[nums.length - 1],  ans = 0;
         while(l <= r) {
             if(lmax <= rmax) {
-                ans += Math.max(lmax - height[l], 0);
-                lmax = Math.max(lmax, height[l++]);
+                ans += Math.max(0, lmax - nums[l]);
+                lmax = Math.max(lmax, nums[l++]);
             } else {
-                ans += Math.max(rmax - height[r], 0);
-                rmax = Math.max(rmax, height[r--]);
+                ans += Math.max(0, rmax - nums[r]);
+                rmax = Math.max(rmax, nums[r--]);
             }
         }
         return ans;

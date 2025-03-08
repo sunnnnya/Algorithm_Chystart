@@ -23,19 +23,16 @@ public class HasCycle {
      * @return
      */
     public static boolean hasCycle(ListNode head) {
-        if(head == null || head.next == null || head.next.next == null) {
-            return false;
-        }
-        ListNode S = head.next;
-        ListNode F = head.next.next;
-        while(S != F) {
-            if(F.next == null || F.next.next == null) {
-                return false;
+        ListNode slow = head;
+        ListNode fast = head;
+        while(fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if (slow == fast) {
+                return true;
             }
-            S = S.next;
-            F = F.next.next;
         }
-        return true;
+        return false;
     }
 
     /**

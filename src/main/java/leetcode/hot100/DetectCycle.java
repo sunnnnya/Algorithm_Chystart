@@ -1,5 +1,6 @@
 package leetcode.hot100;
 
+import com.sun.xml.internal.ws.policy.EffectiveAlternativeSelector;
 import leetcode.skill.list.ListNode;
 
 import java.util.HashSet;
@@ -44,24 +45,25 @@ public class DetectCycle {
      * @return
      */
     public static ListNode detectCycle(ListNode head) {
-        if(head == null || head.next == null || head.next.next == null) {
+        ListNode slow = head;
+        ListNode fast = head;
+        while(fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if(slow == fast) {
+                break;
+            }
+        }
+        // 说明已经越界，根本就没有环的产生
+        if(fast == null || fast.next == null) {
             return null;
         }
-        ListNode S = head.next;
-        ListNode F = head.next.next;
-        while(F != S) {
-            if(F.next == null || F.next.next == null) {
-                return null;
-            }
-            S = S.next;
-            F = F.next.next;
+        fast = head;
+        while(fast != slow) {
+            fast = fast.next;
+            slow = slow.next;
         }
-        F = head;
-        while(S != F) {
-            S = S.next;
-            F = F.next;
-        }
-        return S;
+        return slow;
     }
 
     /**

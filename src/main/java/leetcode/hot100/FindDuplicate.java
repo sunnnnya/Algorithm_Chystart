@@ -6,7 +6,7 @@ import java.util.HashSet;
  * @package: leetcode.hot100
  * @author: chystart
  * @create: 2025-03-06 19:23
- * @description: 寻找重复数
+ * @description: 寻找重复数 - chystart
  *
  * leetcode: https://leetcode.cn/problems/find-the-duplicate-number/?envType=study-plan-v2&envId=top-100-liked
  **/
@@ -31,6 +31,10 @@ public class FindDuplicate {
 
     /**
      * 快慢指针寻找入环节点 —— 和链表中的解法一样，寻找第一个入环节点
+     * 寻找重复数，通过数组的下标和值之间是可以形成链表关系的
+     * 1 3 4 2 2
+     * 0 1 2 3 4
+     * 1 -> 3 -> 2 -> 4 -> 2
      *
      * @param nums 数组
      * @return

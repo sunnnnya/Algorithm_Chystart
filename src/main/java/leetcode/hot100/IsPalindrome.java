@@ -2,6 +2,8 @@ package leetcode.hot100;
 
 import leetcode.skill.list.ListNode;
 
+import java.util.Stack;
+
 /**
  * @package: leetcode.hot100
  * @author: chystart
@@ -13,12 +15,34 @@ import leetcode.skill.list.ListNode;
 public class IsPalindrome {
 
     /**
+     * 使用数组模拟栈 + 利用栈的结果特性进行回文判断
+     *
+     * @param head 原始链表头部
+     * @return
+     */
+    public static boolean isPalindrome(ListNode head) {
+        ListNode h = head;
+        Stack<ListNode> stack = new Stack<>();
+        while(head != null) {
+            stack.push(head);
+            head = head.next;
+        }
+        while(!stack.isEmpty()) {
+            if(h.val != stack.pop().val) {
+                return false;
+            }
+            h = h.next;
+        }
+        return true;
+    }
+
+    /**
      * 原始链表操作
      *
      * @param head 原始链表头节点
      * @return
      */
-    public static boolean isPalindrome(ListNode head) {
+    public static boolean isPalindrome1(ListNode head) {
         if(head == null || head.next == null) {
             return true;
         }

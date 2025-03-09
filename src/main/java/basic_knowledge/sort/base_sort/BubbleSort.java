@@ -18,13 +18,12 @@ public class BubbleSort {
      * @return
      */
     public static int[] bubbleSort(int[] arr) {
-        if (arr == null || arr.length < 2) {
+        if(arr == null || arr.length < 2) {
             return arr;
         }
-        // 从大到小
-        for (int i = arr.length - 1; i >= 1; i--) {
-            for (int j = 0; j < i; j++) {
-                if(arr[j] < arr[j + 1]) {
+        for(int i = arr.length - 1; i >= 1; i--) {
+            for(int j = 0; j < i; j++) {
+                if(arr[j] > arr[j + 1]) {
                     swap(arr, j, j + 1);
                 }
             }
@@ -50,9 +49,9 @@ public class BubbleSort {
      * 0 ^ N = N
      * N ^ N = 0
      *
-     * @param arr
-     * @param i
-     * @param j
+     * @param arr 原始数组
+     * @param i   i index
+     * @param j   j index
      */
     public static void swapWithXor(int[] arr, int i, int j) {
         arr[i] = arr[i] ^ arr[j];
@@ -70,7 +69,7 @@ public class BubbleSort {
         System.out.println("排序前：" + Arrays.toString(arr));
         System.out.println("排序后：" + Arrays.toString(bubbleSort(arr)));
         // 排序前：[19, 2, 4, 2, 1, -1, 88, 12, 29]
-        // 排序后：[88, 29, 19, 12, 4, 2, 2, 1, -1]
+        // 排序后：[-1, 1, 2, 2, 4, 12, 19, 29, 88]
 
         int[] arr1 = new int[]{1, 2, 4, 4, 6, 7, 8};
         swapWithXor(arr1, 2, 6);

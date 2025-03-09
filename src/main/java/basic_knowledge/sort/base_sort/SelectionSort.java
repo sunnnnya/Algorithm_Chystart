@@ -7,28 +7,28 @@ import java.util.Arrays;
  * @ClassName: SelectionSort
  * @Author: 丛虹羽
  * @Date: 2024/7/24 下午10:41
- * @Description: 选择排序 - 好好处理边界
+ * @Description: 选择排序 - 一定要清楚数组的边界是从 0 ~ N - 1，需要合理的运用这一点！！！
  */
 public class SelectionSort {
 
     /**
      * 选择排序 - O(n^2)
      *
-     * @param arr
+     * @param arr 原始数组排序
      * @return
      */
    public static int[] selectionSort(int[] arr) {
-       if (arr == null || arr.length < 2) {
-           return arr;
-       }
-       for (int i = 0; i < arr.length - 1; i++) {
-           int minIndex = i;
-           for (int j = i + 1; j < arr.length; j++) {
-               minIndex = arr[j] < arr[minIndex] ? j : minIndex;
-           }
-           swap(arr, minIndex, i);
-       }
-       return arr;
+        if(arr == null || arr.length < 2) {
+            return arr;
+        }
+        for(int i = 0, minIndex; i < arr.length - 1; i++) {
+            minIndex = i;
+            for(int j = i + 1; j < arr.length; j++) {
+                minIndex = arr[j] < arr[minIndex] ? j : minIndex;
+            }
+            swap(arr, i, minIndex);
+        }
+        return arr;
    }
 
     /**
@@ -43,7 +43,7 @@ public class SelectionSort {
        int temp = arr[i];
        arr[i] = arr[j];
        arr[j] = temp;
-    }
+   }
 
     /**
      * 测试

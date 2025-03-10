@@ -115,7 +115,7 @@ public class ImplementDequeWithDoubleList {
     /**
      * 判断是否为 空
      *
-     * @return
+     * @return true | false
      */
     public boolean isEmpty() {
         return size == 0;
@@ -124,7 +124,7 @@ public class ImplementDequeWithDoubleList {
     /**
      * 判断是否为满的
      *
-     * @return
+     * @return true | false
      */
     public boolean isFull() {
         return size == limit;

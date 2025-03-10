@@ -10,7 +10,7 @@ import java.util.Stack;
  *
  * leetcode: https://leetcode.cn/problems/implement-queue-using-stacks/description/
  **/
-public class ImplementQueueUsingStacks {
+public class ImplementQueueWithTwoStacks {
 
     public static class MyQueue {
 

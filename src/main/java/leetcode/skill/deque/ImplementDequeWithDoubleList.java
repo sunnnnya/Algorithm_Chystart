@@ -49,7 +49,7 @@ public class ImplementDequeWithDoubleList {
      * 双端链表从尾部插入
      *
      * @param value 插入的具体数值
-     * @return
+     * @return true | false
      */
     public boolean insertLast(int value) {
         if(isFull()) {
@@ -64,7 +64,7 @@ public class ImplementDequeWithDoubleList {
     /**
      * 删除头部节点
      *
-     * @return
+     * @return true | false
      */
     public boolean deleteFront() {
         if(isEmpty()) {
@@ -79,7 +79,7 @@ public class ImplementDequeWithDoubleList {
     /**
      * 删除尾部节点
      *
-     * @return
+     * @return true | false
      */
     public boolean deleteLast() {
         if(isEmpty()) {
@@ -92,9 +92,9 @@ public class ImplementDequeWithDoubleList {
     }
 
     /**
-     * 获取链表头部元素
+     * 获取双端队列的头部元素
      *
-     * @return
+     * @return int
      */
     public int getFront() {
         if(isEmpty()) {
@@ -104,6 +104,11 @@ public class ImplementDequeWithDoubleList {
         }
     }
 
+    /**
+     * 获取双端队列的尾部元素
+     *
+     * @return int
+     */
     public int getRear() {
         if(isEmpty()) {
             return -1;

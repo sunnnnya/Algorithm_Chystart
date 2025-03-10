@@ -11,7 +11,7 @@ import java.util.LinkedList;
  *
  * leetcode: https://leetcode.cn/problems/design-circular-deque/description/
  **/
-public class MyCircularDeque {
+public class ImplementDequeWithDoubleList {
 
     public Deque<Integer> deque = new LinkedList<>();
 
@@ -24,7 +24,7 @@ public class MyCircularDeque {
      *
      * @param k 元素的个数
      */
-    public MyCircularDeque(int k) {
+    public ImplementDequeWithDoubleList(int k) {
         size = 0;
         limit = k;
     }
@@ -33,7 +33,7 @@ public class MyCircularDeque {
      * 双端链表从头部插入
      *
      * @param value 插入的具体数值
-     * @return
+     * @return true | false
      */
     public boolean insertFront(int value) {
         if(isFull()) {
@@ -136,7 +136,7 @@ public class MyCircularDeque {
      * @param args
      */
     public static void main(String[] args) {
-        MyCircularDeque deque = new MyCircularDeque(3);
+        ImplementDequeWithDoubleList deque = new ImplementDequeWithDoubleList(3);
         System.out.println("insertLast(1): " + deque.insertLast(1));
         System.out.println("insertLast(2): " + deque.insertLast(2));
         System.out.println("insertFront(3): " + deque.insertFront(3));

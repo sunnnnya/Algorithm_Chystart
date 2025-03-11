@@ -1,4 +1,4 @@
-package basic_knowledge.queue.easy;
+package leetcode.skill.queue;
 
 /**
  * @BelongsPackage: basic_knowledge.queue
@@ -8,7 +8,6 @@ package basic_knowledge.queue.easy;
  * @Description: 使用数组实现循环队列
  *
  * 设计循环队列
- *
  */
 public class ImplementCircularQueueUseArray {
 
@@ -19,32 +18,34 @@ public class ImplementCircularQueueUseArray {
         public int[] queue;
         public int l, r, size, limit;
 
-        /**
-         * init
-         * @param k 数组的容量大小
-         */
         public CircularQueue(int k) {
             queue = new int[k];
             l = r = size = 0;
             limit = k;
         }
 
-        // 入队
+        /**
+         * 入队
+         *
+         * @param value 待加入的元素值
+         * @return true | false
+         */
         public boolean enQueue(int value) {
             if (isFull()) {
-                // 满了不能再入队了
                 return false;
             } else {
-                // 相当于入队列
                 queue[r] = value;
-                // 如果当前的有边界已经在数组索引的 basic_knowledge.queue.length - 1 位置，需要重新置换成0， 否则正常 + 1
                 r = r == limit - 1 ? 0 : r + 1;
                 size++;
                 return true;
             }
         }
 
-        // 弹出队列 左指针右移
+        /**
+         * 弹出队首元素，元素个数 -1
+         *
+         * @return 队列头部元素同时弹出
+         */
         public boolean deQueue() {
             if (isEmpty()) {
                 return false;
@@ -55,7 +56,11 @@ public class ImplementCircularQueueUseArray {
             }
         }
 
-        // 返回队列头部的数字
+        /**
+         * 返回队列头部的数字，l表示的就是当前队列的队首元素
+         *
+         * @return 队列头部位置
+         */
         public int front() {
             if(isEmpty()) {
                 return -1;
@@ -64,7 +69,11 @@ public class ImplementCircularQueueUseArray {
             }
         }
 
-        // 返回队列尾巴的数字
+        /**
+         * 返回队列尾巴的数字，r表示的是队尾元素的下一个位置
+         *
+         * @return 返回队尾的元素
+         */
         public int rear() {
             if(isEmpty()) {
                 return -1;
@@ -77,7 +86,7 @@ public class ImplementCircularQueueUseArray {
         /**
          * 判断队列是否空了
          *
-         * @return
+         * @return true | false
          */
         public boolean isEmpty() {
             return size == 0;
@@ -86,7 +95,7 @@ public class ImplementCircularQueueUseArray {
         /**
          * 判断队列是否满了
          *
-         * @return
+         * @return true | false
          */
         public boolean isFull() {
             return size == limit;

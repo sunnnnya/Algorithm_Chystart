@@ -4,6 +4,7 @@ import leetcode.skill.tree.TreeNode;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 /**
  * @package: leetcode.hot100
@@ -16,12 +17,36 @@ import java.util.List;
 public class InorderTraversal {
 
     /**
-     * 二叉树的中序遍历 —— 递归实现
+     * 二叉树的中序遍历 —— 非递归实现
      *
      * @param root 二叉树的根节点
      * @return 节点列表信息
      */
     public static List<Integer> inorderTraversal(TreeNode root) {
+        ArrayList<Integer> list = new ArrayList<>();
+        if(root != null) {
+            Stack<TreeNode> stack = new Stack<>();
+            while(!stack.isEmpty() || root != null) {
+                if(root != null) {
+                    stack.push(root);
+                    root = root.left;
+                } else {
+                    root = stack.pop();
+                    list.add(root.val);
+                    root = root.right;
+                }
+            }
+        }
+        return list;
+    }
+
+    /**
+     * 二叉树的中序遍历 —— 递归实现
+     *
+     * @param root 二叉树的根节点
+     * @return 节点列表信息
+     */
+    public static List<Integer> inorderTraversal1(TreeNode root) {
         ArrayList<Integer> list = new ArrayList<>();
         dfs(root, list);
         return list;

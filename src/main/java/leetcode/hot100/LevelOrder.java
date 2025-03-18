@@ -1,10 +1,8 @@
 package leetcode.hot100;
 
 import leetcode.skill.tree.TreeNode;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+
+import java.util.*;
 
 /**
  * @package: leetcode.hot100
@@ -16,6 +14,12 @@ import java.util.Queue;
  **/
 public class LevelOrder {
 
+    public static int MAXN = 2000;
+
+    public static TreeNode[] queue = new TreeNode[MAXN];
+
+    public static int l, r = 0;
+
     /**
      * bfs优化
      *
@@ -23,23 +27,22 @@ public class LevelOrder {
      * @return 层序遍历结果
      */
     public static List<List<Integer>> levelOrder(TreeNode root) {
-        List<List<Integer>> list = new ArrayList<>();
-        Queue<TreeNode> queue = new LinkedList<>();
         if(root == null) {
-            return list;
+            return Collections.emptyList();
         }
-        queue.add(root);
-        while(!queue.isEmpty()) {
+        List<List<Integer>> list = new ArrayList<>();
+        queue[r++] = root;
+        while(l < r) {
+            int size = r - l;
             List<Integer> subList = new ArrayList<>();
-            int size = queue.size();
             for(int i = 0; i < size; i++) {
-                root = queue.poll();
-                subList.add(root.val);
-                if(root.left != null) {
-                    queue.add(root.left);
+                TreeNode cur = queue[l++];
+                subList.add(cur.val);
+                if(cur.left != null) {
+                    queue[r++] = cur.left;
                 }
-                if(root.right != null) {
-                    queue.add(root.right);
+                if(cur.right != null) {
+                    queue[r++] = cur.right;
                 }
             }
             list.add(subList);
@@ -62,7 +65,7 @@ public class LevelOrder {
         node1.right = node3;
         node3.left = node4;
         node3.right = node5;
-        System.out.println(levelOrder(node1));
-        // [[3], [9, 20], [15, 7]]
+        System.out.println("Result: " + levelOrder(node1));
+        // Result: [[3], [9, 20], [15, 7]]
     }
 }

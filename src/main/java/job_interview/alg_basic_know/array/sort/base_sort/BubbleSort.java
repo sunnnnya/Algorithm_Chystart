@@ -1,9 +1,9 @@
-package job_interview.array.sort.base_sort;
+package job_interview.alg_basic_know.array.sort.base_sort;
 
 import java.util.Arrays;
 
 /**
- * @BelongsPackage: job_interview.array.sort
+ * @BelongsPackage: job_interview.alg_basic_know.array.sort
  * @ClassName: Bubble
  * @Author: 丛虹羽
  * @Date: 2025/3/25 09:23

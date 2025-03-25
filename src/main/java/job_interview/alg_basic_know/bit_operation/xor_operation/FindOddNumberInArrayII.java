@@ -1,9 +1,9 @@
-package job_interview.bit_operation.xor_operation;
+package job_interview.alg_basic_know.bit_operation.xor_operation;
 
 import java.util.Arrays;
 
 /**
- * @BelongsPackage: job_interview.bit_operation.xor_operation
+ * @BelongsPackage: job_interview.alg_basic_know.bit_operation.xor_operation
  * @ClassName: FindOddNumberInArrayII
  * @Author: 丛虹羽
  * @Date: 2025/3/25 10:34

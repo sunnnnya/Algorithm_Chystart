@@ -1,7 +1,7 @@
-package job_interview.array.search.binary_search;
+package job_interview.alg_basic_know.array.search.binary_search;
 
 /**
- * @BelongsPackage: job_interview.array.search.binary_search
+ * @BelongsPackage: job_interview.alg_basic_know.array.search.binary_search
  * @ClassName: BinarySearch
  * @Author: 丛虹羽
  * @Date: 2025/3/25 11:59

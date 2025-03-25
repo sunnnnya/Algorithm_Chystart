@@ -1,4 +1,4 @@
-package basic_knowledge.sort.partition;
+package job_interview.alg_basic_know.array.sort.partition;
 
 import java.util.Arrays;
 

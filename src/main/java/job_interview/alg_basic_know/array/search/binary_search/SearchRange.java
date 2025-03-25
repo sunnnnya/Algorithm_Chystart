@@ -1,9 +1,9 @@
-package job_interview.array.search.binary_search;
+package job_interview.alg_basic_know.array.search.binary_search;
 
 import java.util.Arrays;
 
 /**
- * @BelongsPackage: job_interview.array.search.binary_search
+ * @BelongsPackage: job_interview.alg_basic_know.array.search.binary_search
  * @ClassName: SearchRange
  * @Author: 丛虹羽
  * @Date: 2025/3/25 14:38

@@ -1,7 +1,7 @@
-package job_interview.recursion.array_recursion;
+package job_interview.alg_basic_know.recursion.array_recursion;
 
 /**
- * @BelongsPackage: job_interview.recursion.array
+ * @BelongsPackage: job_interview.alg_basic_know.recursion.array
  * @ClassName: GetMaxNumberInArray
  * @Author: 丛虹羽
  * @Date: 2025/3/25 13:10

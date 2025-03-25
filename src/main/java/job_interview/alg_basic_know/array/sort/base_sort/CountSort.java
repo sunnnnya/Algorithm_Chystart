@@ -1,7 +1,7 @@
-package job_interview.array.sort.base_sort;
+package job_interview.alg_basic_know.array.sort.base_sort;
 
 /**
- * @BelongsPackage: job_interview.array.sort
+ * @BelongsPackage: job_interview.alg_basic_know.array.sort
  * @ClassName: CountSort
  * @Author: 丛虹羽
  * @Date: 2025/3/25 09:30

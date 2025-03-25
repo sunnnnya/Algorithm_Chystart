@@ -12,12 +12,9 @@ import java.util.Arrays;
 public class FindOddNumberInArrayII {
 
     /**
-     * 组中只有 "两个" 出现奇数次的数，其他的所有数都出现了偶数次，找到这两个数！！
      * 知识点：使用异或 N ^ N = 0、0 ^ N = N
-     *
-     * 想法：使用 eor 一直异或到底，因为 a != b 所有最后的 eor = a ^ b 一定不等 0 ，
-     * 故所以肯定在 a、b上面有一个二进制位不相同，所以对整个数组中的元素针对某一位为1的数，进行异或就会拿到 a 或者 b
-     *
+     *   思路：（1）使用 eor 一直异或到底，因为 a != b 所有最后的 eor = a ^ b 一定不等 0。
+     *        （2）拿到 eor 最右侧的 1，进行分组异或，就会获取到出现奇数次的一个数，最后 eor ^ xor 拿到另一个数。
      * @return
      */
     public static int[] findOddNumberInArrayII(int[] arr) {

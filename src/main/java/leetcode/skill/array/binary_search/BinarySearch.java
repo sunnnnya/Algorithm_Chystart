@@ -20,7 +20,7 @@ public class BinarySearch {
             return -1;
         }
         int l = 0, r = arr.length - 1;
-        // 一定要写 ==，否则会遗漏下来有些值没有判断！！
+        // 一定要写相等，否则 l == r 的时候该值是没有判断的
         while(l <= r) {
             int mid = r + ((l - r) >> 1);
             if(arr[mid] < target) {

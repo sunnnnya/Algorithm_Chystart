@@ -1,4 +1,4 @@
-package job_interview.alg_basic_know.array.sort.partition;
+package job_interview.alg_basic_know.array.sort.ext.quick_sort_partition;
 
 import java.util.Arrays;
 
@@ -9,10 +9,7 @@ import java.util.Arrays;
  * @Date: 2024/12/4 下午9:43
  * @Description: 荷兰国旗问题
  *
- * 给定一个数组 arr，和一个数 num，
- *      <= num 的数放在数组的左边，
- *      == num 的数放在数组的中间，
- *       > num 的数放在数组的右边。
+ * 给定一个数组 arr，和一个数 num，<= num 的数放在数组的左边，== num 的数放在数组的中间，> num 的数放在数组的右边。
  * 要求额外空间复杂度 O(1)，时间复杂度 O(N)
  */
 public class DutchFlagII {
@@ -27,15 +24,15 @@ public class DutchFlagII {
      * @param arr
      */
     private static void dutchFlagPlus(int[] arr) {
-        if (arr == null || arr.length < 2) {
+        if(arr == null || arr.length < 2) {
             return ;
         }
         int less = 0, more = arr.length - 1, index = 0, target = arr[arr.length - 1];
         while(index <= more) {
-            if(arr[index] > target) {
-                swap(arr, index, more--);
-            } else if(arr[index] < target) {
+            if(arr[index] < target) {
                 swap(arr, index++, less++);
+            } else if(arr[index] > target) {
+                swap(arr, index, more--);
             } else {
                 index++;
             }

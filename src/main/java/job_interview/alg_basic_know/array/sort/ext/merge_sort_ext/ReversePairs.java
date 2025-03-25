@@ -1,7 +1,7 @@
-package job_interview.alg_basic_know.array.sort.merge_sort_ext;
+package job_interview.alg_basic_know.array.sort.ext.merge_sort_ext;
 
 /**
- * @BelongsPackage: job_interview.alg_basic_know.array.sort.merge_sort_ext
+ * @BelongsPackage: job_interview.alg_basic_know.array.sort.ext.merge_sort_ext
  * @ClassName: ReversePairs
  * @Author: 丛虹羽
  * @Date: 2025/3/25 21:13
@@ -83,7 +83,6 @@ public class ReversePairs {
         }
         return ans;
     }
-
 
     /**
      * 测试

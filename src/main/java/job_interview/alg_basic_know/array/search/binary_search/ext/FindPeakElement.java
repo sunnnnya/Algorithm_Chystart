@@ -1,4 +1,4 @@
-package job_interview.alg_basic_know.array.search.binary_search;
+package job_interview.alg_basic_know.array.search.binary_search.ext;
 
 /**
  * @package: leetcode.skill.array.binary_search

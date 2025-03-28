@@ -1,15 +1,14 @@
-package practice_questions.data_pre_processing.prefix_sum.easy;
+package job_interview.alg_basic_know.array.data_pre_process.prefix_sum;
 
 import java.util.HashMap;
 
 /**
- * @BelongsPackage: practice_questions.data_pre_processing.prefix_sum.easy
+ * @BelongsPackage: job_interview.alg_basic_know.array.data_pre_process.prefix_sum
  * @ClassName: LongestSubArraySumEqualsAim
  * @Author: 丛虹羽
- * @Date: 2024/12/28 下午12:16
+ * @Date: 2025/3/28 22:25
  * @Description: 返回无序数组中累加和为 aim 的最长子数组长度
- *
- * leetcode： https://leetcode.cn/problems/maximum-size-subarray-sum-equals-k/description/
+ * https://leetcode.cn/problems/maximum-size-subarray-sum-equals-k/description/
  */
 public class LongestSubArraySumEqualsAim {
 
@@ -21,20 +20,20 @@ public class LongestSubArraySumEqualsAim {
      * @return
      */
     public static int longestSubArraySumEqualsAim(int[] nums, int aim) {
+        // 指定前缀和最早出现的位置
         HashMap<Integer, Integer> map = new HashMap<>();
-        // 一定要塞入这样一条记录，因为 nums = {5}、aim = 5 此时就会查到 前缀和为 0 的下标 -1，结果等于 0 - (-1) = 1
         map.put(0, -1);
-        int ans = 0;
+        int mx = -1;
         for(int i = 0, sum = 0; i < nums.length; i++) {
             sum += nums[i];
             if(map.containsKey(sum - aim)) {
-                ans = Math.max(ans, i - map.get(sum - aim));
+                mx = Math.max(mx, i - map.get(sum - aim));
             }
             if(!map.containsKey(sum)) {
                 map.put(sum, i);
             }
         }
-        return ans;
+        return mx;
     }
 
     /**

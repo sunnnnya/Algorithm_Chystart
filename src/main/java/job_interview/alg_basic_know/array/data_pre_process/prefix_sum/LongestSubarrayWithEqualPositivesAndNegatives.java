@@ -7,7 +7,7 @@ import java.util.HashMap;
  * @ClassName: LongestSubarrayWithEqualPositivesAndNegatives
  * @Author: 丛虹羽
  * @Date: 2025/3/29 11:19
- * @Description: 判断数组中出现整数和负数相同的个数
+ * @Description: 求数组中出现正数和负数个数相同的最长子数组长度
  * https://www.nowcoder.com/practice/545544c060804eceaed0bb84fcd992fb
  */
 public class LongestSubarrayWithEqualPositivesAndNegatives {

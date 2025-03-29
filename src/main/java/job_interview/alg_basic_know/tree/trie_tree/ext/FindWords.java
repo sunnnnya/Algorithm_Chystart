@@ -45,6 +45,7 @@ public class FindWords {
     }
 
     /**
+     * 搜索到的指定字符串的个数
      *
      * @param board 字符数组
      * @param i     i index

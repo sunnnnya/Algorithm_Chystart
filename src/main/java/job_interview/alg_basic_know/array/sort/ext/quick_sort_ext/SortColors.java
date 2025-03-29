@@ -1,4 +1,4 @@
-package job_interview.alg_basic_know.array.sort.ext.quick_sort_partition;
+package job_interview.alg_basic_know.array.sort.ext.quick_sort_ext;
 
 import java.util.Arrays;
 

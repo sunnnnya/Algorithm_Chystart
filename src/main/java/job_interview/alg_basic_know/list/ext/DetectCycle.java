@@ -1,5 +1,7 @@
 package job_interview.alg_basic_know.list.ext;
 
+import java.util.HashSet;
+
 /**
  * @BelongsPackage: job_interview.alg_basic_know.list.ext
  * @ClassName: DetectCycle
@@ -11,7 +13,27 @@ package job_interview.alg_basic_know.list.ext;
 public class DetectCycle {
 
     /**
+     * 哈希表:
+     *  空间复杂度O(n)
+     *
+     * @param head 链表头节点
+     * @return 返回第一个入环节点
+     */
+    public static ListNode detectCycle1(ListNode head) {
+        HashSet<ListNode> set = new HashSet<>();
+        while(head != null) {
+            if(set.contains(head)) {
+                return head;
+            }
+            set.add(head);
+            head = head.next;
+        }
+        return null;
+    }
+
+    /**
      * 快慢指针的使用
+     *  空间复杂度：O(1)
      *
      * @param head 链表头节点
      * @return

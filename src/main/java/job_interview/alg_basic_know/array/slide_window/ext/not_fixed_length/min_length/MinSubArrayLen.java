@@ -1,4 +1,4 @@
-package practice_questions.slide_window.medium.not_fixed_length.min_length;
+package job_interview.alg_basic_know.array.slide_window.ext.not_fixed_length.min_length;
 
 /**
  * @BelongsPackage: practice_questions.slide_window.medium.not_fixed_length.min_length
@@ -6,8 +6,7 @@ package practice_questions.slide_window.medium.not_fixed_length.min_length;
  * @Author: 丛虹羽
  * @Date: 2024/12/9 下午10:13
  * @Description: 长度最小的子数组
- *
- * leetcode： https://leetcode.cn/problems/minimum-size-subarray-sum
+ * https://leetcode.cn/problems/minimum-size-subarray-sum
  */
 public class MinSubArrayLen {
 
@@ -38,7 +37,7 @@ public class MinSubArrayLen {
      * @param args
      */
     public static void main(String[] args) {
-        int[] arr = new int[]{2,3,1,2,4,3};
+        int[] arr = new int[]{2, 3, 1, 2, 4, 3};
         int target = 7;
         System.out.println(minSubArrayLen(target, arr));
         // 2

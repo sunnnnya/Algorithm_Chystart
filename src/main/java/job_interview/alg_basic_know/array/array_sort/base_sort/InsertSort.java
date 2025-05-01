@@ -1,4 +1,4 @@
-package job_interview.alg_basic_know.array.sort.base_sort;
+package job_interview.alg_basic_know.array.array_sort.base_sort;
 
 import java.util.Arrays;
 

@@ -1,4 +1,4 @@
-package job_interview.alg_basic_know.array.sort.ext.merge_sort_ext;
+package job_interview.alg_basic_know.array.array_sort.ext.merge_sort_ext;
 
 import java.util.Arrays;
 

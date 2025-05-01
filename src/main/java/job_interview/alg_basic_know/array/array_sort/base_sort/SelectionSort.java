@@ -1,31 +1,31 @@
-package job_interview.alg_basic_know.array.sort.base_sort;
+package job_interview.alg_basic_know.array.array_sort.base_sort;
 
 import java.util.Arrays;
 
 /**
  * @BelongsPackage: job_interview.alg_basic_know.array.sort
- * @ClassName: Bubble
+ * @ClassName: SelectionSort
  * @Author: 丛虹羽
- * @Date: 2025/3/25 09:23
- * @Description: 冒泡排序
+ * @Date: 2025/3/25 09:12
+ * @Description: 选择排序
  */
-public class BubbleSort {
+public class SelectionSort {
 
     /**
-     * 冒泡排序
+     * 选择排序
      *
      * @param arr 原始数组
      */
-    public static void bubbleSort(int[] arr) {
+    public static void selectionSort(int[] arr) {
         if(arr == null || arr.length < 2) {
-            return;
+            return ;
         }
-        for(int i = arr.length - 1; i > 0; i--) {
-            for(int j = 0; j < i; j++) {
-                if(arr[j] > arr[j + 1]) { // 小 -> 大
-                    swap(arr, j, j + 1);
-                }
+        for(int i = 0; i < arr.length - 1; i++) {
+            int minIndex = i;
+            for(int j = i + 1; j < arr.length; j++) {
+                minIndex = arr[j] < arr[minIndex] ? j : minIndex;
             }
+            swap(arr, minIndex, i);
         }
     }
 
@@ -48,9 +48,9 @@ public class BubbleSort {
      * @param args
      */
     public static void main(String[] args) {
-        int[] arr = new int[]{9, 4, 1, 2, 6, 5, -1, 0, 6, 8};
-        bubbleSort(arr);
+        int[] arr = new int[]{9, 2, 1, 3, 2, 7, -1, 0};
+        selectionSort(arr);
         System.out.println("Result: " + Arrays.toString(arr));
-        // Result: [-1, 0, 1, 2, 4, 5, 6, 6, 8, 9]
+        // Result: [-1, 0, 1, 2, 2, 3, 7, 9]
     }
 }

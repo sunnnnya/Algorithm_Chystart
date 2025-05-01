@@ -1,4 +1,4 @@
-package job_interview.alg_basic_know.array.sort.ext.quick_sort_ext;
+package job_interview.alg_basic_know.array.array_sort.ext.quick_sort_ext;
 
 /**
  * @BelongsPackage: job_interview.alg_basic_know.array.sort.ext.quick_sort_ext

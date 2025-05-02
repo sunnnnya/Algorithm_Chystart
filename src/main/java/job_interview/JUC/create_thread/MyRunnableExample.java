@@ -5,7 +5,7 @@ package job_interview.JUC.create_thread;
  * @ClassName: MyRunnableExample
  * @Author: 丛虹羽
  * @Date: 2025/5/2 18:50
- * @Description: 继承 Runnable 接口创建线程
+ * @Description: 实现 Runnable 接口创建线程
  */
 public class MyRunnableExample implements Runnable {
     @Override

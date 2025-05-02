@@ -60,5 +60,11 @@ public class CyclicBarrierExample {
                 System.err.println("Main: " + Thread.currentThread().getName() + " invoke!");
             }).start();
         }
+        /**
+         * CyclicBarrier 是一个同步辅助类，"允许一组线程互相等待"，直到到达某个公共屏障点。
+         *   如果创建了一个 CyclicBarrier(threadNum, barrierAction)，意思是当有 threadNum（6）个线程调用了 await() 方法后，
+         *       首先会执行：System.out.println("所有的线程执行完成咯！");
+         *       然后所有调用 await() 的线程会被同时释放，继续后面的代码
+         */
     }
 }

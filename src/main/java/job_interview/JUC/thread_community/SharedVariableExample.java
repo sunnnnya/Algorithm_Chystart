@@ -1,4 +1,4 @@
-package job_interview.JUC.classify_thread_community;
+package job_interview.JUC.thread_community;
 
 /**
  * @BelongsPackage: job_interview.JUC.classify_wait_notify

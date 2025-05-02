@@ -1,4 +1,4 @@
-package job_interview.JUC.classify_thread_community;
+package job_interview.JUC.thread_community;
 
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;

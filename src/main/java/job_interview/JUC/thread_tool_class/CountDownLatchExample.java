@@ -8,8 +8,9 @@ import java.util.concurrent.CountDownLatch;
  * @Author: 丛虹羽
  * @Date: 2025/5/2 17:50
  * @Description: CountDownLatch 工具类
+ * （1）允许一个或多个线程等待其他线程完成操作
  */
-public class countDownLatchExample {
+public class CountDownLatchExample {
     /**
      * 测试
      *

@@ -8,7 +8,7 @@ import java.util.concurrent.CountDownLatch;
  * @Author: 丛虹羽
  * @Date: 2025/5/2 17:50
  * @Description: CountDownLatch 工具类
- * （1）允许一个或多个线程等待其他线程完成操作
+ *      让 一个 或者 多个 线程等待其他线程执行完成后再继续执行后续的业务逻辑。
  */
 public class CountDownLatchExample {
     /**
@@ -25,19 +25,32 @@ public class CountDownLatchExample {
 
         for(int i = 0; i < threadCount; i++) {
             new Thread(() -> {
-                System.out.println(Thread.currentThread().getName() + "完成任务！");
+                System.out.println(Thread.currentThread().getName() + " 开始执行任务！");
                 try {
                     Thread.sleep(2000);
                     countDownLatch.countDown();
+                    System.out.println(Thread.currentThread().getName() + " 结束执行任务！");
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
-            }).start();
+            }, "SubThread-" + i).start();
         }
 
-        // 阻塞
-        countDownLatch.await();
+        // 一个线程等待其他线程执行完成
+        // countDownLatch.await();
+        // System.out.println("All task have been finished!");
 
-        System.out.println("All task have been finished!");
+        // 多个线程等待其他线程执行完成
+        for(int i = 0; i < 2; i++) {
+            new Thread(() -> {
+                System.out.println(Thread.currentThread().getName() + " 开始执行任务！");
+                try {
+                    countDownLatch.await();
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+                System.out.println(Thread.currentThread().getName() + " 结束执行任务！");
+            }, "MainThread-" + i).start();
+        }
     }
 }

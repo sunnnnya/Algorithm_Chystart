@@ -9,8 +9,9 @@ import java.util.concurrent.CountDownLatch;
  * @Author: 丛虹羽
  * @Date: 2025/5/4 15:18
  * @Description: 消费父任务的返回结果（有入参，无返回值）
- *  thenAccept() : 获取异步任务的执行结果，使用的线程 和 父任务 线程一样。
- *  thenAcceptAsync() : 获取异步任务的执行结果，使用的线程 和 父任务 线程可能一样。
+ *  仅在任务成功完成时触发（无异常）
+ *      thenAccept() : 获取异步任务的执行结果，使用的线程 和 父任务 线程一样。
+ *      thenAcceptAsync() : 获取异步任务的执行结果，使用的线程 和 父任务 线程可能一样。
  */
 public class ThenAcceptExample {
     /**

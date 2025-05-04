@@ -1,4 +1,4 @@
-package job_interview.JUC.thread_completable_future.single_task;
+package job_interview.JUC.thread_completable_future.one_task;
 
 import java.util.Date;
 import java.util.concurrent.CompletableFuture;

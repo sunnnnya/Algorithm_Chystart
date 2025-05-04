@@ -5,54 +5,52 @@ import java.util.concurrent.CountDownLatch;
 
 /**
  * @BelongsPackage: job_interview.JUC.thread_completable_future
- * @ClassName: ThenApplyExample
+ * @ClassName: ThenAccept
  * @Author: 丛虹羽
- * @Date: 2025/5/4 14:40
+ * @Date: 2025/5/4 15:18
  * @Description:
- *  thenApply(): 子任务与父任务使用的是同一个线程
- *  thenApplyAsync(): 子任务“可能”是另起一个线程执行任务
+ *  thenAccept() : 获取异步任务的执行结果，使用的线程 和 父任务 线程一样。
+ *  thenAcceptAsync() : 获取异步任务的执行结果，使用的线程 和 父任务 线程可能一样。
  */
-public class ThenApplyExample {
+public class ThenAcceptExample {
     /**
      * 测试
      *
      * @param args
      */
     public static void main(String[] args) {
+        // 复制工具类
         CountDownLatch countDownLatch = new CountDownLatch(3);
-        // 创建带返回值的异步任务
+
         CompletableFuture<Integer> task = CompletableFuture.supplyAsync(() -> {
             int sum = 0;
             for(int i = 0; i < 5; i++) {
+                sum += i;
                 try {
                     Thread.sleep(1000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                sum += i;
             }
             System.out.println(Thread.currentThread().getName() + " -> " + "supplyAsync()");
             countDownLatch.countDown();
             return sum;
         });
 
-        // 不会阻塞：thenApply() 与 task 使用一个线程
-        task.thenApply((result) -> {
-            result += 20;
-            System.out.println(Thread.currentThread().getName() + " -> " + "thenApply()");
+        task.thenAccept(result -> {
+            result += 1;
+            System.out.println(Thread.currentThread().getName() + " -> " + "thenAccept()");
+            System.out.println("result = " + result);
             countDownLatch.countDown();
-            return result;
-        }).thenAccept(System.out::println);
+        });
 
-        // 不会阻塞: thenApplyAsync() 不与 task 使用一个线程
-        task.thenApplyAsync(result -> {
-            result += 40;
-            System.out.println(Thread.currentThread().getName() + " -> " + "thenApply()");
+        task.thenAcceptAsync(result -> {
+            result += 2;
+            System.out.println(Thread.currentThread().getName() + " -> " + "thenAcceptAsync()");
+            System.out.println("result = " + result);
             countDownLatch.countDown();
-            return result;
-        }).thenAccept(System.out::println);
+        });
 
-        System.out.println(Thread.currentThread().getName() + " is running ~ ");
         try {
             countDownLatch.await();
         } catch (InterruptedException e) {

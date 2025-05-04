@@ -1,7 +1,6 @@
-package job_interview.JUC.thread_completable_future;
+package job_interview.JUC.thread_completable_future.single_task;
 
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CountDownLatch;
 
 /**
  * @BelongsPackage: job_interview.JUC.thread_completable_future

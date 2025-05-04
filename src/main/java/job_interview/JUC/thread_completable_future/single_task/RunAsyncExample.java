@@ -1,6 +1,5 @@
-package job_interview.JUC.thread_completable_future;
+package job_interview.JUC.thread_completable_future.single_task;
 
-import java.time.LocalTime;
 import java.util.concurrent.CompletableFuture;
 
 /**

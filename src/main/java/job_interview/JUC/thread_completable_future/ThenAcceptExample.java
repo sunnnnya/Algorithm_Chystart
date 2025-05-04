@@ -8,7 +8,7 @@ import java.util.concurrent.CountDownLatch;
  * @ClassName: ThenAccept
  * @Author: 丛虹羽
  * @Date: 2025/5/4 15:18
- * @Description:
+ * @Description: 消费父任务的返回结果（有入参，无返回值）
  *  thenAccept() : 获取异步任务的执行结果，使用的线程 和 父任务 线程一样。
  *  thenAcceptAsync() : 获取异步任务的执行结果，使用的线程 和 父任务 线程可能一样。
  */

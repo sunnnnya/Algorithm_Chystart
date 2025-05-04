@@ -8,7 +8,7 @@ import java.util.concurrent.CountDownLatch;
  * @ClassName: ThenApplyExample
  * @Author: 丛虹羽
  * @Date: 2025/5/4 14:40
- * @Description:
+ * @Description: 应用父任务的返回结果（有入参，有返回值）
  *  thenApply(): 子任务与父任务使用的是同一个线程
  *  thenApplyAsync(): 子任务“可能”是另起一个线程执行任务
  */

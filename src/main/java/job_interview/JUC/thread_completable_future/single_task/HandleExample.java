@@ -1,4 +1,4 @@
-package job_interview.JUC.thread_completable_future.one_task;
+package job_interview.JUC.thread_completable_future.single_task;
 
 import java.util.Arrays;
 import java.util.Random;

@@ -1,4 +1,4 @@
-package job_interview.JUC.thread_completable_future.two_task;
+package job_interview.JUC.thread_completable_future.dual_task.and;
 
 import java.util.Arrays;
 import java.util.concurrent.CompletableFuture;
@@ -10,6 +10,7 @@ import java.util.concurrent.CompletableFuture;
  * @Date: 2025/5/4 18:08
  * @Description: 两个任务的组合
  *  thenCombine(): 将两个任务的执行结果作为所提供函数的参数，且该方法 "有返回值"。
+ *      注意点：任一任务失败，合并后的 Future 也会失败，不执行 BiFunction。
  */
 public class ThenCombineExample {
     /**

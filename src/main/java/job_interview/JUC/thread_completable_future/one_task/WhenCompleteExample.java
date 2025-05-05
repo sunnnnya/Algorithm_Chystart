@@ -7,9 +7,11 @@ import java.util.concurrent.CompletableFuture;
  * @ClassName: WhenComplete
  * @Author: 丛虹羽
  * @Date: 2025/5/4 16:53
- * @Description:
- *   whenComplete(): 将执行结果或者执行期间抛出的异常传递给回调方法，子任务 和 父任务 使用同一个线程。
- *   whenCompleteAsync(): 将执行结果或者执行期间抛出的异常传递给回调方法，子任务 和 父任务 可能不使用同一个线程。
+ * @Description: 不论是正常完成还是出现异常，都会调用 「whenComplete」 这个回调函数。
+ *  「正常完成」：whenComplete 返回结果和上级任务一致，异常为 null；
+ *  「出现异常」：whenComplete 返回结果为 null，异常为上级任务的异常；
+ *       whenComplete(): 将执行结果或者执行期间抛出的异常传递给回调方法，子任务 和 父任务 使用同一个线程。
+ *       whenCompleteAsync(): 将执行结果或者执行期间抛出的异常传递给回调方法，子任务 和 父任务 可能不使用同一个线程。
  */
 public class WhenCompleteExample {
     /**

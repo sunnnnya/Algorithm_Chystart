@@ -1,4 +1,4 @@
-package job_interview.alg_basic_know.array.data_pre_process.prefix_sum;
+package job_interview.code_top.array.data_pre_process;
 
 /**
  * @BelongsPackage: job_interview.alg_basic_know.array.data_preprocess.prefix_sum

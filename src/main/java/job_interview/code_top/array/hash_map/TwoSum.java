@@ -1,4 +1,4 @@
-package job_interview.code_top.array;
+package job_interview.code_top.array.hash_map;
 
 import java.util.Arrays;
 import java.util.HashMap;

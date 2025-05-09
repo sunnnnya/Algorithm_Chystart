@@ -1,25 +1,26 @@
-package basic_knowledge.array.skill;
+package job_interview.alg_basic_know.array.data_pre_process.difference;
 
 /**
  * @BelongsPackage: basic_knowledge.array.skill
  * @ClassName: Differential
  * @Author: 丛虹羽
- * @Date: 2024/12/15 下午9:20
+ * @Date: 2025/5/9 下午9:20
  * @Description: 二维差分
  */
 public class DifferentialArrayII {
 
     /**
-     * 扩充一圈的 0
+     * 上下左右扩充一圈 0 引来减少条件判断用的
      *
      * @param arr 原始数组
-     * @return
+     * @return int[][]
      */
     public static int[][] changeArray(int[][] arr) {
-        int[][] a = new int[arr.length + 2][arr[0].length + 2];
-        for(int c = 1, i = 0; i < arr.length; i++, c++) {
-            for (int d = 1, j = 0; j < arr[i].length; j++, d++) {
-                a[c][d] = arr[i][j];
+        int m = arr.length, n = arr[0].length;
+        int[][] a = new int[m + 2][n + 2];
+        for(int i = 0; i < m; i++) {
+            for(int j = 0; j < n; j++) {
+                a[i + 1][j + 1] = arr[i][j];
             }
         }
         return a;
@@ -46,14 +47,10 @@ public class DifferentialArrayII {
      * @param v 要加的数值
      */
     public static void add(int[][] diff, int a, int b, int c, int d, int v) {
-        a += 1;
-        b += 1;
-        c += 1;
-        d += 1;
-        diff[a][b] += v;
-        diff[a][d + 1] -= v;
-        diff[c + 1][b] -= v;
-        diff[c + 1][d + 1] += v;
+        diff[a + 1][b + 1] += v;
+        diff[a + 1][d + 2] -= v;
+        diff[c + 2][b + 1] -= v;
+        diff[c + 2][d + 2] += v;
     }
 
     /**
@@ -62,8 +59,9 @@ public class DifferentialArrayII {
      * @param matrix 原始数组
      */
     public static void buildPreArray(int[][] matrix) {
-        for(int i = 1; i < matrix.length; i++) {
-            for(int j = 1; j < matrix[i].length; j++) {
+        int m = matrix.length, n = matrix[0].length;
+        for(int i = 1; i < m; i++) {
+            for(int j = 1; j < n; j++) {
                 matrix[i][j] += matrix[i - 1][j] + matrix[i][j - 1] - matrix[i - 1][j - 1];
             }
         }
@@ -105,12 +103,13 @@ public class DifferentialArrayII {
      */
     public static void main(String[] args) {
         int[][] arr = new int[4][5];
-        // 扩充出来一圈的 0
-        int[][] ints = changeArray(arr);
-        printOrigin(ints);
-        add(ints, 0, 0, 2, 3, 1);
-        printOrigin(ints);
-        buildPreArray(ints);
-        printOrigin(ints);
+        int[][] nums = changeArray(arr);
+        printOrigin(nums);
+
+        add(nums, 0, 0, 2, 3, 1);
+
+        printOrigin(nums);
+        buildPreArray(nums);
+        printOrigin(nums);
     }
 }

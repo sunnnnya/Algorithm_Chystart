@@ -6,7 +6,7 @@ import java.util.Arrays;
  * @BelongsPackage: job_interview.alg_basic_know.array.sort
  * @ClassName: SelectionSort
  * @Author: 丛虹羽
- * @Date: 2025/3/25 09:12
+ * @Date: 2025/5/10 09:12
  * @Description: 选择排序
  */
 public class SelectionSort {
@@ -20,12 +20,13 @@ public class SelectionSort {
         if(arr == null || arr.length < 2) {
             return ;
         }
-        for(int i = 0; i < arr.length - 1; i++) {
-            int minIndex = i;
-            for(int j = i + 1; j < arr.length; j++) {
-                minIndex = arr[j] < arr[minIndex] ? j : minIndex;
+        int n = arr.length;
+        for(int i = 0; i < n - 1; i++) {
+            int minIdx = i;
+            for(int j = i + 1; j < n; j++) {
+                minIdx = arr[j] < arr[minIdx] ? j : minIdx;
             }
-            swap(arr, minIndex, i);
+            swap(arr, i, minIdx);
         }
     }
 
@@ -50,7 +51,7 @@ public class SelectionSort {
     public static void main(String[] args) {
         int[] arr = new int[]{9, 2, 1, 3, 2, 7, -1, 0};
         selectionSort(arr);
-        System.out.println("Result: " + Arrays.toString(arr));
-        // Result: [-1, 0, 1, 2, 2, 3, 7, 9]
+        System.out.println(Arrays.toString(arr));
+        // [-1, 0, 1, 2, 2, 3, 7, 9]
     }
 }

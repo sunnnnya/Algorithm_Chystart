@@ -27,7 +27,6 @@ public class CountSort {
                 System.out.print(i + " ");
             }
         }
-        System.out.println();
     }
 
     /**

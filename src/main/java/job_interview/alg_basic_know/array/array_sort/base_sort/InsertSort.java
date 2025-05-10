@@ -20,8 +20,8 @@ public class InsertSort {
         if(arr == null || arr.length < 2) {
             return;
         }
-        for(int i = 1; i < arr.length; i++) {
-            // 注意点：涉及到数组下标取值时，需要先判断好下标的合法性
+        int n = arr.length;
+        for(int i = 1; i < n; i++) {
             for(int j = i; j >= 1 && arr[j] < arr[j - 1]; j--) {
                 swap(arr, j, j - 1);
             }
@@ -49,7 +49,7 @@ public class InsertSort {
     public static void main(String[] args) {
         int[] arr = new int[]{9, 2, 1, 2, 3, 4, 8, 10};
         insertSort(arr);
-        System.out.println("Result: " + Arrays.toString(arr));
-        // Result: [1, 2, 2, 3, 4, 8, 9, 10]
+        System.out.println(Arrays.toString(arr));
+        // [1, 2, 2, 3, 4, 8, 9, 10]
     }
 }

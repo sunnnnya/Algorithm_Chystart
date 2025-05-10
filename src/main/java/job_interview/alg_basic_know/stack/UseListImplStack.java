@@ -37,8 +37,8 @@ public class UseListImplStack {
          * @param value 添加的元素
          */
         public void push(V value) {
-            Node<V> node = new Node<>(value);
-            if (head == null) {
+            Node<V> node = new Node(value);
+            if(head == null) {
                 head = node;
             } else {
                 node.next = head;
@@ -54,7 +54,7 @@ public class UseListImplStack {
          */
         public V pop() {
             V ans = null;
-            if (head != null) {
+            if(!isEmpty()) {
                 ans = head.val;
                 head = head.next;
                 size--;
@@ -68,7 +68,11 @@ public class UseListImplStack {
          * @return 查询到
          */
         public V peek() {
-            return head == null ? null : head.val;
+            V ans = null;
+            if(!isEmpty()) {
+                ans = head.val;
+            }
+            return ans;
         }
 
         /**
@@ -78,6 +82,15 @@ public class UseListImplStack {
          */
         public int size() {
             return size;
+        }
+
+        /**
+         * 判断当前的栈是否为null
+         *
+         * @return true | false
+         */
+        public boolean isEmpty() {
+            return size == 0;
         }
     }
 

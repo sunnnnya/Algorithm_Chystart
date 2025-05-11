@@ -1,46 +1,48 @@
-package job_interview.alg_basic_know.tree.binary_tree.ext;
+package job_interview.code_top.tree.binary_tree;
+
+import job_interview.code_top.tree.TreeNode;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @BelongsPackage: job_interview.alg_basic_know.tree.binary_tree.ext
+ * @BelongsPackage: job_interview.code_top.tree.binary_tree
  * @ClassName: RightSideView
  * @Author: 丛虹羽
- * @Date: 2025/4/16 18:00
+ * @Date: 2025/5/11 11:03
  * @Description: 二叉树的右视图
- * https://leetcode.cn/problems/binary-tree-right-side-view/
+ * https://leetcode.cn/problems/binary-tree-right-side-view/description/
  */
 public class RightSideView {
 
     /**
-     * 二叉树左视图
+     * 利用层高获取树的右视图
      *
      * @param root 根节点
-     * @return
+     * @return List<Integer>
      */
-    public static List<Integer> rightSideView(TreeNode root) {
+    static List<Integer> rightSideView(TreeNode root) {
         List<Integer> list = new ArrayList<>();
         dfs(root, list, 0);
         return list;
     }
 
     /**
-     * 函数含义：以当前root节点为根
-     *      二叉树的右视图遍历
+     * 深度优先搜索
      *
-     * @param root 根节点
-     * @param list 列表
+     * @param root 树的根节点
+     * @param l    List
+     * @param h    tree high
      */
-    private static void dfs(TreeNode root, List<Integer> list, int level) {
+    static void dfs(TreeNode root, List<Integer> l, int h) {
         if(root == null) {
-            return;
+            return ;
         }
-        if(level == list.size()) {
-            list.add(root.val);
+        if(l.size() == h) {
+            l.add(root.val);
         }
-        dfs(root.right, list, level + 1);
-        dfs(root.left, list, level + 1);
+        dfs(root.right, l, h + 1);
+        dfs(root.left, l, h + 1);
     }
 
     /**

@@ -1,4 +1,4 @@
-package job_interview.code_top.array;
+package job_interview.code_top.array.double_pointer;
 
 import java.util.Arrays;
 

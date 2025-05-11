@@ -1,24 +1,24 @@
-package job_interview.alg_basic_know.array.double_pointer.ext;
+package job_interview.code_top.array.double_pointer;
 
 /**
- * @BelongsPackage: job_interview.alg_basic_know.array.double_pointer.ext
+ * @BelongsPackage: job_interview.code_top.array.double_pointer
  * @ClassName: Trap
  * @Author: 丛虹羽
- * @Date: 2025/5/1 19:55
+ * @Date: 2025/5/11 23:36
  * @Description: 接雨水
  * https://leetcode.cn/problems/trapping-rain-water/description/
  */
 public class Trap {
 
     /**
-     * 双指针
+     * 双指针问题
      *
      * @param height 高度数组
-     * @return 返回存储水的数量
+     * @return int
      */
-    public static int trap(int[] height) {
-        int l = 1, r = height.length - 2, lmax = height[0], rmax = height[height.length - 1];
-        int ans = 0;
+    static int trap(int[] height) {
+        int n = height.length, ans = 0;
+        int lmax = height[0], rmax = height[n - 1], l = 1, r = n - 2;
         while(l <= r) {
             if(lmax <= rmax) {
                 ans += Math.max(lmax - height[l], 0);
@@ -37,8 +37,7 @@ public class Trap {
      * @param args
      */
     public static void main(String[] args) {
-        int[] heights = new int[]{0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1};
-        System.out.println(trap(heights));
-        // 6
+        int[] arr = new int[]{0,1,0,2,1,0,1,3,2,1,2,1};
+        System.out.println(trap(arr));
     }
 }

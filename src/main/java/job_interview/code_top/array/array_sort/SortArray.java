@@ -1,4 +1,4 @@
-package job_interview.code_top.array.sort;
+package job_interview.code_top.array.array_sort;
 
 import java.util.Arrays;
 

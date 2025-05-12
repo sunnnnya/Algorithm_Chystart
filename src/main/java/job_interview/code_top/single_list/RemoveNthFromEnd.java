@@ -20,11 +20,11 @@ public class RemoveNthFromEnd {
      * @return
      */
     public static ListNode removeNthFromEnd(ListNode head, int n) {
-        ListNode dummy = new ListNode(0);
-        dummy.next = head;
+        // 注意：要和 head 进行连接，需要删除头结点的时候才需要 dummy
+        ListNode dummy = new ListNode(0, head);
         ListNode cur = dummy;
-        int len = getLength(head);
-        for(int i = 0; i < len - n; i++) {
+        int l = len(head);
+        for(int i = 0; i < l - n; i++) {
             cur = cur.next;
         }
         cur.next = cur.next.next;
@@ -37,11 +37,10 @@ public class RemoveNthFromEnd {
      * @param head 链表头节点
      * @return
      */
-    private static int getLength(ListNode head) {
+    private static int len(ListNode head) {
         int len = 0;
-        while(head != null) {
+        for(; head != null; head = head.next) {
             len++;
-            head = head.next;
         }
         return len;
     }

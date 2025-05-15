@@ -1,4 +1,4 @@
-package basic_knowledge.random.easy;
+package job_interview.alg_basic_know.math.random;
 
 /**
  * @BelongsPackage: basic_knowledge.random.easy

@@ -12,11 +12,11 @@ public class Singleton {
 
     private Singleton() {}
 
-    private static volatile Singleton instance;
+    private static volatile Singleton instance = null;
 
     public static Singleton getInstance() {
         if(instance == null) {
-            synchronized (Singleton.class) {
+            synchronized(Singleton.class) {
                 if(instance == null) {
                     instance = new Singleton();
                 }

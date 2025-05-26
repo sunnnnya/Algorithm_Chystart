@@ -1,4 +1,4 @@
-package job_interview.alg_basic_know.array.binary_search.binary_search.ext;
+package job_interview.code_top.array.binary_search;
 
 import java.util.Arrays;
 

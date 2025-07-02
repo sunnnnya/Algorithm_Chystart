@@ -1,4 +1,4 @@
-package job_interview.javase.keyword.transient_kw;
+package job_interview.javase.keywords_test.transient_keyword;
 
 import com.alibaba.fastjson2.JSON;
 

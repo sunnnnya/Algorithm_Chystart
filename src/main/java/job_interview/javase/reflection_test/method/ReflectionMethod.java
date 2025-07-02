@@ -1,4 +1,4 @@
-package job_interview.javase.reflection.method;
+package job_interview.javase.reflection_test.method;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
@@ -18,7 +18,7 @@ public class ReflectionMethod {
      * @param args 参数
      */
     public static void main(String[] args) throws Exception{
-        Class<?> studentClazz = Class.forName("job_interview.javase.reflection.method.ReflectionMethod$Student");
+        Class<?> studentClazz = Class.forName("job_interview.javase.reflection_test.method.ReflectionMethod$Student");
 
         Constructor<?> constructor = studentClazz.getConstructor(String.class, Integer.class, Double.class);
         Object student = constructor.newInstance("chystart", 18, 99.8);

@@ -28,7 +28,7 @@ public class LogicChainTest {
 
         ILogicNodeHandler<String, LogicChainFactory.DynamicContext, String> headLogicNode = logicChainFactory.getHeadLogicNode();
 
-        String requestParameter = "Hello,";
+        String requestParameter = "Hello, ";
         String response = headLogicNode.apply(requestParameter, new LogicChainFactory.DynamicContext());
         System.out.println("response = " + response);
     }

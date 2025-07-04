@@ -43,4 +43,34 @@ public abstract class AbstractLogicNodeHandler<T, D, R> implements ILogicNodeHan
     protected R next(T requestParameter, D dynamicContext) {
         return next.apply(requestParameter, dynamicContext);
     }
+
+    /**
+     * 责任链中逻辑结点处理逻辑
+     *
+     * @param requestParameter 请求参数
+     * @param dynamicContext   动态上下文
+     * @return R
+     */
+    @Override
+    public R apply(T requestParameter, D dynamicContext) {
+        multiThread(requestParameter, dynamicContext);
+        return doApply(requestParameter, dynamicContext);
+    }
+
+    /**
+     * 真正的受理方法
+     *
+     * @param requestParameter 请求参数
+     * @param dynamicContext 动态上下文
+     * @return R
+     */
+    protected abstract R doApply(T requestParameter, D dynamicContext);
+
+    /**
+     * 让每个子节点具备多线程异步处理功能
+     *
+     * @param requestParameter 请求参数
+     * @param dynamicContext 动态上下文
+     */
+    protected abstract void multiThread(T requestParameter, D dynamicContext);
 }

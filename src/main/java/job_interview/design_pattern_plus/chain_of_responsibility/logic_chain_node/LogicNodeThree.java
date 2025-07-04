@@ -1,6 +1,7 @@
 package job_interview.design_pattern_plus.chain_of_responsibility.logic_chain_node;
 
 import job_interview.design_pattern_plus.chain_of_responsibility.design_pattern.AbstractLogicNodeHandler;
+import job_interview.design_pattern_plus.chain_of_responsibility.design_pattern.AbstractLogicNodeMultiThreadHandler;
 import job_interview.design_pattern_plus.chain_of_responsibility.logic_chain_factory.LogicChainFactory;
 
 /**
@@ -10,7 +11,7 @@ import job_interview.design_pattern_plus.chain_of_responsibility.logic_chain_fac
  * @Date: 2025/7/2 09:56
  * @Description: 责任链中逻辑结点3
  */
-public class LogicNodeThree extends AbstractLogicNodeHandler<String, LogicChainFactory.DynamicContext, String> {
+public class LogicNodeThree extends AbstractLogicNodeMultiThreadHandler<String, LogicChainFactory.DynamicContext, String> {
 
     /**
      * 责任链中逻辑结点处理逻辑
@@ -20,8 +21,8 @@ public class LogicNodeThree extends AbstractLogicNodeHandler<String, LogicChainF
      * @return R
      */
     @Override
-    public String apply(String requestParameter, LogicChainFactory.DynamicContext dynamicContext) {
-        System.err.println("【LogicNodeThree】请求参数: " + requestParameter + ", 动态上下文: " + dynamicContext.getContent());
+    public String doApply(String requestParameter, LogicChainFactory.DynamicContext dynamicContext) {
+        System.out.println("【LogicNodeThree】请求参数: " + requestParameter + ", 动态上下文: " + dynamicContext.getContent());
 
         System.out.println(dynamicContext.getContent());
 

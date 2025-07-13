@@ -1,4 +1,4 @@
-package job_interview.hot100;
+package job_interview.hot100.hash_table;
 
 import java.util.Arrays;
 import java.util.HashMap;

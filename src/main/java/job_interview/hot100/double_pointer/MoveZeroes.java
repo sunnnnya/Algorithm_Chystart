@@ -1,4 +1,4 @@
-package job_interview.hot100.hash_table;
+package job_interview.hot100.double_pointer;
 
 import java.util.Arrays;
 

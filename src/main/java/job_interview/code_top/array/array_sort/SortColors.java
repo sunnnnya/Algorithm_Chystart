@@ -7,7 +7,7 @@ import java.util.Arrays;
  * @ClassName: sortColors
  * @Author: 丛虹羽
  * @Date: 2025/3/26 11:32
- * @Description: 颜色分类
+ * @Description: 经典颜色分类
  * https://leetcode.cn/problems/sort-colors/description/
  */
 public class SortColors {

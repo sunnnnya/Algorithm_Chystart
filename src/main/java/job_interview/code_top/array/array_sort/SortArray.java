@@ -7,7 +7,7 @@ import java.util.Arrays;
  * @ClassName: SortArray
  * @Author: 丛虹羽
  * @Date: 2025/5/9 14:52
- * @Description: 排序数组
+ * @Description: 随机快速排序
  * https://leetcode.cn/problems/sort-an-array/description/
  */
 public class SortArray {

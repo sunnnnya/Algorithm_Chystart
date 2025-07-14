@@ -15,8 +15,8 @@ public class FindKthLargest {
      *  包含重复值，直接计算
      *
      * @param nums 原始数组
-     * @param k    第 k 个数组
-     * @return
+     * @param k 第 k 大元素
+     * @return int
      */
     public static int findKthLargest(int[] nums, int k) {
         if (nums.length == 1 && k > 1) {

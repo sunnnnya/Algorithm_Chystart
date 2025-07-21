@@ -27,7 +27,7 @@ public class SearchMatrix {
                 r = mid - 1;
             }
         }
-        // 需要特殊处理一下，防止 r < 0 的情况
+        // 需要特殊处理一下，防止 r < 0 的情况，说明当前矩阵中所有元素的第一行值都 < target
         if(r < 0) {
             return false;
         }

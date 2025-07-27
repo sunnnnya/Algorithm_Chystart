@@ -8,13 +8,20 @@ import java.util.concurrent.CountDownLatch;
  * @Author: 丛虹羽
  * @Date: 2025/5/2 17:50
  * @Description: CountDownLatch 工具类
- *      让 一个 或者 多个 线程等待其他线程执行完成后再继续执行后续的业务逻辑。
+ *  让 一个 或者 多个 线程在等待其他线程执行完成后再继续执行后续的业务逻辑，
  */
 public class CountDownLatchExample {
+
+    /**
+     * 在启动所有线程后，main 线程会立即结束，但这不会影响已创建的子线程（SubThread-和MainThread-）。
+     *  Java 程序会等待所有非守护线程（User Thread） 执行完毕才会退出。
+     *  默认创建的线程都是非守护线程，所以即使 main 线程结束，其他线程仍会继续运行直到完成。
+     */
+
     /**
      * 测试
      *
-     * @param args
+     * @param args 参数
      */
     public static void main(String[] args) throws Exception {
         // 线程的数量
@@ -35,10 +42,6 @@ public class CountDownLatchExample {
                 }
             }, "SubThread-" + i).start();
         }
-
-        // 一个线程等待其他线程执行完成
-        // countDownLatch.await();
-        // System.out.println("All task have been finished!");
 
         // 多个线程等待其他线程执行完成
         for(int i = 0; i < 2; i++) {

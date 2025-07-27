@@ -1,5 +1,6 @@
 package job_interview.java_util_concurrent.thread_tool_class;
 
+import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
 
 /**
@@ -7,64 +8,36 @@ import java.util.concurrent.CyclicBarrier;
  * @ClassName: CyclicBarrier
  * @Author: 丛虹羽
  * @Date: 2025/5/2 21:05
- * @Description:
+ * @Description: CyclicBarrier 工具类 (创建线程直接之后，一定要调用 start() 方法)
+ *  它允许一组线程相互等待，直到所有线程都到达某个公共屏障点，再执行后续的业务逻辑
  */
 public class CyclicBarrierExample {
+
     /**
      * 测试
      *
-     * @param args
+     * @param args 参数
      */
     public static void main(String[] args) {
-        // set thread number
-        int threadNum = 6;
+        int threadNumber = 6;
 
-        // create cyclic barrier instance
-        // when cyclic barrier await time is six, after lambda expression will invoke!
-        CyclicBarrier cyclicBarrier = new CyclicBarrier(threadNum, () -> {
-            System.out.println("所有的线程执行完成咯！");
+        CyclicBarrier cyclicBarrier = new CyclicBarrier(threadNumber, () -> {
+            System.out.println("当前所有的线程都执行结束了！可以开始之后后续的业务逻辑了！");
         });
 
-        // create six thread
-        for(int i = 0; i < threadNum; i++) {
-            int idx = i;
+        for(int i = 0; i < threadNumber; i++) {
             new Thread(() -> {
-                for(int j = 0; j < 5; j++) {
-                    try {
-                        Thread.sleep(1000);
-                        if((idx & 1) == 1) {
-                            System.out.println(Thread.currentThread().getName() + ":" + Thread.currentThread().getId() + " invoke!");
-                        } else {
-                            System.err.println(Thread.currentThread().getName() + ":" + Thread.currentThread().getId() + " invoke!");
-                        }
-                    } catch (InterruptedException e) {
-                        throw new RuntimeException(e);
-                    }
-                }
+                System.out.println(Thread.currentThread().getName() + "开始执行！");
                 try {
+                    Thread.sleep(1000);
                     cyclicBarrier.await();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }).start();
-        }
-
-        // Main Thread
-        for(int i = 0; i < 20; i++) {
-            new Thread(() -> {
-                try {
-                    Thread.sleep(500);
+                    System.out.println(Thread.currentThread().getName() + "开始恢复执行了！");
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
+                } catch (BrokenBarrierException e) {
+                    throw new RuntimeException(e);
                 }
-                System.err.println("Main: " + Thread.currentThread().getName() + " invoke!");
-            }).start();
+            }, "TaskThread-" + i).start();
         }
-        /**
-         * CyclicBarrier 是一个同步辅助类，"允许一组线程互相等待"，直到到达某个公共屏障点。
-         *   如果创建了一个 CyclicBarrier(threadNum, barrierAction)，意思是当有 threadNum（6）个线程调用了 await() 方法后，
-         *       首先会执行：System.out.println("所有的线程执行完成咯！");
-         *       然后所有调用 await() 的线程会被同时释放，继续后面的代码
-         */
     }
 }

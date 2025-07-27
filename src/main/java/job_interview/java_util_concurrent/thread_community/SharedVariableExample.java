@@ -5,7 +5,7 @@ package job_interview.java_util_concurrent.thread_community;
  * @ClassName: SharedVariableExample
  * @Author: 丛虹羽
  * @Date: 2025/5/2 16:43
- * @Description: 使用共享变量进行通信
+ * @Description: 使用共享变量进行线程之间的通信
  */
 public class SharedVariableExample {
 
@@ -26,7 +26,7 @@ public class SharedVariableExample {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            System.out.println("Producer start change variable flag:【false -> true】");
+            System.err.println("Producer start change variable flag:【false -> true】");
             flag = true;
         });
 

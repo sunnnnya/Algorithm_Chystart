@@ -9,7 +9,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * @ClassName: LockConditionExample
  * @Author: 丛虹羽
  * @Date: 2025/5/2 17:28
- * @Description: 通过await()、signal()、signalAll()进行通信
+ * @Description: 通过await()、signal()、signalAll()进行线程间的通信
  */
 public class LockConditionExample {
 
@@ -42,6 +42,8 @@ public class LockConditionExample {
         });
 
         // 消费者线程
+        // consumer 线程被唤醒后，不会立即执行 await() 之后的代码，而是需要重新尝试获取锁，获取锁成功后，才会继续从 await() 后的方法执行。
+        // 只有当 consumer 成功获取到锁（此时生产者已释放锁，所以可以获取到），才会从 await() 方法返回，继续执行后续的 System.out.println("Consumer2: ...")。
         Thread consumer = new Thread(() -> {
             lock.lock();
             try {

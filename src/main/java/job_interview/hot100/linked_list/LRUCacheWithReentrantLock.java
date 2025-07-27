@@ -1,6 +1,7 @@
 package job_interview.hot100.linked_list;
 
 import java.util.HashMap;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * @BelongsPackage: job_interview.hot100.linked_list
@@ -10,7 +11,7 @@ import java.util.HashMap;
  * @Description: LRU 缓存
  * https://leetcode.cn/problems/lru-cache/description/?envType=study-plan-v2&envId=top-100-liked
  */
-public class LRUCache {
+public class LRUCacheWithReentrantLock {
 
     /**
      * 初始化结点信息
@@ -34,7 +35,9 @@ public class LRUCache {
     // 哨兵结点
     private Node dummy = new Node(0, 0);
 
-    public LRUCache(int capacity) {
+    private ReentrantLock lock = new ReentrantLock();
+
+    public LRUCacheWithReentrantLock(int capacity) {
         this.capacity = capacity;
         dummy.pre = dummy;
         dummy.next = dummy;
@@ -47,8 +50,13 @@ public class LRUCache {
      * @return int
      */
     public int get(int key) {
-        Node node = getNode(key);
-        return node != null ? node.value : -1;
+        lock.lock();
+        try {
+            Node node = getNode(key);
+            return node != null ? node.value : -1;
+        } finally {
+            lock.unlock();
+        }
     }
 
     /**
@@ -58,18 +66,23 @@ public class LRUCache {
      * @param value value
      */
     public void put(int key, int value) {
-        Node node = getNode(key);
-        if(node != null) {
-            node.value = value;
-            return ;
-        }
-        node = new Node(key, value);
-        pushToTop(node);
-        mp.put(key, node);
-        if(mp.size() > capacity) {
-            Node lastNode = dummy.pre;
-            mp.remove(lastNode.key);
-            removeNode(lastNode);
+        lock.lock();
+        try {
+            Node node = getNode(key);
+            if(node != null) {
+                node.value = value;
+                return ;
+            }
+            node = new Node(key, value);
+            pushToTop(node);
+            mp.put(key, node);
+            if(mp.size() > capacity) {
+                Node lastNode = dummy.pre;
+                mp.remove(lastNode.key);
+                removeNode(lastNode);
+            }
+        } finally {
+            lock.unlock();
         }
     }
 

@@ -5,7 +5,7 @@ package job_interview.java_util_concurrent.thread_community;
  * @ClassName: WaitNotifyExample
  * @Author: 丛虹羽
  * @Date: 2025/5/2 16:54
- * @Description: 通过wait()、notify()、notifyAll()进行通信
+ * @Description: 通过wait()、notify()、notifyAll()进行线程间的通信
  */
 public class WaitNotifyExample {
 

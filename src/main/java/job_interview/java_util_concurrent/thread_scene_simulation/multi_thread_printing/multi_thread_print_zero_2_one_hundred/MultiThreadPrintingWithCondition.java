@@ -1,4 +1,4 @@
-package job_interview.java_util_concurrent.thread_scene_simulation.multi_thread_printing.two_thread_print_zero_2_one_hundred;
+package job_interview.java_util_concurrent.thread_scene_simulation.multi_thread_printing.multi_thread_print_zero_2_one_hundred;
 
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;

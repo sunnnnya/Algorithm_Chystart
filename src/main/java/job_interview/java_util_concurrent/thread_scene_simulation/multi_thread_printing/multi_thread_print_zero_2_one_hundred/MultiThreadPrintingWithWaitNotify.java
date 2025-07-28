@@ -9,7 +9,8 @@ package job_interview.java_util_concurrent.thread_scene_simulation.multi_thread_
  */
 public class MultiThreadPrintingWithWaitNotify {
 
-    private static volatile int count = 0;
+    // 关于在 synchronized 中和 ReentrantLock 中修改变量就已经保证了变量的可见性，没有必要添加 volatile 关键字了
+    private static /** volatile */ int count = 0;
 
     private static int MAX_NUM = 100;
 

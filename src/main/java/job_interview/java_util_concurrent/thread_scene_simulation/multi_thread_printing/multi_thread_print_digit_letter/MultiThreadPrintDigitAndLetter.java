@@ -14,7 +14,8 @@ public class MultiThreadPrintDigitAndLetter {
 
     private static final int MAX_NUMBER = 26;
 
-    private static volatile int status = 0;
+    // 关于在 synchronized 中和 ReentrantLock 中修改变量就已经保证了变量的可见性，没有必要添加 volatile 关键字了
+    private static /** volatile */ int status = 0;
 
     private static final ReentrantLock lock = new ReentrantLock();
     private static final Condition conditionA = lock.newCondition();

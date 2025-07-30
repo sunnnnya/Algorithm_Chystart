@@ -38,5 +38,9 @@ public class Jump {
         int[] nums = new int[]{2,3,1,1,4};
         System.out.println(jump(nums));
         // 2
+
+        int[] nums1 = new int[]{2, 1, 1, 1, 4};
+        System.out.println(jump(nums1));
+        // 3
     }
 }

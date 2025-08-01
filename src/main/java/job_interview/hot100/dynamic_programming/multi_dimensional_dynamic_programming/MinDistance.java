@@ -13,6 +13,12 @@ public class MinDistance {
 
     /**
      * 多维度动态规划
+     *  分析：word.charAt(i) == word.charAt(j) 说明当前两个字符是相等的，不需要进行修改，直接 dp[i][j] = dp[i - 1][j - 1]
+     *       word.charAt(i) != word.charAt(j) 说明当前两个字符是不相等的；
+     *          把 word.charAt(i) 的值 "修改" word.charAt(j) -> dp[i][j] = dp[i - 1][j - 1] + 1;
+     *          把 word.charAt(i) 的值 "删除" -> dp[i][j] = dp[i - 1][j]
+     *          把 word.charAt(j) 的值 "添加" -> dp[i][j] = dp[i][j - 1]
+     *        三者中取最小值，然后 操作数 + 1
      *
      * @param word1 字符串1
      * @param word2 字符串2

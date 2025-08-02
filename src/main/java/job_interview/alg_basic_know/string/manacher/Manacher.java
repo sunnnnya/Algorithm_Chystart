@@ -1,7 +1,5 @@
 package job_interview.alg_basic_know.string.manacher;
 
-import java.util.Arrays;
-
 /**
  * @BelongsPackage: basic_knowledge.manacher
  * @ClassName: Manacher

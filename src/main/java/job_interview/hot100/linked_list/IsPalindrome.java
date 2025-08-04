@@ -5,7 +5,7 @@ package job_interview.hot100.linked_list;
  * @ClassName: IsPalindrome
  * @Author: 丛虹羽
  * @Date: 2025/7/14 19:23
- * @Description: 回文链表
+ * @Description: 回文链表(未恢复链表)
  * https://leetcode.cn/problems/palindrome-linked-list/?envType=study-plan-v2&envId=top-100-liked
  */
 public class IsPalindrome {

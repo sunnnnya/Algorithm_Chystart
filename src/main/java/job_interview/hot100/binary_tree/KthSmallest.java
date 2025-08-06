@@ -51,7 +51,7 @@ public class KthSmallest {
             return;
         }
         dfs(root.left);
-        if(k == 0) {
+        if(k == 0) { // 剪枝，提前终止运行，直接返回
             return ;
         }
         if(--k == 0) {

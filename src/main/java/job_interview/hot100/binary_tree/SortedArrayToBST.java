@@ -43,7 +43,7 @@ public class SortedArrayToBST {
      * @return TreeNode
      */
     public static TreeNode sortedArrayToBST(int[] nums) {
-        return dfs(nums, 0, nums.length);
+        return dfs(nums, 0, nums.length - 1);
     }
 
     /**
@@ -56,10 +56,18 @@ public class SortedArrayToBST {
      */
     private static TreeNode dfs(int[] nums, int left, int right) {
         if(left == right) {
+            return new TreeNode(nums[left]);
+        }
+        if(left > right) {
             return null;
         }
-        int mid = (left + right) >>> 1;
-        return new TreeNode(nums[mid], dfs(nums, left, mid), dfs(nums, mid + 1, right));
+        int mid = left + ((right - left) >> 1);
+        TreeNode root = new TreeNode(nums[mid]);
+        TreeNode leftNode = dfs(nums, left, mid - 1);
+        TreeNode rightNode = dfs(nums, mid + 1, right);
+        root.left = leftNode;
+        root.right = rightNode;
+        return root;
     }
 
     /**
@@ -100,6 +108,6 @@ public class SortedArrayToBST {
         TreeNode treeNode = sortedArrayToBST(arr);
         List<List<Integer>> lists = levelTravel(treeNode);
         System.out.println("lists = " + lists);
-        // lists = [[0], [-3, 9], [-10, 5]]
+        // lists = [[0], [-10, 5], [-3, 9]]
     }
 }

@@ -53,6 +53,7 @@ public class LevelOrder {
             for(int i = 0; i < size; i++) {
                 root = queue[l++];
                 list.add(root.val);
+                // 如果是从右到左进行遍历的话，只需要颠倒顺序即可
                 if(root.left != null) {
                     queue[r++] = root.left;
                 }

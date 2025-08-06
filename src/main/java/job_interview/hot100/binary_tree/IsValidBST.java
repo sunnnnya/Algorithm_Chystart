@@ -25,8 +25,6 @@ public class IsValidBST {
         }
     }
 
-    private static long pre = Long.MIN_VALUE;
-
     /**
      * 验证是否是二叉搜索树
      *
@@ -34,17 +32,23 @@ public class IsValidBST {
      * @return true | false
      */
     public static boolean isValidBST(TreeNode root) {
+        return dfs(root, Long.MIN_VALUE, Long.MAX_VALUE);
+    }
+
+    /**
+     * 判断一棵树是否是二叉搜索树
+     *
+     * @param root 二叉搜索树的根节点
+     * @return boolean
+     */
+    private static boolean dfs(TreeNode root, long min, long max) {
         if(root == null) {
             return true;
         }
-        if(!isValidBST(root.left)) {
+        if(root.val <= min || root.val >= max) {
             return false;
         }
-        if(root.val <= pre) {
-            return false;
-        }
-        pre = root.val;
-        return isValidBST(root.right);
+        return dfs(root.left, min, root.val) && dfs(root.right, root.val, max);
     }
 
     /**

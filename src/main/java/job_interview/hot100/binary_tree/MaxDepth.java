@@ -51,7 +51,7 @@ public class MaxDepth {
         node20.left = node15;
         node20.right = node7;
 
-        System.out.println(maxDepth(node1));
-        // 3
+        System.out.println("二叉树的最大深度：" + maxDepth(node1));
+        // 二叉树的最大深度：3
     }
 }

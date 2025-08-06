@@ -1,7 +1,5 @@
 package job_interview.hot100.binary_tree;
 
-import com.sun.scenario.animation.shared.ClipEnvelope;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,6 +54,7 @@ public class RightSideView {
         if(level == ans.size()) {
             ans.add(root.val);
         }
+        // 如果需要尝试获取左视图的话，需要反转下面的顺序，就可以了
         dfs(root.right, ans, level + 1);
         dfs(root.left, ans, level + 1);
     }

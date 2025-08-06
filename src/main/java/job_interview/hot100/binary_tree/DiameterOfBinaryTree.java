@@ -34,6 +34,9 @@ public class DiameterOfBinaryTree {
      * @return 直径大小
      */
     public static int diameterOfBinaryTree(TreeNode root) {
+        if(root == null) {
+            return 0;
+        }
         dfs(root);
         return ans;
     }
@@ -50,6 +53,7 @@ public class DiameterOfBinaryTree {
         }
         int llen = dfs(root.left);
         int rlen = dfs(root.right);
+        // 获取当前节点的左右节点中的长度信息，维护的都是最大值
         ans = Math.max(ans, llen + rlen + 2);
         return Math.max(llen, rlen) + 1;
     }

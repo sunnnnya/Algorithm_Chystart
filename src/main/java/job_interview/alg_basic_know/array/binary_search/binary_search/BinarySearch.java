@@ -5,7 +5,7 @@ package job_interview.alg_basic_know.array.binary_search.binary_search;
  * @ClassName: BinarySearch
  * @Author: 丛虹羽
  * @Date: 2025/3/25 11:59
- * @Description: 二分搜索
+ * @Description: 标准二分搜索 + 二分拓展( >= target 最左 | <= target 最右)
  */
 public class BinarySearch {
 

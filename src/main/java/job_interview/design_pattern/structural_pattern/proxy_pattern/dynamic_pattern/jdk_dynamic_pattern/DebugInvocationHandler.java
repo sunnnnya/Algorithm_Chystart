@@ -8,7 +8,7 @@ import java.lang.reflect.Method;
  * @ClassName: DebugInvocationHandler
  * @Author: 丛虹羽
  * @Date: 2025/6/6 10:37
- * @Description: 实现 InvocationHandler 接口
+ * @Description: 实现 InvocationHandler 接口，同时注入 TargetObject
  */
 public class DebugInvocationHandler implements InvocationHandler {
 

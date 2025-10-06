@@ -6,7 +6,7 @@ import java.util.Arrays;
  * @BelongsPackage: job_interview.alg_basic_know.array.sort
  * @ClassName: Bubble
  * @Author: 丛虹羽
- * @Date: 2025/5/10 09:23
+ * @Date: 2025/10/6 09:23
  * @Description: 冒泡排序
  */
 public class BubbleSort {
@@ -28,7 +28,6 @@ public class BubbleSort {
                 }
             }
         }
-
     }
 
     /**
@@ -38,7 +37,7 @@ public class BubbleSort {
      * @param i   i index
      * @param j   j index
      */
-    public static void swap(int[] arr, int i, int j) {
+    private static void swap(int[] arr, int i, int j) {
         int temp = arr[i];
         arr[i] = arr[j];
         arr[j] = temp;
@@ -51,8 +50,10 @@ public class BubbleSort {
      */
     public static void main(String[] args) {
         int[] arr = new int[]{9, 4, 1, 2, 6, 5, -1, 0, 6, 8};
+        System.out.println("before bubble_sort: " + Arrays.toString(arr));
+        // before bubble_sort: [9, 4, 1, 2, 6, 5, -1, 0, 6, 8]
         bubbleSort(arr);
-        System.out.println(Arrays.toString(arr));
-        // [-1, 0, 1, 2, 4, 5, 6, 6, 8, 9]
+        System.out.println("after bubble_sort: " + Arrays.toString(arr));
+        // after bubble_sort: [-1, 0, 1, 2, 4, 5, 6, 6, 8, 9]
     }
 }

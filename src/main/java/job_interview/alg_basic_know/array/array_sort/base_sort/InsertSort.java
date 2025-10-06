@@ -6,7 +6,7 @@ import java.util.Arrays;
  * @BelongsPackage: job_interview.alg_basic_know.array.sort.base_sort
  * @ClassName: InsertSort
  * @Author: 丛虹羽
- * @Date: 2025/3/25 09:57
+ * @Date: 2025/10/6 09:57
  * @Description: 插入排序
  */
 public class InsertSort {
@@ -48,8 +48,10 @@ public class InsertSort {
      */
     public static void main(String[] args) {
         int[] arr = new int[]{9, 2, 1, 2, 3, 4, 8, 10};
+        System.out.println("before insert_sort: " + Arrays.toString(arr));
+        // before insert_sort: [9, 2, 1, 2, 3, 4, 8, 10]
         insertSort(arr);
-        System.out.println(Arrays.toString(arr));
-        // [1, 2, 2, 3, 4, 8, 9, 10]
+        System.out.println("after insert_sort: " + Arrays.toString(arr));
+        // after insert_sort: [1, 2, 2, 3, 4, 8, 9, 10]
     }
 }

@@ -26,35 +26,35 @@ public class QuickSort {
     /**
      * 快速排序
      *
-     * @param arr  原始数组
-     * @param L    L index
-     * @param R    R index
+     * @param nums  原始数组
+     * @param l    l index
+     * @param r    r index
      */
-    public static void quickSort(int[] arr, int L, int R) {
-        if (L >= R) {
-            return;
+    public static void quickSort(int[] nums, int l, int r) {
+        if(l >= r) {
+            return ;
         }
-        swap(arr, L + (int)(Math.random() * (R - L + 1)), R);
-        int[] p = partition(arr, L, R);
-        quickSort(arr, L, p[0] - 1);
-        quickSort(arr, p[1] + 1, R);
+        swap(nums, l + (int)(Math.random() * (r - l + 1)), r);
+        int[] p = partition(nums, l, r);
+        quickSort(nums, l, p[0] - 1);
+        quickSort(nums, p[1] + 1, r);
     }
 
     /**
      * 荷兰国旗问题
      *
-     * @param arr 原始数组
+     * @param nums 原始数组
      * @param l   l index
      * @param r   r index
      * @return 返回 == target 的左边界和右边界
      */
-    public static int[] partition(int[] arr, int l, int r) {
-        int less = l, more = r, index = l, target = arr[r];
+    private static int[] partition(int[] nums, int l, int r) {
+        int index = l, less = l, more = r, target = nums[r];
         while(index <= more) {
-            if(arr[index] < target) {
-                swap(arr, index++, less++);
-            } else if(arr[index] > target) {
-                swap(arr, index, more--);
+            if(nums[index] < target) {
+                swap(nums, index++, less++);
+            } else if(nums[index] > target) {
+                swap(nums, index, more--);
             } else {
                 index++;
             }
@@ -82,8 +82,10 @@ public class QuickSort {
      */
     public static void main(String[] args) {
         int[] nums = new int[]{10, 2, 3, 1, 5, 7, 12, 21};
+        System.out.println("before quick_sort: " + Arrays.toString(nums));
+        // before quick_sort: [10, 2, 3, 1, 5, 7, 12, 21]
         quickSort(nums);
-        System.out.println(Arrays.toString(nums));
-        // [1, 2, 3, 5, 7, 10, 12, 21]
+        System.out.println("after quick_sort: " + Arrays.toString(nums));
+        // after quick_sort: [1, 2, 3, 5, 7, 10, 12, 21]
     }
 }

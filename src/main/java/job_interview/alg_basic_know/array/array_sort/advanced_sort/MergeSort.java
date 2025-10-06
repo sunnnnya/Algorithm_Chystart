@@ -6,7 +6,7 @@ import java.util.Arrays;
  * @BelongsPackage: job_interview.alg_basic_know.array.search.advance_sort
  * @ClassName: MergeSort
  * @Author: 丛虹羽
- * @Date: 2025/3/25 15:12
+ * @Date: 2025/10/6 15:12
  * @Description: 归并排序
  *
  *  master公式：分析 等规模子问题 递归函数的时间复杂度的
@@ -42,7 +42,7 @@ public class MergeSort {
      */
     public static void process(int[] nums, int l, int r) {
         if(l == r) {
-            return;
+            return ;
         }
         int mid = l + ((r - l) >> 1);
         process(nums, l, mid);
@@ -73,7 +73,7 @@ public class MergeSort {
             help[index++] = nums[p2++];
         }
         for(int i = 0; i < index; i++) {
-            nums[l + i] = help[i];
+            nums[i + l] = help[i];
         }
     }
 
@@ -84,8 +84,10 @@ public class MergeSort {
      */
     public static void main(String[] args) {
         int[] nums = new int[]{1, 3, 2, 6, 7, 8, 10, 2, 1, -2};
+        System.out.println("before merge_sort: " + Arrays.toString(nums));
+        // before merge_sort: [1, 3, 2, 6, 7, 8, 10, 2, 1, -2]
         mergeSort(nums);
-        System.out.println(Arrays.toString(nums));
-        // [-2, 1, 1, 2, 2, 3, 6, 7, 8, 10]
+        System.out.println("after merge_sort: " + Arrays.toString(nums));
+        // after merge_sort: [-2, 1, 1, 2, 2, 3, 6, 7, 8, 10]
     }
 }
